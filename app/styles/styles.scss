@@ -1,3 +1,7 @@
-@import 'base/colors';
-@import 'base/typography';
+@use "base/reset" as *;
+@use "base/colors" as *;
+@use "base/typography" as *;
 
+body {
+  background: $light;
+}

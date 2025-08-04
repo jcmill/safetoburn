@@ -1,37 +1,41 @@
-@import 'colors';
-@import url("https://use.typekit.net/fqf3zdb.css");
+@use "colors" as *;
+@import url("https://use.typekit.net/qaj3ems.css");
 
-h1, h2, h3, h4 {
-  font-weight: 900;
-  line-height: .9;
-  text-transform: uppercase;
+$font-family: "stolzl", sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+p {
+  color: $black;
+  font-family: $font-family;
+  line-height: 0.9;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 18vw;
+  font-size: 3.5vw;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 9.5vh;
+  font-size: 3vw;
+  font-weight: 400;
 }
 
 h3 {
-  font-size: clamp(2em, 6vw, 5.5em);
-}
-
-h2 {
-  font-size: 20vw;
-  white-space: normal;
+  font-size: 2.5vw;
+  font-weight: 400;
 }
 
 h4 {
-  font-size: clamp(1.2em, 4vw, 1.8em);
-  margin-bottom: 1vw;
-  text-align: left;
+  font-size: 2vw;
+  font-weight: 700;
 }
 
 p {
-  font-size: clamp(.75em, 2vw, 1em);
+  font-size: 1.6vw;
   line-height: 1.2;
-  text-align: justify;
+  font-weight: 400;
 }

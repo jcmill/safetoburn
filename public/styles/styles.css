@@ -1,35 +1,96 @@
-@import url("https://use.typekit.net/fqf3zdb.css");
-h1, h2, h3, h4 {
-  font-weight: 900;
+@import url("https://use.typekit.net/qaj3ems.css");
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+ul[role=list], ol[role=list] {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+}
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  color: #000000;
+  font-family: "stolzl", sans-serif;
   line-height: 0.9;
-  text-transform: uppercase;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 18vw;
+  font-size: 3.5vw;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 9.5vh;
+  font-size: 3vw;
+  font-weight: 400;
 }
 
 h3 {
-  font-size: clamp(2em, 6vw, 5.5em);
-}
-
-h2 {
-  font-size: 20vw;
-  white-space: normal;
+  font-size: 2.5vw;
+  font-weight: 400;
 }
 
 h4 {
-  font-size: clamp(1.2em, 4vw, 1.8em);
-  margin-bottom: 1vw;
-  text-align: left;
+  font-size: 2vw;
+  font-weight: 700;
 }
 
 p {
-  font-size: clamp(0.75em, 2vw, 1em);
+  font-size: 1.6vw;
   line-height: 1.2;
-  text-align: justify;
+  font-weight: 400;
+}
+
+body {
+  background: #cfcac6;
 }
