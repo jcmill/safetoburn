@@ -1,0 +1,35 @@
+@import url("https://use.typekit.net/fqf3zdb.css");
+h1, h2, h3, h4 {
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 18vw;
+}
+
+h2 {
+  font-size: 9.5vh;
+}
+
+h3 {
+  font-size: clamp(2em, 6vw, 5.5em);
+}
+
+h2 {
+  font-size: 20vw;
+  white-space: normal;
+}
+
+h4 {
+  font-size: clamp(1.2em, 4vw, 1.8em);
+  margin-bottom: 1vw;
+  text-align: left;
+}
+
+p {
+  font-size: clamp(0.75em, 2vw, 1em);
+  line-height: 1.2;
+  text-align: justify;
+}
