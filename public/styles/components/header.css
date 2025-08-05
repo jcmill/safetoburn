@@ -1,0 +1,26 @@
+header {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: clamp(16px, 1vw, 2em) 3vw;
+}
+header img {
+  max-width: 225px;
+  width: 175px;
+}
+header nav ul {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: clamp(16px, 2vw, 2em);
+  margin: 0;
+}

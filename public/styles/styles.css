@@ -85,10 +85,72 @@ h4 {
   font-weight: 700;
 }
 
-p {
-  font-size: 1.6vw;
+p,
+li {
+  font-family: "stolzl", sans-serif;
   line-height: 1.2;
   font-weight: 400;
+}
+
+p {
+  font-size: 1.6vw;
+}
+
+li {
+  font-size: clamp(16px, 1.75vw, 1.25em);
+  font-weight: 600;
+}
+
+li a {
+  color: #c94c26;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+li a:hover, li a:focus, li a:active {
+  color: #045451;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+header {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1em;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: clamp(16px, 1vw, 2em) 3vw;
+}
+@media screen and (min-width: 726px) {
+  header {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: unset;
+  }
+}
+header img {
+  max-width: 225px;
+  width: 200px;
+}
+header nav ul {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: clamp(16px, 14vw, 4em);
+  padding: 0;
 }
 
 body {

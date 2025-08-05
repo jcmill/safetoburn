@@ -34,8 +34,30 @@ h4 {
   font-weight: 700;
 }
 
-p {
-  font-size: 1.6vw;
+p,
+li {
+  font-family: $font-family;
   line-height: 1.2;
   font-weight: 400;
+}
+
+p {
+  font-size: 1.6vw;
+}
+
+li {
+  font-size: clamp(16px, 1.75vw, 1.25em); // clamp(16px, 1.75vw, 2em)
+  font-weight: 600;
+}
+
+li a {
+  color: $red;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $teal;
+    transition: all 0.5s;
+  }
 }

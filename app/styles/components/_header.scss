@@ -1,0 +1,28 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: space-between;
+  padding: clamp(16px, 1vw, 2em) 3vw;
+
+  @include query($tablet) {
+    flex-direction: row;
+    gap: unset;
+  }
+
+  img {
+    max-width: 225px;
+    width: 200px;
+  }
+
+  nav ul {
+    align-items: center;
+    display: flex;
+    gap: clamp(16px, 14vw, 4em); // clamp(16px, 2vw, 2em)
+    padding: 0;
+  }
+}

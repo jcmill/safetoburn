@@ -1,6 +1,7 @@
 @use "base/reset" as *;
 @use "base/colors" as *;
 @use "base/typography" as *;
+@use "components/header.scss" as *;
 
 body {
   background: $light;
