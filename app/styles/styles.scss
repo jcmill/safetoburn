@@ -2,7 +2,10 @@
 @use "base/colors" as *;
 @use "base/typography" as *;
 @use "components/header.scss" as *;
+@use "layouts/hero.scss" as *;
 
 body {
-  background: $light;
+  background: $light url(../images/vectors/tree-rings-light.svg) no-repeat;
+  background-position: -300% -10%;
+  background-size: 90%;
 }

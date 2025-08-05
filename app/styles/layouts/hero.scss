@@ -1,0 +1,39 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.c-hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 0 3vw;
+
+  @include query($phone) {
+    flex-direction: row;
+    min-height: 40vh;
+  }
+
+  @include query($laptop) {
+    flex-direction: row;
+    min-height: 80vh;
+  }
+
+  .c-hero__img,
+  .c-hero__content {
+    flex: 1 1 100%;
+  }
+
+  .c-hero__img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 30vw;
+    }
+  }
+
+  .c-hero__content {
+    text-align: center;
+  }
+}
