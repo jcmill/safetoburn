@@ -1,11 +1,18 @@
 @use "base/reset" as *;
 @use "base/colors" as *;
 @use "base/typography" as *;
-@use "components/header.scss" as *;
+@use "components/buttons.scss" as *;
+@use "components/inputs.scss" as *;
+@use "layouts/header.scss" as *;
 @use "layouts/hero.scss" as *;
 
 body {
-  background: $light url(../images/vectors/tree-rings-light.svg) no-repeat;
-  background-position: -300% -10%;
-  background-size: 90%;
+  background: $light radial-gradient(100% 65% at 0% 0%, $light-2 33%, $light)
+    no-repeat;
+  background-size: contain;
+  overflow-x: clip;
 }
+
+// section {
+//   height: 100vh;
+// }

@@ -1,9 +1,9 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins" as *;
-@import url("https://use.typekit.net/qaj3ems.css");
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap");
 
-$font-family: "stolzl", sans-serif;
+$font-family: "Schibsted Grotesk", sans-serif;
 
 h1,
 h2,
@@ -18,7 +18,7 @@ p {
 
 h1 {
   font-size: clamp(1.75em, 3.5vw, 2em);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.5em;
 
@@ -43,7 +43,8 @@ h4 {
 }
 
 p,
-li {
+li,
+button {
   font-family: $font-family;
   line-height: 1.2;
   font-weight: 400;
@@ -60,8 +61,12 @@ p {
 }
 
 li {
-  font-size: clamp(16px, 1.75vw, 1.25em); // clamp(16px, 1.75vw, 2em)
+  font-size: 0.85em; // clamp(16px, 1.75vw, 2em)
   font-weight: 400;
+
+  @include query($laptop) {
+    font-size: 1em;
+  }
 }
 
 li a {

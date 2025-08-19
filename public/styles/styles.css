@@ -1,4 +1,4 @@
-@import url("https://use.typekit.net/qaj3ems.css");
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap");
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -59,15 +59,15 @@ h2,
 h3,
 h4,
 p {
-  color: #000000;
-  font-family: "stolzl", sans-serif;
+  color: #272727;
+  font-family: "Schibsted Grotesk", sans-serif;
   line-height: 0.9;
   text-wrap: balance;
 }
 
 h1 {
   font-size: clamp(1.75em, 3.5vw, 2em);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.5em;
 }
@@ -93,8 +93,9 @@ h4 {
 }
 
 p,
-li {
-  font-family: "stolzl", sans-serif;
+li,
+button {
+  font-family: "Schibsted Grotesk", sans-serif;
   line-height: 1.2;
   font-weight: 400;
 }
@@ -111,8 +112,13 @@ p {
 }
 
 li {
-  font-size: clamp(16px, 1.75vw, 1.25em);
+  font-size: 0.85em;
   font-weight: 400;
+}
+@media screen and (min-width: 1024px) {
+  li {
+    font-size: 1em;
+  }
 }
 
 li a {
@@ -126,6 +132,42 @@ li a:hover, li a:focus, li a:active {
   transition: all 0.5s;
 }
 
+button {
+  background: #c94c26;
+  border: none;
+  color: #f2ede9;
+  padding: 0.75em 1.25em;
+}
+
+input[type=text] {
+  border: none;
+  margin-bottom: 1em;
+  padding: 0.5505em 1.25em;
+  width: 75%;
+}
+@media screen and (min-width: 480px) {
+  input[type=text] {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  input[type=text] {
+    width: 50%;
+  }
+}
+input[type=text]::-webkit-input-placeholder {
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+input[type=text]::-moz-placeholder {
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+input[type=text]::-ms-input-placeholder {
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+input[type=text]::placeholder {
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+
 header {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -133,28 +175,31 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  gap: 1em;
+  height: 9vh;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: clamp(16px, 1vw, 2em) 3vw;
+  padding: 0 clamp(1.5em, 5vw, 2em);
 }
 @media screen and (min-width: 726px) {
   header {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
     gap: unset;
+  }
+}
+@media screen and (min-width: 1024px) {
+  header {
+    padding: 0 clamp(1.5em, 7vw, 4em);
   }
 }
 header img {
   max-width: 225px;
-  width: 200px;
+  width: 150px;
+}
+@media screen and (min-width: 1024px) {
+  header img {
+    max-width: 250px;
+    width: 230px;
+  }
 }
 header nav ul {
   -webkit-box-align: center;
@@ -163,23 +208,26 @@ header nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: clamp(16px, 14vw, 4em);
+  gap: 1em;
   padding: 0;
+}
+@media screen and (min-width: 1024px) {
+  header nav ul {
+    gap: clamp(16px, 14vw, 4em);
+  }
+}
+header nav ul li {
+  font-weight: 700;
 }
 
 .c-hero {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  display: grid;
   gap: 2em;
-  padding: 0 3vw;
+  grid-template: 5fr 1fr/2fr 3fr;
+  padding: 0 clamp(1.5em, 5vw, 2em);
 }
 @media screen and (min-width: 480px) {
   .c-hero {
@@ -187,7 +235,7 @@ header nav ul {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    min-height: 40vh;
+    height: 100%;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -196,16 +244,16 @@ header nav ul {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    min-height: 80vh;
+    min-height: 91vh;
+    padding: 0 clamp(1.5em, 7vw, 4em);
   }
 }
-.c-hero .c-hero__img,
-.c-hero .c-hero__content {
+.c-hero__img, .c-hero__content {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
 }
-.c-hero .c-hero__img {
+.c-hero__img {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -216,15 +264,29 @@ header nav ul {
   -ms-flex-pack: center;
   justify-content: center;
 }
-.c-hero .c-hero__img img {
+.c-hero__img img {
   width: 30vw;
 }
-.c-hero .c-hero__content {
+.c-hero__content {
   text-align: center;
+}
+@media screen and (min-width: 480px) {
+  .c-hero__content {
+    text-align: left;
+  }
+}
+.c-hero__ad {
+  background: url(../../images/safe-to-burn-wood.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  grid-column: 1/span 2;
+  height: 100%;
+  translate: calc(clamp(-1.5em, -7vw, -4em) * 2.75) 0;
+  width: calc(100% + clamp(1.5em, 7vw, 4em) * 2.25);
 }
 
 body {
-  background: #cfcac6 url(../images/vectors/tree-rings-light.svg) no-repeat;
-  background-position: -300% -10%;
-  background-size: 90%;
+  background: #f2ede9 radial-gradient(100% 65% at 0% 0%, #dacbbf 33%, #f2ede9) no-repeat;
+  background-size: contain;
+  overflow-x: clip;
 }
