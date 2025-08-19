@@ -1,0 +1,43 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+header {
+  align-items: center;
+  display: flex;
+  height: 9vh;
+  justify-content: space-between;
+  padding: 0 clamp(1.5em, 5vw, 2em);
+
+  @include query($tablet) {
+    gap: unset;
+  }
+
+  @include query($laptop) {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+
+  img {
+    max-width: 225px;
+    width: 150px;
+
+    @include query($laptop) {
+      max-width: 250px;
+      width: 230px;
+    }
+  }
+
+  nav ul {
+    align-items: center;
+    display: flex;
+    gap: 1em; // clamp(16px, 2vw, 2em)
+    padding: 0;
+
+    @include query($laptop) {
+      gap: clamp(16px, 14vw, 4em);
+    }
+
+    li {
+      font-weight: 700;
+    }
+  }
+}

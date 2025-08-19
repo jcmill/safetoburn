@@ -1,0 +1,22 @@
+@use "../base/variables" as *;
+@use "../base/typography" as *;
+@use "../base/mixins" as *;
+
+input[type="text"] {
+  border: none;
+  margin-bottom: 1em;
+  padding: 0.5505em 1.25em;
+  width: 75%;
+
+  @include query($phone) {
+    width: 100%;
+  }
+
+  @include query($laptop) {
+    width: 50%;
+  }
+
+  &::placeholder {
+    font-family: $font-family;
+  }
+}
