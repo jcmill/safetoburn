@@ -1,15 +1,4 @@
-"use strict"; // import "regenerator-runtime/runtime";
-// navigator.geolocation.getCurrentPosition(
-//   (position) => {
-//     const latitude = position.coords.latitude;
-//     const longitude = position.coords.longitude;
-//     getWeather(latitude, longitude);
-//     console.log(getWeather(latitude, longitude));
-//   },
-//   (error) => {
-//     // Handle permission denied and or other errors
-//   }
-// );
+"use strict";
 
 navigator.geolocation.getCurrentPosition(function _callee(position) {
   var latitude, longitude, weatherInfo;
