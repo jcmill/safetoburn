@@ -93,7 +93,11 @@ function scripts() {
         this.emit("end");
       })
     )
-    .pipe(babel())
+    .pipe(
+      babel({
+        presets: ["@babel/preset-env"],
+      })
+    )
     .pipe(uglify())
     .pipe(gulp.dest(options.scripts.dest))
     .pipe(

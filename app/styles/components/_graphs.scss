@@ -1,0 +1,28 @@
+@use "../base/colors" as *;
+@use "../base/typography" as *;
+
+.c-graph-circle {
+  stroke: $green;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.c-graph-empty {
+  stroke: #d1d1d1;
+}
+
+.c-graph-icon {
+  width: 4em;
+}
+
+.c-graph-text,
+.c-graph-reading {
+  fill: $black;
+}
+
+.c-graph-text {
+  font: bold 3em $font-family;
+}
+
+.c-graph-reading {
+  font: bold 1.75em $font-family;
+}

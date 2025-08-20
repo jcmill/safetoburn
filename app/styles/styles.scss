@@ -2,9 +2,11 @@
 @use "base/colors" as *;
 @use "base/typography" as *;
 @use "components/buttons.scss" as *;
+@use "components/graphs.scss" as *;
 @use "components/inputs.scss" as *;
 @use "layouts/header.scss" as *;
 @use "layouts/hero.scss" as *;
+@use "layouts/ad.scss" as *;
 
 body {
   background: $light radial-gradient(100% 65% at 0% 0%, $light-2 33%, $light)
@@ -13,6 +15,6 @@ body {
   overflow-x: clip;
 }
 
-// section {
-//   height: 100vh;
-// }
+.test {
+  height: 100vh;
+}

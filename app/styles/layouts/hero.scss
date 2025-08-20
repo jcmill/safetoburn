@@ -5,7 +5,7 @@
   align-items: center;
   display: grid;
   gap: 2em;
-  grid-template: 5fr 1fr / 2fr 3fr;
+  grid-template: 1fr / 2fr 3fr;
   padding: 0 clamp(1.5em, 5vw, 2em);
 
   @include query($phone) {
@@ -15,7 +15,7 @@
 
   @include query($laptop) {
     flex-direction: row;
-    min-height: 91vh;
+    min-height: 76vh;
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
 
@@ -40,15 +40,5 @@
     @include query($phone) {
       text-align: left;
     }
-  }
-
-  &__ad {
-    background: url(../../images/safe-to-burn-wood.jpg) no-repeat;
-    background-position: center;
-    background-size: cover;
-    grid-column: 1 / span 2;
-    height: 100%;
-    translate: calc(clamp(-1.5em, -7vw, -4em) * 2.75) 0;
-    width: calc(100% + (clamp(1.5em, 7vw, 4em) * 2.25));
   }
 }
