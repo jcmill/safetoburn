@@ -87,3 +87,15 @@ const readings = (windspeed = 0, humidity = 0) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => setTimeout(readings, 100));
+
+// function to handle saftey messages
+const safeToBurn = (windspeed, humidity) => {
+  const unsafeReasons = [];
+  if (windspeed > 10) unsafeReasons.push(`High wind (${windMph} mph)`);
+  if (humidity < 30) unsafeReasons.push(`Low humidity (${humidity}%)`);
+  if (unsafeReasons.length === 0) {
+    // functions for safe to burn messaging
+  } else {
+    // functions for unsafe to burn messaging
+  }
+};

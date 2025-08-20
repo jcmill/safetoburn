@@ -134,4 +134,14 @@ var readings = function readings() {
 
 document.addEventListener("DOMContentLoaded", function () {
   return setTimeout(readings, 100);
-});
+}); // function to handle saftey messages
+
+var safeToBurn = function safeToBurn(windspeed, humidity) {
+  var unsafeReasons = [];
+  if (windspeed > 10) unsafeReasons.push("High wind (".concat(windMph, " mph)"));
+  if (humidity < 30) unsafeReasons.push("Low humidity (".concat(humidity, "%)"));
+
+  if (unsafeReasons.length === 0) {// functions for safe to burn messaging
+  } else {// functions for unsafe to burn messaging
+    }
+};
