@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap");
+h1,
+h2,
+h3,
+h4,
+p {
+  color: #272727;
+  font-family: "Schibsted Grotesk", sans-serif;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(1.75em, 10.5vw, 4em);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+
+h2 {
+  font-size: 3vw;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 2.5vw;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 2vw;
+  font-weight: 700;
+}
+
+p,
+li,
+button {
+  font-family: "Schibsted Grotesk", sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+p {
+  font-size: clamp(1em, 3vw, 1.25em);
+  line-height: 1.3;
+  margin-bottom: 1em;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  p {
+    font-size: 1.6vw;
+  }
+}
+
+li {
+  font-size: 0.85em;
+  font-weight: 400;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  li {
+    font-size: 1em;
+  }
+}
+
+li a {
+  color: #c94c26;
+  transition: all 0.5s;
+}
+li a:hover, li a:focus, li a:active {
+  color: #045451;
+  transition: all 0.5s;
+}
+
+.u-small {
+  font-size: 1em;
+}
+
+.c-graph-circle {
+  stroke: #cc9c50;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.c-graph-empty {
+  stroke: #b5b3b3;
+}
+
+.c-graph-icon {
+  width: 4em;
+}
+
+.c-graph-text,
+.c-graph-reading {
+  fill: #272727;
+}
+
+.c-graph-text {
+  font: bold 4em "Schibsted Grotesk", sans-serif;
+}
+
+.c-graph-reading {
+  font: bold 2em "Schibsted Grotesk", sans-serif;
+}

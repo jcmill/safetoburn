@@ -1,20 +1,25 @@
+@use "../base/colors" as *;
 @use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 .c-hero {
   align-items: center;
   display: grid;
-  gap: 2em;
-  grid-template: 1fr / 2fr 3fr;
-  padding: 0 clamp(1.5em, 5vw, 2em);
+  grid-template: 1fr / 1fr;
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
 
   @include query($phone) {
     flex-direction: row;
     height: 100%;
   }
 
+  @include query($tablet) {
+    gap: 2em;
+  }
+
   @include query($laptop) {
     flex-direction: row;
+    grid-template: 1fr / 2fr 3fr;
     min-height: 76vh;
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
@@ -37,8 +42,62 @@
   &__content {
     text-align: center;
 
-    @include query($phone) {
+    @include query($laptop) {
       text-align: left;
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template: 4fr 1.25fr 0.5fr 1fr / 1fr 1fr;
+
+    svg {
+      width: 40vw;
+    }
+
+    @include query($phone) {
+      svg {
+        width: 18vw;
+      }
+    }
+
+    &--graph,
+    &--current-location {
+      align-items: center;
+      display: flex;
+    }
+
+    &--graph {
+      grid-column: 1 / span 2;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    &--current-location {
+      justify-content: center;
+    }
+
+    @include query($phone, portrait) {
+      svg {
+        width: 30vw;
+      }
+    }
+
+    &--current-location {
+      border-bottom: 2px solid $grey;
+      border-top: 2px solid $grey;
+      grid-column: 1 / span 2;
+    }
+
+    &--divider {
+      border-right: 2px solid $grey;
+    }
+
+    &--input {
+      align-items: center;
+      display: flex;
+      grid-column: 1 / span 2;
+      justify-content: center;
     }
   }
 }

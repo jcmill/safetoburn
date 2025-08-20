@@ -66,14 +66,14 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.75em, 3.5vw, 2em);
+  font-size: clamp(1.75em, 10.5vw, 4em);
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.5em;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   h1 {
-    font-size: 3.5vw;
+    font-size: 4.5vw;
   }
 }
 
@@ -101,11 +101,11 @@ button {
 }
 
 p {
-  font-size: 1em;
+  font-size: clamp(1em, 3vw, 1.25em);
   line-height: 1.3;
   margin-bottom: 1em;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   p {
     font-size: 1.6vw;
   }
@@ -115,7 +115,7 @@ li {
   font-size: 0.85em;
   font-weight: 400;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   li {
     font-size: 1em;
   }
@@ -127,16 +127,27 @@ li a {
   transition: all 0.5s;
 }
 li a:hover, li a:focus, li a:active {
-  color: #045451;
+  color: #b13813;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+
+.u-small {
+  font-size: 1em;
 }
 
 button {
   background: #c94c26;
   border: none;
   color: #f2ede9;
+  cursor: pointer;
   padding: 0.75em 1.25em;
+  text-wrap: nowrap;
+}
+button:hover, button:focus, button:active {
+  background: #b13813;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .c-graph-circle {
@@ -146,7 +157,7 @@ button {
 }
 
 .c-graph-empty {
-  stroke: #d1d1d1;
+  stroke: #b5b3b3;
 }
 
 .c-graph-icon {
@@ -159,25 +170,24 @@ button {
 }
 
 .c-graph-text {
-  font: bold 3em "Schibsted Grotesk", sans-serif;
+  font: bold 4em "Schibsted Grotesk", sans-serif;
 }
 
 .c-graph-reading {
-  font: bold 1.75em "Schibsted Grotesk", sans-serif;
+  font: bold 2em "Schibsted Grotesk", sans-serif;
 }
 
 input[type=text] {
   border: none;
-  margin-bottom: 1em;
   padding: 0.5505em 1.25em;
   width: 75%;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) and (orientation: landscape) {
   input[type=text] {
     width: 100%;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   input[type=text] {
     width: 50%;
   }
@@ -208,12 +218,12 @@ header {
   justify-content: space-between;
   padding: 0 clamp(1.5em, 5vw, 2em);
 }
-@media screen and (min-width: 726px) {
+@media screen and (min-width: 726px) and (orientation: landscape) {
   header {
     gap: unset;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   header {
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
@@ -222,7 +232,7 @@ header img {
   max-width: 225px;
   width: 150px;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   header img {
     max-width: 250px;
     width: 230px;
@@ -238,7 +248,7 @@ header nav ul {
   gap: 1em;
   padding: 0;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   header nav ul {
     gap: clamp(16px, 14vw, 4em);
   }
@@ -252,11 +262,10 @@ header nav ul li {
   -ms-flex-align: center;
   align-items: center;
   display: grid;
-  gap: 2em;
-  grid-template: 1fr/2fr 3fr;
-  padding: 0 clamp(1.5em, 5vw, 2em);
+  grid-template: 1fr/1fr;
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) and (orientation: landscape) {
   .c-hero {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -265,12 +274,18 @@ header nav ul li {
     height: 100%;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-hero {
+    gap: 2em;
+  }
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    grid-template: 1fr/2fr 3fr;
     min-height: 76vh;
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
@@ -297,10 +312,66 @@ header nav ul li {
 .c-hero__content {
   text-align: center;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero__content {
     text-align: left;
   }
+}
+.c-hero__details {
+  display: grid;
+  grid-template: 4fr 1.25fr 0.5fr 1fr/1fr 1fr;
+}
+.c-hero__details svg {
+  width: 40vw;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-hero__details svg {
+    width: 18vw;
+  }
+}
+.c-hero__details--graph, .c-hero__details--current-location {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.c-hero__details--graph {
+  grid-column: 1/span 2;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  text-align: center;
+}
+.c-hero__details--current-location {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+@media screen and (min-width: 480px) and (orientation: portrait) {
+  .c-hero__details svg {
+    width: 30vw;
+  }
+}
+.c-hero__details--current-location {
+  border-bottom: 2px solid #b5b3b3;
+  border-top: 2px solid #b5b3b3;
+  grid-column: 1/span 2;
+}
+.c-hero__details--divider {
+  border-right: 2px solid #b5b3b3;
+}
+.c-hero__details--input {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-column: 1/span 2;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c-ad {

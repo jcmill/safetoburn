@@ -1,0 +1,12 @@
+button {
+  background: #c94c26;
+  border: none;
+  color: #f2ede9;
+  cursor: pointer;
+  padding: 0.75em 1.25em;
+  text-wrap: nowrap;
+}
+button:hover, button:focus, button:active {
+  background: #b13813;
+  transition: all 0.5s;
+}

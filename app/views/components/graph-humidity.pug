@@ -15,7 +15,7 @@ svg.c-graph(viewBox='0 0 ' + size + ' ' + size)
     stroke-width=stroke,
     transform='rotate(129 ' + (radius + padding) + ' ' + (radius + padding) + ')'
   )
-  circle.c-graph-circle.js-graph-circle--windspeed(
+  circle.c-graph-circle.js-graph-circle--humidity(
     cx=radius + padding,
     cy=radius + padding,
     fill="none",
@@ -28,22 +28,22 @@ svg.c-graph(viewBox='0 0 ' + size + ' ' + size)
   image.c-graph-icon(
     dominant-baseline="middle",
     dy="0.3em",
-    href="images/vectors/windspeed.svg",
+    href="images/vectors/humidity.svg",
     text-anchor="middle",
     x="42%",
     y="25%"
   ) 
-  text.c-graph-text.js-windspeed-text(
+  text.c-graph-text.js-humidity-text(
     dominant-baseline="middle",
     dy="0.3em",
     text-anchor="middle",
     x="50%",
     y="50%"
-  ) 0 mph
+  ) 0 %
   text.c-graph-reading(
     dominant-baseline="middle",
     dy="0.3em",
     text-anchor="middle",
     x="50%",
     y="85%"
-  ) Windspeed
+  ) Humidity

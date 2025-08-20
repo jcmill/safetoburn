@@ -1,5 +1,5 @@
-@mixin query($w) {
-  @media screen and (min-width: $w) {
+@mixin query($w, $orientation: landscape) {
+  @media screen and (min-width: $w) and (orientation: $orientation) {
     @content;
   }
 }

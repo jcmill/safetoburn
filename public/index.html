@@ -23,17 +23,38 @@
       <div class="c-hero__content">
         <h1>Is It Safe to Burn Today?</h1>
         <p>Check the conditions to see if it’s safe to burn brush, wood, or debris in your area today.</p>
-        <input type="text" placeholder="City or Zip Code">
-        <button>Check Now</button>
       </div>
       <div class="c-hero__details">
-        <svg class="score" viewBox="0 0 400 400">
-          <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(129 200 200)"></circle>
-          <circle class="c-graph-circle js-graph-circle--windspeed" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(129 200 200)"></circle>
-          <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/windspeed.svg" text-anchor="middle" x="42%" y="25%"> </image>
-          <text class="c-graph-text js-windspeed-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 mph</text>
-          <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Windspeed</text>
-        </svg>
+        <div class="c-hero__details--graph">
+          <div class="c-hero__details--windspeed">
+            <svg class="c-graph" viewBox="0 0 400 400">
+              <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(129 200 200)"></circle>
+              <circle class="c-graph-circle js-graph-circle--windspeed" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(129 200 200)"></circle>
+              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/windspeed.svg" text-anchor="middle" x="42%" y="25%"> </image>
+              <text class="c-graph-text js-windspeed-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 mph</text>
+              <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Windspeed</text>
+            </svg>
+            <p class="u-small">Ideal < 10mph</p>
+          </div>
+          <div class="c-hero__details--humidity">
+            <svg class="c-graph" viewBox="0 0 400 400">
+              <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(129 200 200)"></circle>
+              <circle class="c-graph-circle js-graph-circle--humidity" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(129 200 200)"></circle>
+              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/humidity.svg" text-anchor="middle" x="42%" y="25%"> </image>
+              <text class="c-graph-text js-humidity-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 %</text>
+              <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Humidity</text>
+            </svg>
+            <p class="u-small">Ideal > 30%</p>
+          </div>
+        </div>
+        <div class="c-hero__details--current-location">
+          <button class="js-my-location">Use My Location</button>
+        </div>
+        <div class="c-hero__details--divider"></div>
+        <div class="c-hero__details--input">
+          <input type="text" placeholder="City or Zip Code">
+          <button>Check Now</button>
+        </div>
       </div>
     </section>
     <section class="c-ad"></section>
