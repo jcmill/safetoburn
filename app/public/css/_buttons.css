@@ -3,10 +3,24 @@ button {
   border: none;
   color: #f2ede9;
   cursor: pointer;
+  min-height: 2em;
   padding: 0.75em 1.25em;
   text-wrap: nowrap;
 }
 button:hover, button:focus, button:active {
   background: #b13813;
   transition: all 0.5s;
+}
+
+.btn-icon {
+  padding: 0.5505em;
+}
+.btn-icon img {
+  aspect-ratio: 1;
+  margin: 0;
+  width: 1.2em;
+}
+
+.c-btn-my-location {
+  margin-bottom: 0.75em;
 }

@@ -3,7 +3,9 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+label,
+input {
   color: #272727;
   font-family: "Schibsted Grotesk", sans-serif;
   line-height: 0.9;
@@ -11,10 +13,10 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.75em, 10.5vw, 4em);
+  font-size: clamp(1.75em, 9.5vw, 2.25em);
   font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   h1 {
@@ -23,8 +25,8 @@ h1 {
 }
 
 h2 {
-  font-size: 3vw;
-  font-weight: 400;
+  font-size: clamp(1.75em, 8.5vw, 2.5em);
+  font-weight: 900;
 }
 
 h3 {
@@ -73,6 +75,11 @@ li a {
 li a:hover, li a:focus, li a:active {
   color: #b13813;
   transition: all 0.5s;
+}
+
+label {
+  font-weight: 800;
+  margin-top: 12em;
 }
 
 .u-small {

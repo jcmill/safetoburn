@@ -1,8 +1,11 @@
 "use strict";
 // use my location
 const myLocationButton = document.querySelector(".js-my-location");
+const locationContainer = document.querySelector(".js-hero__details--response");
+const inputReset = document.querySelector(".js-input");
+const resetButton = document.querySelector(".js-reset");
 
-myLocationButton.addEventListener("click", () => {
+function handleMyLocationClick() {
   navigator.geolocation.getCurrentPosition(
     async (position) => {
       const latitude = position.coords.latitude;
@@ -11,12 +14,17 @@ myLocationButton.addEventListener("click", () => {
       windspeed = parseFloat(weatherInfo.windSpeed.replace("mph", "").trim());
       humidity = weatherInfo.relativeHumidity;
       readings(windspeed, humidity);
+      safeToBurn(windspeed, humidity);
     },
     (error) => {
       // Handle permission denied and or other errors
     }
   );
-});
+}
+
+if (myLocationButton) {
+  myLocationButton.addEventListener("click", handleMyLocationClick);
+}
 
 // handle general json
 async function getJSON(url) {
@@ -65,7 +73,9 @@ const readings = (windspeed = 0, humidity = 0) => {
   const humidityCircle = document.querySelector(".js-graph-circle--humidity");
   const humidityText = document.querySelector(".js-humidity-text");
 
-  const windspeedPercentage = Number((windspeed / 10) * 100);
+  const windspeedMax = 15;
+
+  const windspeedPercentage = Number((windspeed / windspeedMax) * 100);
 
   windspeedCircle.style.strokeDashoffset = getOffset(windspeedPercentage);
   windspeedText.textContent = `${Number(windspeed)} mph`;
@@ -89,13 +99,57 @@ const readings = (windspeed = 0, humidity = 0) => {
 document.addEventListener("DOMContentLoaded", () => setTimeout(readings, 100));
 
 // function to handle saftey messages
-const safeToBurn = (windspeed, humidity) => {
+const safeToBurn = (windspeed = 0, humidity = 0) => {
   const unsafeReasons = [];
-  if (windspeed > 10) unsafeReasons.push(`High wind (${windMph} mph)`);
-  if (humidity < 30) unsafeReasons.push(`Low humidity (${humidity}%)`);
+  if (windspeed > 10) unsafeReasons.push(`<b>High wind</b> (${windspeed} mph)`);
+  if (humidity < 30) unsafeReasons.push(`<b>Low humidity</b> (${humidity}%)`);
+  let unsafeResponse;
+  unsafeReasons.length === 1
+    ? (unsafeResponse = `${unsafeReasons[0]}`)
+    : (unsafeResponse = `${unsafeReasons[0]} and ${unsafeReasons[1]}`);
+  console.log(unsafeReasons.length);
+  locationContainer.innerHTML = "";
+  const htmlSafe = `
+    <div class="c-safe">
+      <h2>It's safe to burn!</h2>
+    </div>
+  `;
+  const htmlReason = `
+    <div class="c-unsafe">
+      <h3>It's <b>unsafe</b> to burn because ${unsafeResponse}</h3>
+    </div>
+  `;
   if (unsafeReasons.length === 0) {
-    // functions for safe to burn messaging
+    locationContainer.insertAdjacentHTML("afterbegin", htmlSafe);
   } else {
-    // functions for unsafe to burn messaging
+    locationContainer.insertAdjacentHTML("afterbegin", htmlReason);
   }
 };
+
+// form validations
+document.querySelector("form").addEventListener("submit", function (e) {
+  const input = document.querySelector(".js-location-search__input");
+  const errorEl = document.querySelector(".js-location-search__error");
+
+  errorEl.textContent = "";
+  errorEl.classList.add("c-location-search__hidden");
+  input.removeAttribute("aria-invalid");
+
+  const value = input.value.trim();
+
+  if (!value) {
+    e.preventDefault();
+    errorEl.textContent = "Please enter a city name or ZIP code.";
+    errorEl.classList.remove("c-location-search__hidden");
+    input.setAttribute("aria-invalid", "true");
+    input.focus();
+  }
+  // Optional: check that ZIP codes are numeric if only digits are entered
+  else if (/^\d+$/.test(value) && (value.length < 5 || value.length > 5)) {
+    e.preventDefault();
+    errorEl.textContent = "ZIP codes must be 5 digits.";
+    errorEl.classList.remove("c-location-search__hidden");
+    input.setAttribute("aria-invalid", "true");
+    input.focus();
+  }
+});

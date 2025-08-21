@@ -2,19 +2,25 @@ section.c-hero
   .c-hero__content
     h1 Is It Safe to Burn Today?
     p Check the conditions to see if it’s safe to burn brush, wood, or debris in your area today.
+    button.c-btn-my-location.js-my-location Use My Location
+    .c-hero__input
+      include ../components/form-search
   .c-hero__details
     .c-hero__details--graph
       .c-hero__details--windspeed
         include ../components/graph-windspeed
-        p.u-small Ideal < 10mph
       .c-hero__details--humidity
         include ../components/graph-humidity
-        p.u-small Ideal > 30%
-    .c-hero__details--current-location
-      button.js-my-location Use My Location
+    .c-hero__details--windspeed-key
+      ul 
+        li Prescribed 5 to 15 mph 
+        li General up to 15 mph
+    .c-hero__details--humidity-key
+      ul 
+        li Extreme < 15%
+        li Danger 15% - 40% 
+        li Safe Above 40%
     .c-hero__details--divider
-    .c-hero__details--input
-      input(type="text" placeholder="City or Zip Code")
-      button Check Now
+    .c-hero__details--response.js-hero__details--response
 section.c-ad
 .test

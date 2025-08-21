@@ -2,10 +2,10 @@
 @use "../base/typography" as *;
 @use "../base/mixins" as *;
 
-input[type="text"] {
+input[type="search"] {
   border: none;
+  min-height: 2em;
   padding: 0.5505em 1.25em;
-  width: 75%;
 
   @include query($phone) {
     width: 100%;
@@ -17,5 +17,29 @@ input[type="text"] {
 
   &::placeholder {
     font-family: $font-family;
+  }
+}
+
+.c-location-search__hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c-location-search__container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.5em;
+
+  @include query($tablet) {
+    justify-content: start;
   }
 }

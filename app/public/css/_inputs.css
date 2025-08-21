@@ -3,7 +3,9 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+label,
+input {
   color: #272727;
   font-family: "Schibsted Grotesk", sans-serif;
   line-height: 0.9;
@@ -11,20 +13,20 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.75em, 3.5vw, 2em);
+  font-size: clamp(1.75em, 9.5vw, 2.25em);
   font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   h1 {
-    font-size: 3.5vw;
+    font-size: 4.5vw;
   }
 }
 
 h2 {
-  font-size: 3vw;
-  font-weight: 400;
+  font-size: clamp(1.75em, 8.5vw, 2.5em);
+  font-weight: 900;
 }
 
 h3 {
@@ -46,11 +48,11 @@ button {
 }
 
 p {
-  font-size: 1em;
+  font-size: clamp(1em, 3vw, 1.25em);
   line-height: 1.3;
   margin-bottom: 1em;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   p {
     font-size: 1.6vw;
   }
@@ -60,7 +62,7 @@ li {
   font-size: 0.85em;
   font-weight: 400;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   li {
     font-size: 1em;
   }
@@ -71,25 +73,59 @@ li a {
   transition: all 0.5s;
 }
 li a:hover, li a:focus, li a:active {
-  color: #045451;
+  color: #b13813;
   transition: all 0.5s;
 }
 
-input[type=text] {
-  border: none;
-  padding: 0.5505em 1.25em;
-  width: 75%;
+label {
+  font-weight: 800;
+  margin-top: 12em;
 }
-@media screen and (min-width: 480px) {
-  input[type=text] {
+
+.u-small {
+  font-size: 1em;
+}
+
+input[type=search] {
+  border: none;
+  min-height: 2em;
+  padding: 0.5505em 1.25em;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  input[type=search] {
     width: 100%;
   }
 }
-@media screen and (min-width: 1024px) {
-  input[type=text] {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  input[type=search] {
     width: 50%;
   }
 }
-input[type=text]::placeholder {
+input[type=search]::placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+}
+
+.c-location-search__hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c-location-search__container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-location-search__container {
+    justify-content: start;
+  }
 }

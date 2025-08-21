@@ -3,6 +3,18 @@
   <div class="c-hero__content">
     <h1>Is It Safe to Burn Today?</h1>
     <p>Check the conditions to see if it’s safe to burn brush, wood, or debris in your area today.</p>
+    <button class="c-btn-my-location js-my-location">Use My Location</button>
+    <div class="c-hero__input">
+      <form class="c-location-search" novalidate="novalidate" role="search">
+        <label class="c-location-search__label" id="location__label" for="location-input">Search by city or ZIP code</label>
+        <p class="u-small c-location-search__hint c-location-search__hidden" id="location-hint">Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")</p>
+        <p class="c-location-search__hidden js-location-search__error error-hidden" id="location__error" aria-live="polite"></p>
+        <div class="c-location-search__container">
+          <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labeledby="location-label" placeholder="City or ZIP code"/>
+          <button class="c-location-search__button btn-icon js-input" type="submit"><img src="images/vectors/search.svg" alt="magnifying glass to indicate searching"/></button>
+        </div>
+      </form>
+    </div>
   </div>
   <div class="c-hero__details">
     <div class="c-hero__details--graph">
@@ -14,7 +26,6 @@
           <text class="c-graph-text js-windspeed-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 mph</text>
           <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Windspeed</text>
         </svg>
-        <p class="u-small">Ideal < 10mph</p>
       </div>
       <div class="c-hero__details--humidity">
         <svg class="c-graph" viewBox="0 0 400 400">
@@ -24,17 +35,23 @@
           <text class="c-graph-text js-humidity-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 %</text>
           <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Humidity</text>
         </svg>
-        <p class="u-small">Ideal > 30%</p>
       </div>
     </div>
-    <div class="c-hero__details--current-location">
-      <button class="js-my-location">Use My Location</button>
+    <div class="c-hero__details--windspeed-key">
+      <ul> 
+        <li>Prescribed 5 to 15 mph </li>
+        <li>General up to 15 mph</li>
+      </ul>
+    </div>
+    <div class="c-hero__details--humidity-key">
+      <ul> 
+        <li>Extreme < 15%</li>
+        <li>Danger 15% - 40% </li>
+        <li>Safe Above 40%</li>
+      </ul>
     </div>
     <div class="c-hero__details--divider"></div>
-    <div class="c-hero__details--input">
-      <input type="text" placeholder="City or Zip Code"/>
-      <button>Check Now</button>
-    </div>
+    <div class="c-hero__details--response js-hero__details--response"></div>
   </div>
 </section>
 <section class="c-ad"></section>

@@ -1,7 +1,11 @@
 "use strict"; // use my location
 
 var myLocationButton = document.querySelector(".js-my-location");
-myLocationButton.addEventListener("click", function () {
+var locationContainer = document.querySelector(".js-hero__details--response");
+var inputReset = document.querySelector(".js-input");
+var resetButton = document.querySelector(".js-reset");
+
+function handleMyLocationClick() {
   navigator.geolocation.getCurrentPosition(function _callee(position) {
     var latitude, longitude, weatherInfo;
     return regeneratorRuntime.async(function _callee$(_context) {
@@ -18,8 +22,9 @@ myLocationButton.addEventListener("click", function () {
             windspeed = parseFloat(weatherInfo.windSpeed.replace("mph", "").trim());
             humidity = weatherInfo.relativeHumidity;
             readings(windspeed, humidity);
+            safeToBurn(windspeed, humidity);
 
-          case 8:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -27,7 +32,12 @@ myLocationButton.addEventListener("click", function () {
     });
   }, function (error) {// Handle permission denied and or other errors
   });
-}); // handle general json
+}
+
+if (myLocationButton) {
+  myLocationButton.addEventListener("click", handleMyLocationClick);
+} // handle general json
+
 
 function getJSON(url) {
   var res;
@@ -123,7 +133,8 @@ var readings = function readings() {
   var windspeedText = document.querySelector(".js-windspeed-text");
   var humidityCircle = document.querySelector(".js-graph-circle--humidity");
   var humidityText = document.querySelector(".js-humidity-text");
-  var windspeedPercentage = Number(windspeed / 10 * 100);
+  var windspeedMax = 15;
+  var windspeedPercentage = Number(windspeed / windspeedMax * 100);
   windspeedCircle.style.strokeDashoffset = getOffset(windspeedPercentage);
   windspeedText.textContent = "".concat(Number(windspeed), " mph");
   humidityCircle.style.strokeDashoffset = getOffset(humidity);
@@ -136,12 +147,47 @@ document.addEventListener("DOMContentLoaded", function () {
   return setTimeout(readings, 100);
 }); // function to handle saftey messages
 
-var safeToBurn = function safeToBurn(windspeed, humidity) {
+var safeToBurn = function safeToBurn() {
+  var windspeed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var humidity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var unsafeReasons = [];
-  if (windspeed > 10) unsafeReasons.push("High wind (".concat(windMph, " mph)"));
-  if (humidity < 30) unsafeReasons.push("Low humidity (".concat(humidity, "%)"));
+  if (windspeed > 10) unsafeReasons.push("<b>High wind</b> (".concat(windspeed, " mph)"));
+  if (humidity < 30) unsafeReasons.push("<b>Low humidity</b> (".concat(humidity, "%)"));
+  var unsafeResponse;
+  unsafeReasons.length === 1 ? unsafeResponse = "".concat(unsafeReasons[0]) : unsafeResponse = "".concat(unsafeReasons[0], " and ").concat(unsafeReasons[1]);
+  console.log(unsafeReasons.length);
+  locationContainer.innerHTML = "";
+  var htmlSafe = "\n    <div class=\"c-safe\">\n      <h2>It's safe to burn!</h2>\n    </div>\n  ";
+  var htmlReason = "\n    <div class=\"c-unsafe\">\n      <h3>It's <b>unsafe</b> to burn because ".concat(unsafeResponse, "</h3>\n    </div>\n  ");
 
-  if (unsafeReasons.length === 0) {// functions for safe to burn messaging
-  } else {// functions for unsafe to burn messaging
+  if (unsafeReasons.length === 0) {
+    locationContainer.insertAdjacentHTML("afterbegin", htmlSafe);
+  } else {
+    locationContainer.insertAdjacentHTML("afterbegin", htmlReason);
+  }
+}; // form validations
+
+
+document.querySelector("form").addEventListener("submit", function (e) {
+  var input = document.querySelector(".js-location-search__input");
+  var errorEl = document.querySelector(".js-location-search__error");
+  errorEl.textContent = "";
+  errorEl.classList.add("c-location-search__hidden");
+  input.removeAttribute("aria-invalid");
+  var value = input.value.trim();
+
+  if (!value) {
+    e.preventDefault();
+    errorEl.textContent = "Please enter a city name or ZIP code.";
+    errorEl.classList.remove("c-location-search__hidden");
+    input.setAttribute("aria-invalid", "true");
+    input.focus();
+  } // Optional: check that ZIP codes are numeric if only digits are entered
+  else if (/^\d+$/.test(value) && (value.length < 5 || value.length > 5)) {
+      e.preventDefault();
+      errorEl.textContent = "ZIP codes must be 5 digits.";
+      errorEl.classList.remove("c-location-search__hidden");
+      input.setAttribute("aria-invalid", "true");
+      input.focus();
     }
-};
+});
