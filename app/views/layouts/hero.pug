@@ -1,7 +1,8 @@
 section.c-hero 
   .c-hero__content
     h1 Is It Safe to Burn Today?
-    p Check the conditions to see if it’s safe to burn brush, wood, or debris in your area today.
+    h2 Real-time fire safety conditions near you.
+    h3 Track windspeed, humidity, and burn bans.
     button.c-btn-my-location.js-my-location Use My Location
     .c-hero__input
       include ../components/form-search
@@ -13,14 +14,23 @@ section.c-hero
         include ../components/graph-humidity
     .c-hero__details--windspeed-key
       ul 
-        li Prescribed 5 to 15 mph 
-        li General up to 15 mph
+        li.u-small General up to 15 mph
+        li.u-small Controlled 5 to 15 mph 
     .c-hero__details--humidity-key
       ul 
-        li Extreme < 15%
-        li Danger 15% - 40% 
-        li Safe Above 40%
-    .c-hero__details--divider
+        li.u-small Danger < 15%
+        li.u-small Warning 15% - 30% 
+        li.u-small Safe Above 30%
+    .c-hero__details--location.js-hero__details--location
     .c-hero__details--response.js-hero__details--response
-section.c-ad
-.test
+      .c-check
+        h3 Check if is safe to burn in your location
+    .c-hero__details--alerts.js-hero__details--alerts
+include ../blocks/ad
+section.c-divider
+section.c-who-is 
+  h2 Who we are
+  p Safe to Burn is meant to help homeowners, farmers, and land managers quickly check if weather and environmental conditions are safe for burning brush or debris. By combining local weather data, wind speeds, humidity levels, and official fire alerts, we provide a simple, reliable tool for making responsible burning decisions. Enter your city, state, or ZIP code to see real-time wind speed, humidity, and active burn bans in your area.
+include ../components/faq
+include ../blocks/ad
+include ../components/footer

@@ -1,0 +1,19 @@
+.c-contact {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .c-contact {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 87vh;
+    width: 100%;
+  }
+}
+.c-contact form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}

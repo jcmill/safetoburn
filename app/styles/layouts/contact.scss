@@ -1,0 +1,23 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.c-contact {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+
+  @include query($laptop) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 87vh;
+    width: 100%;
+    // padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+  }
+}

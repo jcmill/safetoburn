@@ -66,3 +66,7 @@ Send an HTTP request to the API with the latitude and longitude, and get back st
   "address": "123 Main St",
   "postal_code": "94102"
 }`
+
+Use for City and State: https://nominatim.openstreetmap.org/search?city=CITY&state=STATE(2 characters)&format=json
+
+Use for Zip: https://nominatim.openstreetmap.org/search?postalcode=ZIPCODE&country=us&format=json

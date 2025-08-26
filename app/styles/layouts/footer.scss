@@ -1,0 +1,18 @@
+@use "../base/colors" as *;
+
+.c-footer {
+  background: $red;
+  height: 2.25em;
+  padding: 1vh clamp(1.5em, 5vw, 2em);
+  text-align: center;
+  width: 100vw;
+
+  p,
+  a {
+    color: $light;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}

@@ -1,18 +1,8 @@
 .c-ad {
-  background: url(../../images/safe-to-burn-wood.jpg) no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 15vh;
-  position: relative;
-  width: 100vw;
+  display: grid;
+  margin-bottom: 2.25em;
+  width: 100%;
 }
-.c-ad::before {
-  background: rgba(242, 237, 233, 0.5);
-  backdrop-filter: blur(6px);
-  content: "";
-  height: 2em;
-  inset: 0 auto auto 0;
-  position: absolute;
-  width: 100vw;
+.c-ad ins {
+  place-self: center;
 }

@@ -1,8 +1,8 @@
 form.c-location-search(novalidate, role="search")
-  label#location__label.c-location-search__label(for="location-input") Search by city or ZIP code
+  label#location__label.c-location-search__label.u-small(for="location-input") Search fire safety by city, state, or ZIP code
   p#location-hint.u-small.c-location-search__hint.c-location-search__hidden Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")
-  p#location__error.c-location-search__hidden.js-location-search__error.error-hidden(aria-live="polite")
   .c-location-search__container
-    input#location-input.c-location-search__input.js-location-search__input(type='search', name="location-input", inputmode="search", autocomplete="address-level2 postal-code", aria-describedby="location-hint location__error", aria-labeledby="location-label", placeholder="City or ZIP code")
+    input#location-input.c-location-search__input.js-location-search__input(type='search', name="location-input", inputmode="search", autocomplete="address-level2 postal-code", aria-describedby="location-hint location__error", aria-labelledby="location-label", placeholder="City, State or ZIP code")
     button.c-location-search__button.btn-icon.js-input(type="submit")
       img(src="images/vectors/search.svg", alt="magnifying glass to indicate searching")
+  p#location__error.c-location-search__hidden.js-location-search__error.u-small(aria-live="polite")

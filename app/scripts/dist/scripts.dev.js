@@ -1,41 +1,76 @@
 "use strict"; // use my location
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var myLocationButton = document.querySelector(".js-my-location");
+var form = document.querySelector("form");
+var input = document.querySelector(".js-location-search__input");
 var locationContainer = document.querySelector(".js-hero__details--response");
 var inputReset = document.querySelector(".js-input");
 var resetButton = document.querySelector(".js-reset");
+var dangerAlerts = [];
+var urlSearch = window.location.search;
+
+function temporarilyThrottle(element) {
+  var ms = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+  element.disabled = true;
+  setTimeout(function () {
+    element.disabled = false;
+  }, ms);
+}
 
 function handleMyLocationClick() {
   navigator.geolocation.getCurrentPosition(function _callee(position) {
-    var latitude, longitude, weatherInfo;
+    var latitude, longitude;
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            _context.next = 4;
-            return regeneratorRuntime.awrap(getWeather(latitude, longitude));
+            getWeatherData(latitude, longitude);
+            getFireAlerts(latitude, longitude);
 
           case 4:
-            weatherInfo = _context.sent;
-            windspeed = parseFloat(weatherInfo.windSpeed.replace("mph", "").trim());
-            humidity = weatherInfo.relativeHumidity;
-            readings(windspeed, humidity);
-            safeToBurn(windspeed, humidity);
-
-          case 9:
           case "end":
             return _context.stop();
         }
       }
     });
-  }, function (error) {// Handle permission denied and or other errors
+  }, function (error) {
+    var message = "Unable to retrieve your location.";
+
+    if (error.code === error.PERMISSION_DENIED) {
+      message = "Location permission denied. Please allow location access.";
+    } else if (error.code === error.POSITION_UNAVAILABLE) {
+      message = "Location information is unavailable.";
+    } else if (error.code === error.TIMEOUT) {
+      message = "The request to get your location timed out.";
+    } // Display error to user (customize selector as needed)
+
+
+    var errorEl = document.querySelector(".js-location-search__error");
+
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.remove("c-location-search__hidden");
+    } else {
+      alert(message);
+    }
   });
 }
 
 if (myLocationButton) {
-  myLocationButton.addEventListener("click", handleMyLocationClick);
+  myLocationButton.addEventListener("click", function (e) {
+    temporarilyThrottle(myLocationButton);
+    handleMyLocationClick();
+  });
 } // handle general json
 
 
@@ -79,7 +114,7 @@ function getJSON(url) {
 
 
 function getWeather(latitude, longitude) {
-  var pointData, hourlyUrl, forecastData, d, hours, periods, nextHourIndex, nextHour;
+  var pointData, county, hourlyUrl, forecastData, d, hours, periods, nextHourIndex, nextHour;
   return regeneratorRuntime.async(function getWeather$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -89,14 +124,18 @@ function getWeather(latitude, longitude) {
 
         case 2:
           pointData = _context3.sent;
+          _context3.next = 5;
+          return regeneratorRuntime.awrap(getJSON(pointData.properties.county));
+
+        case 5:
+          county = _context3.sent;
+          buildLocation(pointData.properties.relativeLocation.properties.city, county.properties.name, county.properties.state);
           hourlyUrl = pointData.properties.forecastHourly;
-          console.log(hourlyUrl);
-          _context3.next = 7;
+          _context3.next = 10;
           return regeneratorRuntime.awrap(getJSON(hourlyUrl));
 
-        case 7:
+        case 10:
           forecastData = _context3.sent;
-          // get the date and hour of the user to grab the correct index of periods
           d = new Date();
           hours = d.getHours();
           periods = forecastData.properties.periods;
@@ -107,12 +146,164 @@ function getWeather(latitude, longitude) {
           nextHour = periods[nextHourIndex];
           return _context3.abrupt("return", {
             windSpeed: nextHour.windSpeed,
-            relativeHumidity: nextHour.relativeHumidity.value
+            relativeHumidity: nextHour.relativeHumidity.value,
+            relativeLocationCity: pointData.properties.relativeLocation.properties.city,
+            relativeLocationState: pointData.properties.relativeLocation.properties.state
           });
 
-        case 14:
+        case 17:
         case "end":
           return _context3.stop();
+      }
+    }
+  });
+} // alerts function
+
+
+function getFireAlerts(latitude, longitude) {
+  var alertData, checkEvents, dangerEvents, burnAlerts, allAlertsSet, allAlerts, dangerAlerts;
+  return regeneratorRuntime.async(function getFireAlerts$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.next = 2;
+          return regeneratorRuntime.awrap(getJSON("https://api.weather.gov/alerts/active?point=".concat(latitude, ",").concat(longitude)));
+
+        case 2:
+          alertData = _context4.sent;
+          checkEvents = ["Red Flag Warning", "Fire Weather Watch", "Burn Ban", "Air Quality Alert", "High Wind Warning", "Wind Advisory"];
+          dangerEvents = ["Red Flag Warning", "Fire Weather Watch", "Burn Ban"];
+          burnAlerts = alertData.features.filter(function (alert) {
+            return checkEvents.some(function (event) {
+              return alert.properties.event && alert.properties.event.toLowerCase() === event.toLowerCase();
+            });
+          });
+          allAlertsSet = new Set(burnAlerts.map(function (alert) {
+            return alert.properties.event;
+          }));
+          allAlerts = Array.from(allAlertsSet);
+          dangerAlerts = allAlerts.filter(function (alert) {
+            return dangerEvents.includes(alert);
+          });
+          buildAlerts(allAlerts);
+          return _context4.abrupt("return", dangerAlerts);
+
+        case 11:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  });
+}
+
+var weatherCache = {};
+
+function getWeatherData(latitude, longitude) {
+  var key, _weatherInfo, weatherInfo, dangerAlerts;
+
+  return regeneratorRuntime.async(function getWeatherData$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          key = "".concat(latitude, ",").concat(longitude);
+
+          if (!weatherCache[key]) {
+            _context5.next = 8;
+            break;
+          }
+
+          _weatherInfo = weatherCache[key];
+          windspeed = parseFloat(_weatherInfo.windSpeed.replace("mph", "").trim());
+          humidity = _weatherInfo.relativeHumidity;
+          readings(windspeed, humidity);
+          safeToBurn(windspeed, humidity, dangerAlerts);
+          return _context5.abrupt("return");
+
+        case 8:
+          _context5.next = 10;
+          return regeneratorRuntime.awrap(getWeather(latitude, longitude));
+
+        case 10:
+          weatherInfo = _context5.sent;
+          weatherCache[key] = weatherInfo;
+          windspeed = parseFloat(weatherInfo.windSpeed.replace("mph", "").trim());
+          humidity = weatherInfo.relativeHumidity;
+          _context5.next = 16;
+          return regeneratorRuntime.awrap(getFireAlerts(latitude, longitude));
+
+        case 16:
+          dangerAlerts = _context5.sent;
+          readings(windspeed, humidity);
+          safeToBurn(windspeed, humidity, dangerAlerts);
+
+        case 19:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  });
+} // functions for getting searched location
+
+
+function getLocation(postalCode, city, state) {
+  var lat, lon, postalData, cityData;
+  return regeneratorRuntime.async(function getLocation$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          if (!postalCode) {
+            _context6.next = 10;
+            break;
+          }
+
+          _context6.next = 3;
+          return regeneratorRuntime.awrap(getJSON("https://nominatim.openstreetmap.org/search?postalcode=".concat(postalCode, "&country=us&format=json")));
+
+        case 3:
+          postalData = _context6.sent;
+
+          if (postalData.length) {
+            _context6.next = 6;
+            break;
+          }
+
+          return _context6.abrupt("return");
+
+        case 6:
+          lat = postalData[0].lat;
+          lon = postalData[0].lon;
+          _context6.next = 17;
+          break;
+
+        case 10:
+          _context6.next = 12;
+          return regeneratorRuntime.awrap(getJSON("https://nominatim.openstreetmap.org/search?city=".concat(city, "&state=").concat(state, "&format=json")));
+
+        case 12:
+          cityData = _context6.sent;
+
+          if (cityData.length) {
+            _context6.next = 15;
+            break;
+          }
+
+          return _context6.abrupt("return");
+
+        case 15:
+          lat = cityData[0].lat;
+          lon = cityData[0].lon;
+
+        case 17:
+          _context6.next = 19;
+          return regeneratorRuntime.awrap(getWeatherData(lat, lon));
+
+        case 19:
+          _context6.next = 21;
+          return regeneratorRuntime.awrap(getFireAlerts(lat, lon));
+
+        case 21:
+        case "end":
+          return _context6.stop();
       }
     }
   });
@@ -139,55 +330,185 @@ var readings = function readings() {
   windspeedText.textContent = "".concat(Number(windspeed), " mph");
   humidityCircle.style.strokeDashoffset = getOffset(humidity);
   humidityText.textContent = "".concat(Number(humidity), "%");
-  windspeedPercentage <= 79 ? windspeedCircle.style.stroke = "#cc9c50" : windspeedPercentage >= 100 ? windspeedCircle.style.stroke = "#c94c26" : windspeedCircle.style.stroke = "#f87819";
-  humidity > 40 ? humidityCircle.style.stroke = "#cc9c50" : humidity <= 30 ? humidityCircle.style.stroke = "#c94c26" : humidityCircle.style.stroke = "#f87819";
+  windspeedPercentage <= 80 ? windspeedCircle.style.stroke = "#cc9c50" : windspeedPercentage >= 100 ? windspeedCircle.style.stroke = "#c94c26" : windspeedCircle.style.stroke = "#f87819";
+  humidity > 30 ? humidityCircle.style.stroke = "#cc9c50" : humidity <= 15 ? humidityCircle.style.stroke = "#c94c26" : humidityCircle.style.stroke = "#f87819";
 };
 
 document.addEventListener("DOMContentLoaded", function () {
   return setTimeout(readings, 100);
-}); // function to handle saftey messages
+});
+
+function updateContainer(selector, html) {
+  var container = document.querySelector(selector);
+
+  if (container) {
+    container.innerHTML = "";
+    container.insertAdjacentHTML("afterbegin", html);
+  }
+} // function to handle saftey messages
+
 
 var safeToBurn = function safeToBurn() {
   var windspeed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   var humidity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var dangerAlerts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var warningReasons = [];
   var unsafeReasons = [];
-  if (windspeed > 10) unsafeReasons.push("<b>High wind</b> (".concat(windspeed, " mph)"));
-  if (humidity < 30) unsafeReasons.push("<b>Low humidity</b> (".concat(humidity, "%)"));
-  var unsafeResponse;
-  unsafeReasons.length === 1 ? unsafeResponse = "".concat(unsafeReasons[0]) : unsafeResponse = "".concat(unsafeReasons[0], " and ").concat(unsafeReasons[1]);
-  console.log(unsafeReasons.length);
-  locationContainer.innerHTML = "";
-  var htmlSafe = "\n    <div class=\"c-safe\">\n      <h2>It's safe to burn!</h2>\n    </div>\n  ";
-  var htmlReason = "\n    <div class=\"c-unsafe\">\n      <h3>It's <b>unsafe</b> to burn because ".concat(unsafeResponse, "</h3>\n    </div>\n  ");
 
-  if (unsafeReasons.length === 0) {
-    locationContainer.insertAdjacentHTML("afterbegin", htmlSafe);
+  if (windspeed > 15) {
+    unsafeReasons.push("<b>High wind</b> (".concat(windspeed, " mph)"));
+  }
+
+  if (humidity < 15) {
+    unsafeReasons.push("<b>Low humidity</b> (".concat(humidity, "%)"));
+  }
+
+  if (dangerAlerts.length > 0) {
+    unsafeReasons.push.apply(unsafeReasons, _toConsumableArray(dangerAlerts.map(function (alert) {
+      return "a ".concat(alert);
+    })));
+  }
+
+  if (windspeed >= 11 && windspeed <= 15) {
+    warningReasons.push("<b>High wind</b> (".concat(windspeed, " mph)"));
+  }
+
+  if (humidity >= 14 && humidity <= 30) {
+    warningReasons.push("<b>Low humidity</b> (".concat(humidity, "%)"));
+  }
+
+  var warningResponse = warningReasons.join(" and ");
+  var unsafeResponse = unsafeReasons.join(" and ");
+  var htmlSafe = "\n    <div class=\"c-safe\">\n      <h2>It's safe to burn!</h2>\n    </div>\n  ";
+  var htmlUnsafeReason = "\n    <div class=\"c-unsafe\">\n      <h3>It's <b>unsafe</b> to burn because ".concat(unsafeResponse, "</h3>\n    </div>\n  ");
+  var htmlWarningReason = "\n    <div class=\"c-warning\">\n      <h3>Use <b>caution</b> when burning because of ".concat(warningResponse, "</h3>\n    </div>\n  ");
+
+  if (unsafeReasons.length > 0) {
+    updateContainer(".js-hero__details--response", htmlUnsafeReason);
+  } else if (warningReasons.length > 0) {
+    updateContainer(".js-hero__details--response", htmlWarningReason);
   } else {
-    locationContainer.insertAdjacentHTML("afterbegin", htmlReason);
+    updateContainer(".js-hero__details--response", htmlSafe);
   }
 }; // form validations
 
 
-document.querySelector("form").addEventListener("submit", function (e) {
-  var input = document.querySelector(".js-location-search__input");
-  var errorEl = document.querySelector(".js-location-search__error");
-  errorEl.textContent = "";
-  errorEl.classList.add("c-location-search__hidden");
-  input.removeAttribute("aria-invalid");
-  var value = input.value.trim();
+form.addEventListener("submit", function _callee2(e) {
+  var errorEl, value, match, city, state;
+  return regeneratorRuntime.async(function _callee2$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          errorEl = document.querySelector(".js-location-search__error");
+          temporarilyThrottle(input);
+          readings(0, 0);
+          errorEl.textContent = "";
+          errorEl.classList.add("c-location-search__hidden");
+          input.removeAttribute("aria-invalid");
+          value = input.value.trim();
 
-  if (!value) {
-    e.preventDefault();
-    errorEl.textContent = "Please enter a city name or ZIP code.";
-    errorEl.classList.remove("c-location-search__hidden");
-    input.setAttribute("aria-invalid", "true");
-    input.focus();
-  } // Optional: check that ZIP codes are numeric if only digits are entered
-  else if (/^\d+$/.test(value) && (value.length < 5 || value.length > 5)) {
-      e.preventDefault();
-      errorEl.textContent = "ZIP codes must be 5 digits.";
-      errorEl.classList.remove("c-location-search__hidden");
-      input.setAttribute("aria-invalid", "true");
-      input.focus();
+          if (value) {
+            _context7.next = 15;
+            break;
+          }
+
+          e.preventDefault();
+          errorEl.textContent = "Please enter a city name or ZIP code.";
+          errorEl.classList.remove("c-location-search__hidden");
+          input.setAttribute("aria-invalid", "true");
+          input.focus();
+          _context7.next = 38;
+          break;
+
+        case 15:
+          if (!(/^\d+$/.test(value) && (value.length < 5 || value.length > 5))) {
+            _context7.next = 23;
+            break;
+          }
+
+          e.preventDefault();
+          errorEl.textContent = "ZIP codes must be 5 digits.";
+          errorEl.classList.remove("c-location-search__hidden");
+          input.setAttribute("aria-invalid", "true");
+          input.focus();
+          _context7.next = 38;
+          break;
+
+        case 23:
+          if (!(/^\d+$/.test(value) && value.length === 5)) {
+            _context7.next = 29;
+            break;
+          }
+
+          e.preventDefault();
+          _context7.next = 27;
+          return regeneratorRuntime.awrap(getLocation(value));
+
+        case 27:
+          _context7.next = 38;
+          break;
+
+        case 29:
+          if (/^\d+$/.test(value)) {
+            _context7.next = 38;
+            break;
+          }
+
+          e.preventDefault();
+          match = value.trim().match(/^(.+)\s([a-zA-Z]{2})$/);
+
+          if (match) {
+            _context7.next = 34;
+            break;
+          }
+
+          return _context7.abrupt("return");
+
+        case 34:
+          city = match[1].trim();
+          state = match[2].toUpperCase();
+          _context7.next = 38;
+          return regeneratorRuntime.awrap(getLocation(null, city, state));
+
+        case 38:
+        case "end":
+          return _context7.stop();
+      }
     }
+  });
 });
+
+function buildLocation(city, county, state) {
+  updateContainer(".js-hero__details--location", "<h4>In ".concat(city, ", ").concat(county, " county, ").concat(state, "</h4>"));
+}
+
+function buildAlerts(alerts) {
+  if (alerts.length >= 1) {
+    updateContainer(".js-hero__details--alerts", "<p><b>Beware of alerts:</b> ".concat(alerts.join(", "), "</p>"));
+  } else {
+    updateContainer(".js-hero__details--alerts", "");
+  }
+}
+
+if (urlSearch) {
+  var urlSearchLocation = function urlSearchLocation(url) {
+    var cleanurlSearch, city, state;
+    return regeneratorRuntime.async(function urlSearchLocation$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            cleanurlSearch = urlSearch.slice(1).split("&");
+            city = cleanurlSearch[0].slice(5);
+            state = cleanurlSearch[1].slice(6);
+            getLocation(null, city, state);
+
+          case 4:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    });
+  };
+
+  urlSearchLocation();
+}

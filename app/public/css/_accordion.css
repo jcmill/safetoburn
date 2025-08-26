@@ -1,0 +1,108 @@
+.c-accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5em;
+  padding: 7vh 5vw;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-accordion {
+    padding: 0 25vw;
+  }
+}
+.c-accordion__container {
+  border-top: 1px solid #b5b3b3;
+}
+.c-accordion__container:last-of-type {
+  border-bottom: 1px solid #b5b3b3;
+}
+.c-accordion h2 {
+  margin-bottom: 1em;
+  text-align: center;
+}
+.c-accordion-label {
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  padding: 0.5em 1em;
+  position: relative;
+  transition: background-color 0.15s ease-in-out;
+}
+.c-accordion-label:hover {
+  background-color: #e7e2dd;
+}
+.c-accordion-label:after {
+  content: "+";
+  display: block;
+  height: 100%;
+  inset: 0 0 auto auto;
+  line-height: 2.25em;
+  padding-top: 0.25em;
+  position: absolute;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out;
+  width: 2em;
+}
+.c-accordion-input {
+  display: none;
+}
+.c-accordion-input:checked + .c-accordion-label:after {
+  content: "+";
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  width: 2em;
+  height: 100%;
+  line-height: 2.25em;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out;
+  content: "-";
+}
+.c-accordion-input:checked ~ .c-accordion-text {
+  height: auto;
+  padding: 0.5em 1.5em;
+  opacity: 1;
+}
+.c-accordion-text {
+  opacity: 0;
+  height: 0;
+  transition: opacity 0.5s ease-in-out;
+  overflow: hidden;
+}
+.c-accordion-sub-text {
+  opacity: 0;
+  height: 0;
+  margin-bottom: 0.5em;
+  transition: opacity 0.5s ease-in-out;
+  overflow: hidden;
+  padding: 0 1em 0 2em;
+}
+.c-accordion-sub .c-accordion-input:checked ~ .c-accordion-sub-text {
+  opacity: 1;
+  height: auto;
+}
+.c-accordion-sub .c-accordion-input:checked + .c-accordion-label:after {
+  left: 0;
+  background: none;
+}
+.c-accordion-sub .c-accordion-input:checked + label {
+  background: none;
+}
+.c-accordion-sub-label {
+  background: none;
+  font-weight: 600;
+  padding: 0.5em 2em;
+  margin-bottom: 0;
+}
+.c-accordion-sub-label:checked {
+  background: none;
+  border-bottom: 1px solid whitesmoke;
+}
+.c-accordion-sub-label:after {
+  left: 0;
+  background: none;
+}
+.c-accordion-sub-label:hover {
+  background: none;
+}

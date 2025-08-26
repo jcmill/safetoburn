@@ -1,0 +1,22 @@
+@use "../base/colors" as *;
+
+.c-divider {
+  background: url(../../images/safe-to-burn-wood.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: gird;
+  height: 12vh;
+  position: relative;
+  width: 100vw;
+
+  &::before {
+    background: rgba($light, 0.5);
+    backdrop-filter: blur(6px);
+    content: "";
+    height: 2em;
+    inset: 0 auto auto 0;
+    position: absolute;
+    width: 100vw;
+  }
+}

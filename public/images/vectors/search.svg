@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72.83 57.31">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #f2ede9;
-      }
-    </style>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <rect class="cls-1" x="59.27" y="35.66" width="4" height="25.43" transform="translate(-13.5 70.82) rotate(-55)"/>
-      <path class="cls-1" d="M25.6,51.2C11.48,51.2,0,39.72,0,25.6S11.48,0,25.6,0s25.6,11.48,25.6,25.6-11.48,25.6-25.6,25.6ZM25.6,4C13.69,4,4,13.69,4,25.6s9.69,21.6,21.6,21.6,21.6-9.69,21.6-21.6S37.51,4,25.6,4Z"/>
-    </g>
-  </g>
-</svg>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72.83 57.31"><defs><style>.cls-1{fill:#f2ede9}</style></defs><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" transform="rotate(-55 61.272 48.377)" d="M59.27 35.66h4v25.43h-4z"/><path class="cls-1" d="M25.6 51.2C11.48 51.2 0 39.72 0 25.6S11.48 0 25.6 0s25.6 11.48 25.6 25.6-11.48 25.6-25.6 25.6zm0-47.2C13.69 4 4 13.69 4 25.6s9.69 21.6 21.6 21.6 21.6-9.69 21.6-21.6S37.51 4 25.6 4z"/></g></svg>

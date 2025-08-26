@@ -1,10 +1,10 @@
 
 <form class="c-location-search" novalidate="novalidate" role="search">
-  <label class="c-location-search__label" id="location__label" for="location-input">Search by city or ZIP code</label>
+  <label class="c-location-search__label u-small" id="location__label" for="location-input">Search fire safety by city, state, or ZIP code</label>
   <p class="u-small c-location-search__hint c-location-search__hidden" id="location-hint">Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")</p>
-  <p class="c-location-search__hidden js-location-search__error error-hidden" id="location__error" aria-live="polite"></p>
   <div class="c-location-search__container">
-    <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labeledby="location-label" placeholder="City or ZIP code"/>
+    <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labelledby="location-label" placeholder="City, State or ZIP code"/>
     <button class="c-location-search__button btn-icon js-input" type="submit"><img src="images/vectors/search.svg" alt="magnifying glass to indicate searching"/></button>
   </div>
+  <p class="c-location-search__hidden js-location-search__error u-small" id="location__error" aria-live="polite"></p>
 </form>

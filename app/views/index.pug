@@ -1,12 +1,85 @@
 doctype html
-html(lang="en")
+html(lang="en-US")
   head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="https://images.marketamerica.com/cdn/interactive-bootstrap-template/css/3.0/interactive-bootstrap.css?=v3")
+    meta(name="description" content="Check if it’s safe to burn brush, wood, or debris in your area today. Get real-time wind, humidity, and burn ban information.")
+    meta(name="keywords" content="fire safety, safe to burn, near me, burn debris, burn bans, burn safety, brush burning, fire risk, wind speed, humidity, burning restrictions, fire pit")
+    meta(property="og:title" content="Safe to Burn - Check Fire Safety Conditions")
+    meta(property="og:description" content="See real-time wind, humidity, and burn ban alerts to know if it’s safe to burn in your area.")
+    meta(property="og:image" content="https://safetoburn.com/images/safe-to-burn-og-image.jpg")
+    meta(property="og:url" content="https://safetoburn.com/")
+    meta(name="twitter:card" content="https://safetoburn.com/images/safe-to-burn-twitter-card.jpg")
+    script(async='', src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4174186681788042', crossorigin='anonymous')
+    script(type='application/ld+json').
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://safetoburn.com/",
+        "name": "Safe to Burn",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://safetoburn.com/?city={city_string}&state={state_string}",
+          "query-input": [
+            "required name=city_string",
+            "required name=state_string"
+          ]
+        }
+      }
+    script(type='application/ld+json').
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this website determine if it’s safe to burn?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We combine data from weather services and local fire alerts to evaluate wind speed, humidity, and burn bans in your area."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often is the burn safety information updated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our data refreshes automatically every hour, or more frequently during severe weather, to provide as close to real-time conditions as possible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this site cover burn bans issued by my local authorities?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Whenever available, we pull official burn ban notices from county or state agencies and display them alongside weather conditions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What weather conditions make burning unsafe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "High winds, low humidity, and poor air quality increase fire risk and health hazards. We flag any of these conditions and alerts as unsafe to burn."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I rely solely on this website to decide whether to burn?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use our site as a guide, but also check local regulations and advisories, since burn rules can vary by county or municipality."
+            }
+          }
+        ]
+      }
     link(rel="stylesheet", href="styles/styles.css")
-    link(rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-favicon.png")
+    link(rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-fire-safety-favicon.png")
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap' rel='stylesheet')
+
     title Safe to Burn
   body
     include blocks/header

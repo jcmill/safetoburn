@@ -1,0 +1,22 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.c-about {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+
+  @include query($laptop) {
+    display: flex;
+    flex-direction: column;
+    min-height: 87vh;
+    justify-content: center;
+    padding: 7vh 15vw;
+  }
+
+  ul {
+    margin-bottom: 1em;
+
+    li {
+      list-style: disc;
+    }
+  }
+}

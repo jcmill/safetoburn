@@ -1,38 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://images.marketamerica.com/cdn/interactive-bootstrap-template/css/3.0/interactive-bootstrap.css?=v3">
+    <meta name="description" content="Check if it’s safe to burn brush, wood, or debris in your area today. Get real-time wind, humidity, and burn ban information.">
+    <meta name="keywords" content="fire safety, safe to burn, near me, burn debris, burn bans, burn safety, brush burning, fire risk, wind speed, humidity, burning restrictions, fire pit">
+    <meta property="og:title" content="Safe to Burn - Check Fire Safety Conditions">
+    <meta property="og:description" content="See real-time wind, humidity, and burn ban alerts to know if it’s safe to burn in your area.">
+    <meta property="og:image" content="https://safetoburn.com/images/safe-to-burn-og-image.jpg">
+    <meta property="og:url" content="https://safetoburn.com/">
+    <meta name="twitter:card" content="https://safetoburn.com/images/safe-to-burn-twitter-card.jpg">
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4174186681788042" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://safetoburn.com/",
+        "name": "Safe to Burn",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://safetoburn.com/?city={city_string}&state={state_string}",
+          "query-input": [
+            "required name=city_string",
+            "required name=state_string"
+          ]
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this website determine if it’s safe to burn?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We combine data from weather services and local fire alerts to evaluate wind speed, humidity, and burn bans in your area."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often is the burn safety information updated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our data refreshes automatically every hour, or more frequently during severe weather, to provide as close to real-time conditions as possible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this site cover burn bans issued by my local authorities?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Whenever available, we pull official burn ban notices from county or state agencies and display them alongside weather conditions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What weather conditions make burning unsafe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "High winds, low humidity, and poor air quality increase fire risk and health hazards. We flag any of these conditions and alerts as unsafe to burn."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I rely solely on this website to decide whether to burn?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use our site as a guide, but also check local regulations and advisories, since burn rules can vary by county or municipality."
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-favicon.png">
+    <link rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-fire-safety-favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet">
     <title>Safe to Burn</title>
   </head>
   <body>
-    <header><img src="images/logos/safe-to-burn-logo.svg" alt="">
+    <header><img src="images/logos/safe-to-burn-fire-safety-logo.svg" alt="Safe to Burn Logo">
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
     <section class="c-hero"> 
       <div class="c-hero__content">
         <h1>Is It Safe to Burn Today?</h1>
-        <p>Check the conditions to see if it’s safe to burn brush, wood, or debris in your area today.</p>
+        <h2>Real-time fire safety conditions near you.</h2>
+        <h3>Track windspeed, humidity, and burn bans.</h3>
         <button class="c-btn-my-location js-my-location">Use My Location</button>
         <div class="c-hero__input">
           <form class="c-location-search" novalidate role="search">
-            <label class="c-location-search__label" id="location__label" for="location-input">Search by city or ZIP code</label>
+            <label class="c-location-search__label u-small" id="location__label" for="location-input">Search fire safety by city, state, or ZIP code</label>
             <p class="u-small c-location-search__hint c-location-search__hidden" id="location-hint">Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")</p>
-            <p class="c-location-search__hidden js-location-search__error error-hidden" id="location__error" aria-live="polite"></p>
             <div class="c-location-search__container">
-              <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labeledby="location-label" placeholder="City or ZIP code">
+              <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labelledby="location-label" placeholder="City, State or ZIP code">
               <button class="c-location-search__button btn-icon js-input" type="submit"><img src="images/vectors/search.svg" alt="magnifying glass to indicate searching"></button>
             </div>
+            <p class="c-location-search__hidden js-location-search__error u-small" id="location__error" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -42,7 +117,7 @@
             <svg class="c-graph" viewBox="0 0 400 400">
               <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(129 200 200)"></circle>
               <circle class="c-graph-circle js-graph-circle--windspeed" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(129 200 200)"></circle>
-              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/windspeed.svg" text-anchor="middle" x="42%" y="25%"> </image>
+              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/windspeed-safe-to-burn-fire-safety.svg" text-anchor="middle" x="42%" y="25%"> </image>
               <text class="c-graph-text js-windspeed-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 mph</text>
               <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Windspeed</text>
             </svg>
@@ -51,7 +126,7 @@
             <svg class="c-graph" viewBox="0 0 400 400">
               <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(129 200 200)"></circle>
               <circle class="c-graph-circle js-graph-circle--humidity" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(129 200 200)"></circle>
-              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/humidity.svg" text-anchor="middle" x="42%" y="25%"> </image>
+              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/humidity-safe-to-burn-fire-safety.svg" text-anchor="middle" x="42%" y="25%"> </image>
               <text class="c-graph-text js-humidity-text" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="50%">0 %</text>
               <text class="c-graph-reading" dominant-baseline="middle" dy="0.3em" text-anchor="middle" x="50%" y="85%">Humidity</text>
             </svg>
@@ -59,23 +134,78 @@
         </div>
         <div class="c-hero__details--windspeed-key">
           <ul> 
-            <li>Prescribed 5 to 15 mph </li>
-            <li>General up to 15 mph</li>
+            <li class="u-small">General up to 15 mph</li>
+            <li class="u-small">Controlled 5 to 15 mph </li>
           </ul>
         </div>
         <div class="c-hero__details--humidity-key">
           <ul> 
-            <li>Extreme < 15%</li>
-            <li>Danger 15% - 40% </li>
-            <li>Safe Above 40%</li>
+            <li class="u-small">Danger < 15%</li>
+            <li class="u-small">Warning 15% - 30% </li>
+            <li class="u-small">Safe Above 30%</li>
           </ul>
         </div>
-        <div class="c-hero__details--divider"></div>
-        <div class="c-hero__details--response js-hero__details--response"></div>
+        <div class="c-hero__details--location js-hero__details--location"></div>
+        <div class="c-hero__details--response js-hero__details--response">
+          <div class="c-check">
+            <h3>Check if is safe to burn in your location</h3>
+          </div>
+        </div>
+        <div class="c-hero__details--alerts js-hero__details--alerts"></div>
       </div>
     </section>
-    <section class="c-ad"></section>
-    <div class="test"></div>
+    <section class="c-ad"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4174186681788042" data-ad-slot="6015996357"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+    <section class="c-divider"></section>
+    <section class="c-who-is"> 
+      <h2>Who we are</h2>
+      <p>Safe to Burn is meant to help homeowners, farmers, and land managers quickly check if weather and environmental conditions are safe for burning brush or debris. By combining local weather data, wind speeds, humidity levels, and official fire alerts, we provide a simple, reliable tool for making responsible burning decisions. Enter your city, state, or ZIP code to see real-time wind speed, humidity, and active burn bans in your area.</p>
+    </section>
+    <section class="c-accordion">
+      <h2>FAQ</h2>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q1" name="c-accordion-q1" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q1">How does this website determine if it’s safe to burn?</label>
+        <article class="c-accordion-text">
+          <p>We combine data from weather services and local fire alerts to evaluate wind speed, humidity, and burn bans in your area.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q2" name="c-accordion-q2" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q2">How often is the burn safety information updated?</label>
+        <article class="c-accordion-text">
+          <p>Our data refreshes automatically every hour (or more frequently during severe weather) to provide as close to real-time conditions as possible.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q3" name="c-accordion-q3" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q3">Does this site cover burn bans issued by my local authorities?</label>
+        <article class="c-accordion-text">
+          <p>Yes. Whenever available, we pull official burn ban notices from county or state agencies and display them alongside weather conditions.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q4" name="c-accordion-q4" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q4">What weather conditions make burning unsafe?</label>
+        <article class="c-accordion-text">
+          <p>High winds, low humidity, and poor air quality increase fire risk and health hazards. We flag any of these conditions and alerts as “unsafe to burn.”</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q5" name="c-accordion-q5" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q5">Can I rely solely on this website to decide whether to burn?</label>
+        <article class="c-accordion-text">
+          <p>We recommend using our site as a guide, but you should also check local regulations and advisories, since burn rules can vary by county or municipality.</p>
+        </article>
+      </div>
+    </section>
+    <section class="c-ad"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4174186681788042" data-ad-slot="6015996357"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+    <footer class="c-footer">
+      <p class="u-small">© 2025 <a href="https://jakemillerdev.com/">Jake Miller</a>. All rights reserved.</p>
+    </footer>
   </body>
   <script src="scripts/scripts.js"></script>
 </html>

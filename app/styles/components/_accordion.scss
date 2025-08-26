@@ -1,0 +1,142 @@
+@use "../base/colors" as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+$background-color_1: whiteSmoke;
+$background-color_2: #999;
+$background-color_3: #e5e5e5;
+$background-color_4: #b5b5b5;
+
+.c-accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5em;
+  padding: 7vh 5vw;
+
+  @include query($tablet) {
+    padding: 0 25vw;
+  }
+
+  &__container {
+    border-top: 1px solid $grey;
+  }
+
+  &__container:last-of-type {
+    border-bottom: 1px solid $grey;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  &-label {
+    cursor: pointer;
+    display: block;
+    font-weight: 700;
+    padding: 0.5em 1em;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: $light-hover;
+    }
+
+    &:after {
+      content: "+";
+      display: block;
+      height: 100%;
+      inset: 0 0 auto auto;
+      line-height: 2.25em;
+      padding-top: 0.25em;
+      position: absolute;
+      text-align: center;
+      transition: background-color 0.15s ease-in-out;
+      width: 2em;
+    }
+  }
+  &-input {
+    &:checked {
+      + {
+        .c-accordion-label {
+          &:after {
+            content: "+";
+            position: absolute;
+            display: block;
+            right: 0;
+            top: 0;
+            width: 2em;
+            height: 100%;
+            line-height: 2.25em;
+            text-align: center;
+            transition: background-color 0.15s ease-in-out;
+            content: "-";
+          }
+        }
+      }
+      ~ {
+        .c-accordion-text {
+          height: auto;
+          padding: 0.5em 1.5em;
+          opacity: 1;
+        }
+      }
+    }
+    display: none;
+  }
+  &-text {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.5s ease-in-out;
+    overflow: hidden;
+  }
+  &-sub-text {
+    opacity: 0;
+    height: 0;
+    margin-bottom: 0.5em;
+    transition: opacity 0.5s ease-in-out;
+    overflow: hidden;
+    padding: 0 1em 0 2em;
+  }
+  &-sub {
+    .c-accordion-input {
+      &:checked {
+        ~ {
+          .c-accordion-sub-text {
+            opacity: 1;
+            height: auto;
+          }
+        }
+        + {
+          .c-accordion-label {
+            &:after {
+              left: 0;
+              background: none;
+            }
+          }
+          label {
+            background: none;
+          }
+        }
+      }
+    }
+    &-label {
+      background: none;
+      font-weight: 600;
+      padding: 0.5em 2em;
+      margin-bottom: 0;
+      &:checked {
+        background: none;
+        border-bottom: 1px solid whitesmoke;
+      }
+      &:after {
+        left: 0;
+        background: none;
+      }
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}

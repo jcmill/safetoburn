@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://images.marketamerica.com/cdn/interactive-bootstrap-template/css/3.0/interactive-bootstrap.css?=v3">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-fire-safety-favicon.png">
+    <title>Contact Safe to Burn</title>
+  </head>
+  <body>
+    <header><img src="images/logos/safe-to-burn-fire-safety-logo.svg" alt="Safe to Burn Logo">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="c-contact">
+      <h1>Contact Us </h1>
+      <p>Feel free to contact us with any questions, suggestions or issues.</p>
+      <form id="form" method="POST">
+        <input type="hidden" name="access_key" value="c092c90c-6f21-415e-8383-8757c6da4e28">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" required aria-required="true">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required aria-required="true">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required aria-required="true"></textarea>
+        <input class="hidden" type="checkbox" name="botcheck" style="display: none;">
+        <button type="submit">Submit Form</button>
+        <div id="result" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+    <section class="c-ad">
+      <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4174186681788042" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4174186681788042" data-ad-slot="6015996357"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+    <footer class="c-footer">
+      <p class="u-small">© 2025 <a href="https://jakemillerdev.com/">Jake Miller</a>. All rights reserved.</p>
+    </footer>
+    <script>
+      const form = document.getElementById('form');
+      const result = document.getElementById('result');
+      form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      result.innerHTML = "Please wait..."
+      fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: json
+      })
+      .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+      result.innerHTML = "Form submitted successfully";
+      } else {
+      console.log(response);
+      result.innerHTML = json.message;
+      }
+      })
+      .catch(error => {
+      console.log(error);
+      result.innerHTML = "Something went wrong!";
+      })
+      .then(function() {
+      form.reset();
+      setTimeout(() => {
+      result.style.display = "none";
+      }, 3000);
+      });
+      });
+    </script>
+  </body>
+</html>

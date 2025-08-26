@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap");
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -63,7 +62,6 @@ label,
 input {
   color: #272727;
   font-family: "Schibsted Grotesk", sans-serif;
-  line-height: 0.9;
   text-wrap: balance;
 }
 
@@ -80,18 +78,30 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.75em, 8.5vw, 2.5em);
+  font-size: clamp(1.75em, 7vw, 2.5em);
   font-weight: 900;
 }
 
-h3 {
-  font-size: 2.5vw;
+h3,
+.c-accordion-label {
+  font-size: 1.1em;
   font-weight: 400;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  h3,
+  .c-accordion-label {
+    font-size: 1.5vw;
+  }
 }
 
 h4 {
-  font-size: 2vw;
+  font-size: 1.25em;
   font-weight: 700;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  h4 {
+    font-size: 1.6vw;
+  }
 }
 
 p,
@@ -109,17 +119,22 @@ p {
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   p {
-    font-size: 1.6vw;
+    font-size: 1.4vw;
   }
 }
 
+a {
+  color: #c94c26;
+  text-decoration: underline;
+}
+
 li {
-  font-size: 0.85em;
+  font-size: clamp(16px, 1.75vw, 2em);
   font-weight: 400;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   li {
-    font-size: 1em;
+    font-size: 1.4vw;
   }
 }
 
@@ -136,11 +151,15 @@ li a:hover, li a:focus, li a:active {
 
 label {
   font-weight: 800;
-  margin-top: 12em;
 }
 
 .u-small {
-  font-size: 1em;
+  font-size: 0.75em;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-small {
+    font-size: 1em;
+  }
 }
 
 button {
@@ -159,7 +178,7 @@ button:hover, button:focus, button:active {
 }
 
 .btn-icon {
-  padding: 0.5505em;
+  padding: 0.75505em;
 }
 .btn-icon img {
   aspect-ratio: 1;
@@ -252,7 +271,7 @@ input[type=search]::placeholder {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-top: 0.5em;
+  margin: 0.5em 0 1em 0;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-location-search__container {
@@ -313,6 +332,9 @@ header nav ul {
 header nav ul li {
   font-weight: 700;
 }
+header nav ul a {
+  text-decoration: none;
+}
 
 .c-hero {
   -webkit-box-align: center;
@@ -343,7 +365,7 @@ header nav ul li {
     -ms-flex-direction: row;
     flex-direction: row;
     grid-template: 1fr/2fr 3fr;
-    min-height: 76vh;
+    min-height: 79vh;
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
 }
@@ -374,16 +396,32 @@ header nav ul li {
     text-align: left;
   }
 }
+.c-hero__content h2,
+.c-hero__content h3 {
+  font-size: clamp(0.85em, 3vw, 1.25em);
+  line-height: 1.3;
+  margin-bottom: 1em;
+  text-wrap: pretty;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .c-hero__content h2,
+  .c-hero__content h3 {
+    font-size: 1.3vw;
+  }
+}
+.c-hero__content h2 {
+  margin-bottom: 0.5em;
+}
 .c-hero__details {
   display: grid;
-  grid-template: 3fr 1.25fr 0.5fr 1fr/1fr 1fr;
+  grid-template: 3fr 1fr 0.6fr 1fr 1fr/1fr 1fr;
 }
 .c-hero__details svg {
   width: 40vw;
 }
 @media screen and (min-width: 480px) and (orientation: landscape) {
   .c-hero__details svg {
-    width: 18vw;
+    width: 16vw;
   }
 }
 .c-hero__details--graph, .c-hero__details--current-location {
@@ -409,15 +447,19 @@ header nav ul li {
 .c-hero__details--windspeed-key, .c-hero__details--humidity-key {
   border-bottom: 2px solid #b5b3b3;
   display: grid;
-  padding: 1em 0;
 }
 .c-hero__details ul {
   text-align: center;
   padding-left: 0;
   place-self: center;
 }
-.c-hero__details--divider {
-  border-right: 2px solid #b5b3b3;
+.c-hero__details--location {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  grid-column: 1/span 2;
+  text-align: center;
 }
 .c-hero__details--response {
   border: 2px solid #b5b3b3;
@@ -425,11 +467,18 @@ header nav ul li {
   height: 100%;
   width: 100%;
 }
-.c-hero .c-safe {
+.c-hero__details--alerts {
+  grid-column: 1/span 2;
+  text-align: center;
+  padding: 0.5em 0 0 0;
+}
+.c-hero .c-safe,
+.c-hero .c-warning,
+.c-hero .c-unsafe,
+.c-hero .c-check {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: #cc9c50;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -437,37 +486,113 @@ header nav ul li {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  text-transform: uppercase;
   width: 100%;
 }
+.c-hero .c-safe {
+  background: #cc9c50;
+  text-transform: uppercase;
+}
+.c-hero .c-warning {
+  background: #f87819;
+}
+.c-hero .c-warning h3 {
+  text-align: center;
+}
 .c-hero .c-unsafe {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   background: #c94c26;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100%;
 }
 .c-hero .c-unsafe h3 {
   color: #f2ede9;
+  text-align: center;
+}
+
+.c-who-is {
+  padding: 7vh 5vw 7vh;
+  text-align: center;
+}
+
+.c-about {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .c-about {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 87vh;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 7vh 15vw;
+  }
+}
+.c-about ul {
+  margin-bottom: 1em;
+}
+.c-about ul li {
+  list-style: disc;
+}
+
+.c-contact {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .c-contact {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 87vh;
+    width: 100%;
+  }
+}
+.c-contact form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 50%;
 }
 
 .c-ad {
+  display: grid;
+  margin-bottom: 2.25em;
+  width: 100%;
+}
+.c-ad ins {
+  place-self: center;
+}
+
+.c-divider {
   background: url(../../images/safe-to-burn-wood.jpg) no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  height: 15vh;
+  display: gird;
+  height: 12vh;
   position: relative;
   width: 100vw;
 }
-.c-ad::before {
+.c-divider::before {
   background: rgba(242, 237, 233, 0.5);
   backdrop-filter: blur(6px);
   content: "";
@@ -475,6 +600,142 @@ header nav ul li {
   inset: 0 auto auto 0;
   position: absolute;
   width: 100vw;
+}
+
+.c-footer {
+  background: #c94c26;
+  height: 2.25em;
+  padding: 1vh clamp(1.5em, 5vw, 2em);
+  text-align: center;
+  width: 100vw;
+}
+.c-footer p,
+.c-footer a {
+  color: #f2ede9;
+}
+.c-footer a {
+  text-decoration: underline;
+}
+
+.c-accordion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 5em;
+  padding: 7vh 5vw;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-accordion {
+    padding: 0 25vw;
+  }
+}
+.c-accordion__container {
+  border-top: 1px solid #b5b3b3;
+}
+.c-accordion__container:last-of-type {
+  border-bottom: 1px solid #b5b3b3;
+}
+.c-accordion h2 {
+  margin-bottom: 1em;
+  text-align: center;
+}
+.c-accordion-label {
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  padding: 0.5em 1em;
+  position: relative;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
+}
+.c-accordion-label:hover {
+  background-color: #e7e2dd;
+}
+.c-accordion-label:after {
+  content: "+";
+  display: block;
+  height: 100%;
+  inset: 0 0 auto auto;
+  line-height: 2.25em;
+  padding-top: 0.25em;
+  position: absolute;
+  text-align: center;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
+  width: 2em;
+}
+.c-accordion-input {
+  display: none;
+}
+.c-accordion-input:checked + .c-accordion-label:after {
+  content: "+";
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  width: 2em;
+  height: 100%;
+  line-height: 2.25em;
+  text-align: center;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
+  content: "-";
+}
+.c-accordion-input:checked ~ .c-accordion-text {
+  height: auto;
+  padding: 0.5em 1.5em;
+  opacity: 1;
+}
+.c-accordion-text {
+  opacity: 0;
+  height: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  overflow: hidden;
+}
+.c-accordion-sub-text {
+  opacity: 0;
+  height: 0;
+  margin-bottom: 0.5em;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  overflow: hidden;
+  padding: 0 1em 0 2em;
+}
+.c-accordion-sub .c-accordion-input:checked ~ .c-accordion-sub-text {
+  opacity: 1;
+  height: auto;
+}
+.c-accordion-sub .c-accordion-input:checked + .c-accordion-label:after {
+  left: 0;
+  background: none;
+}
+.c-accordion-sub .c-accordion-input:checked + label {
+  background: none;
+}
+.c-accordion-sub-label {
+  background: none;
+  font-weight: 600;
+  padding: 0.5em 2em;
+  margin-bottom: 0;
+}
+.c-accordion-sub-label:checked {
+  background: none;
+  border-bottom: 1px solid whitesmoke;
+}
+.c-accordion-sub-label:after {
+  left: 0;
+  background: none;
+}
+.c-accordion-sub-label:hover {
+  background: none;
 }
 
 body {

@@ -1,7 +1,6 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins" as *;
-@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap");
 
 $font-family: "Schibsted Grotesk", sans-serif;
 
@@ -14,7 +13,6 @@ label,
 input {
   color: $black;
   font-family: $font-family;
-  line-height: 0.9;
   text-wrap: balance;
 }
 
@@ -30,18 +28,27 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.75em, 8.5vw, 2.5em);
+  font-size: clamp(1.75em, 7vw, 2.5em);
   font-weight: 900;
 }
 
-h3 {
-  font-size: 2.5vw;
+h3,
+.c-accordion-label {
+  font-size: 1.1em;
   font-weight: 400;
+
+  @include query($laptop) {
+    font-size: 1.5vw;
+  }
 }
 
 h4 {
-  font-size: 2vw;
+  font-size: 1.25em;
   font-weight: 700;
+
+  @include query($laptop) {
+    font-size: 1.6vw;
+  }
 }
 
 p,
@@ -58,16 +65,21 @@ p {
   margin-bottom: 1em;
 
   @include query($laptop) {
-    font-size: 1.6vw;
+    font-size: 1.4vw;
   }
 }
 
+a {
+  color: $red;
+  text-decoration: underline;
+}
+
 li {
-  font-size: 0.85em; // clamp(16px, 1.75vw, 2em)
+  font-size: clamp(16px, 1.75vw, 2em);
   font-weight: 400;
 
   @include query($laptop) {
-    font-size: 1em;
+    font-size: 1.4vw;
   }
 }
 
@@ -85,9 +97,12 @@ li a {
 
 label {
   font-weight: 800;
-  margin-top: 12em;
 }
 
 .u-small {
-  font-size: 1em;
+  font-size: 0.75em;
+
+  @include query($laptop) {
+    font-size: 1em;
+  }
 }
