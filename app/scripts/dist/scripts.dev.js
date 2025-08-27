@@ -245,70 +245,83 @@ function getWeatherData(latitude, longitude) {
 } // functions for getting searched location
 
 
-function getLocation(postalCode, city, state) {
-  var lat, lon, postalData, cityData;
+function getLocation(postalCode) {
+  var city,
+      state,
+      lat,
+      lon,
+      postalData,
+      cityData,
+      _args6 = arguments;
   return regeneratorRuntime.async(function getLocation$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
+          city = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : "Cupertino";
+          state = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : "CA";
+
           if (!postalCode) {
-            _context6.next = 10;
+            _context6.next = 12;
             break;
           }
 
-          _context6.next = 3;
+          _context6.next = 5;
           return regeneratorRuntime.awrap(getJSON("https://nominatim.openstreetmap.org/search?postalcode=".concat(postalCode, "&country=us&format=json")));
 
-        case 3:
+        case 5:
           postalData = _context6.sent;
 
           if (postalData.length) {
-            _context6.next = 6;
+            _context6.next = 8;
             break;
           }
 
           return _context6.abrupt("return");
 
-        case 6:
+        case 8:
           lat = postalData[0].lat;
           lon = postalData[0].lon;
-          _context6.next = 17;
+          _context6.next = 19;
           break;
 
-        case 10:
-          _context6.next = 12;
+        case 12:
+          _context6.next = 14;
           return regeneratorRuntime.awrap(getJSON("https://nominatim.openstreetmap.org/search?city=".concat(city, "&state=").concat(state, "&format=json")));
 
-        case 12:
+        case 14:
           cityData = _context6.sent;
 
           if (cityData.length) {
-            _context6.next = 15;
+            _context6.next = 17;
             break;
           }
 
           return _context6.abrupt("return");
 
-        case 15:
+        case 17:
           lat = cityData[0].lat;
           lon = cityData[0].lon;
 
-        case 17:
-          _context6.next = 19;
-          return regeneratorRuntime.awrap(getWeatherData(lat, lon));
-
         case 19:
           _context6.next = 21;
-          return regeneratorRuntime.awrap(getFireAlerts(lat, lon));
+          return regeneratorRuntime.awrap(getWeatherData(lat, lon));
 
         case 21:
+          _context6.next = 23;
+          return regeneratorRuntime.awrap(getFireAlerts(lat, lon));
+
+        case 23:
         case "end":
           return _context6.stop();
       }
     }
   });
-} // functions to handle displaying needed information in graphs
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(readings, 100);
+  getLocation(null);
+}); // functions to handle displaying needed information in graphs
 
 var getOffset = function getOffset() {
   var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;

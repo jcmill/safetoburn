@@ -488,6 +488,9 @@ header nav ul a {
   justify-content: center;
   width: 100%;
 }
+.c-hero .c-check h3 {
+  text-align: center;
+}
 .c-hero .c-safe {
   background: #cc9c50;
   text-transform: uppercase;
@@ -508,6 +511,9 @@ header nav ul a {
 
 .c-who-is {
   padding: 7vh 5vw 7vh;
+}
+.c-who-is h2,
+.c-who-is p {
   text-align: center;
 }
 

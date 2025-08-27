@@ -140,6 +140,10 @@
     width: 100%;
   }
 
+  .c-check h3 {
+    text-align: center;
+  }
+
   .c-safe {
     background: $green;
     text-transform: uppercase;
@@ -165,5 +169,9 @@
 
 .c-who-is {
   padding: 7vh 5vw 7vh;
-  text-align: center;
+
+  h2,
+  p {
+    text-align: center;
+  }
 }

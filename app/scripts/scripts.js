@@ -156,7 +156,7 @@ async function getWeatherData(latitude, longitude) {
 }
 
 // functions for getting searched location
-async function getLocation(postalCode, city, state) {
+async function getLocation(postalCode, city = "Cupertino", state = "CA") {
   let lat, lon;
   if (postalCode) {
     const postalData = await getJSON(
@@ -176,6 +176,11 @@ async function getLocation(postalCode, city, state) {
   await getWeatherData(lat, lon);
   await getFireAlerts(lat, lon);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(readings, 100);
+  getLocation(null);
+});
 
 // functions to handle displaying needed information in graphs
 const getOffset = (val = 0) => {
