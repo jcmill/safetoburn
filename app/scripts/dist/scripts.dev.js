@@ -316,12 +316,12 @@ function getLocation(postalCode) {
       }
     }
   });
-}
+} // document.addEventListener("DOMContentLoaded", () => {
+//   setTimeout(readings, 100);
+//   getLocation(null);
+// });
+// functions to handle displaying needed information in graphs
 
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(readings, 100);
-  getLocation(null);
-}); // functions to handle displaying needed information in graphs
 
 var getOffset = function getOffset() {
   var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;

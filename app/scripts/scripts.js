@@ -177,10 +177,10 @@ async function getLocation(postalCode, city = "Cupertino", state = "CA") {
   await getFireAlerts(lat, lon);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(readings, 100);
-  getLocation(null);
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   setTimeout(readings, 100);
+//   getLocation(null);
+// });
 
 // functions to handle displaying needed information in graphs
 const getOffset = (val = 0) => {
