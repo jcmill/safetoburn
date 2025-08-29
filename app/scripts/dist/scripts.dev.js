@@ -114,7 +114,7 @@ function getJSON(url) {
 
 
 function getWeather(latitude, longitude) {
-  var pointData, county, hourlyUrl, forecastData, d, hours, periods, nextHourIndex, nextHour;
+  var pointData, county, zone, hourlyUrl, forecastData, date, hour, timeZone, periods, nextHourIndex, forNextHour;
   return regeneratorRuntime.async(function getWeather$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -129,29 +129,39 @@ function getWeather(latitude, longitude) {
 
         case 5:
           county = _context3.sent;
+          _context3.next = 8;
+          return regeneratorRuntime.awrap(getJSON(pointData.properties.forecastZone));
+
+        case 8:
+          zone = _context3.sent;
+          console.log(zone);
           buildLocation(pointData.properties.relativeLocation.properties.city, county.properties.name, county.properties.state);
           hourlyUrl = pointData.properties.forecastHourly;
-          _context3.next = 10;
+          _context3.next = 14;
           return regeneratorRuntime.awrap(getJSON(hourlyUrl));
 
-        case 10:
+        case 14:
           forecastData = _context3.sent;
-          d = new Date();
-          hours = d.getHours();
+          date = new Date(); // const utcDay = date.getUTCDate();
+          // const utcMonth = date.getUTCMonth();
+          // const utcYear = date.getUTCFullYear();
+          // console.log(`${utcYear}-${utcMonth}-${utcDay}`);
+
+          hour = date.getHours().toString().padStart(2, "0");
+          timeZone = (date.getTimezoneOffset() / 60).toString().padStart(2, "0");
           periods = forecastData.properties.periods;
           nextHourIndex = periods.findIndex(function (period) {
-            var periodHour = new Date(period.startTime).getHours();
-            return periodHour === hours;
+            return period.startTime.startsWith("2025-08-29T".concat(hour));
           });
-          nextHour = periods[nextHourIndex];
+          forNextHour = periods[nextHourIndex];
           return _context3.abrupt("return", {
-            windSpeed: nextHour.windSpeed,
-            relativeHumidity: nextHour.relativeHumidity.value,
+            windSpeed: forNextHour.windSpeed,
+            relativeHumidity: forNextHour.relativeHumidity.value,
             relativeLocationCity: pointData.properties.relativeLocation.properties.city,
             relativeLocationState: pointData.properties.relativeLocation.properties.state
           });
 
-        case 17:
+        case 22:
         case "end":
           return _context3.stop();
       }

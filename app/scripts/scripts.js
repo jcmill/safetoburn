@@ -33,7 +33,6 @@ function handleMyLocationClick() {
       } else if (error.code === error.TIMEOUT) {
         message = "The request to get your location timed out.";
       }
-      // Display error to user (customize selector as needed)
       const errorEl = document.querySelector(".js-location-search__error");
       if (errorEl) {
         errorEl.textContent = message;
@@ -75,20 +74,49 @@ async function getWeather(latitude, longitude) {
 
   const hourlyUrl = pointData.properties.forecastHourly;
   const forecastData = await getJSON(hourlyUrl);
-  const d = new Date();
-  let hours = d.getHours();
+  console.log(forecastData);
+  const date = new Date();
+  const timeZone = county.properties.timeZone[0];
+
+  const formatter = new Intl.DateTimeFormat("en", {
+    timeZone: timeZone,
+    timeZoneName: "longOffset",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+
+  const parts = formatter.formatToParts(new Date());
+  let timeZoneOffset = parts
+    .find((part) => part.type === "timeZoneName")
+    ?.value.slice(4);
+
+  let dayValue = parts.find((part) => part.type === "day")?.value.toString();
+
+  let monthValue = parts
+    .find((part) => part.type === "month")
+    ?.value.toString();
+
+  let yearValue = parts.find((part) => part.type === "year")?.value.toString();
+
+  let hourValue = parts.find((part) => part.type === "hour")?.value.toString();
 
   const periods = forecastData.properties.periods;
   const nextHourIndex = periods.findIndex((period) => {
-    const periodHour = new Date(period.startTime).getHours();
-    return periodHour === hours;
+    return period.startTime.startsWith(
+      `${yearValue}-${monthValue}-${dayValue}T${hourValue}:00:00-${timeZoneOffset}`
+    );
   });
 
-  const nextHour = periods[nextHourIndex];
+  const forNextHour = periods[nextHourIndex];
 
   return {
-    windSpeed: nextHour.windSpeed,
-    relativeHumidity: nextHour.relativeHumidity.value,
+    windSpeed: forNextHour.windSpeed,
+    relativeHumidity: forNextHour.relativeHumidity.value,
     relativeLocationCity: pointData.properties.relativeLocation.properties.city,
     relativeLocationState:
       pointData.properties.relativeLocation.properties.state,
