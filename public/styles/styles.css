@@ -124,7 +124,7 @@ p {
 }
 
 a {
-  color: #c94c26;
+  color: #bb3920;
   text-decoration: underline;
 }
 
@@ -139,12 +139,12 @@ li {
 }
 
 li a {
-  color: #c94c26;
+  color: #bb3920;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 li a:hover, li a:focus, li a:active {
-  color: #b13813;
+  color: #16100b;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -163,7 +163,7 @@ label {
 }
 
 button {
-  background: #c94c26;
+  background: #bb3920;
   border: none;
   color: #f2ede9;
   cursor: pointer;
@@ -172,7 +172,7 @@ button {
   text-wrap: nowrap;
 }
 button:hover, button:focus, button:active {
-  background: #b13813;
+  background: #16100b;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -502,7 +502,7 @@ header nav ul a {
   text-align: center;
 }
 .c-hero .c-unsafe {
-  background: #c94c26;
+  background: #bb3920;
 }
 .c-hero .c-unsafe h3 {
   color: #f2ede9;
@@ -609,7 +609,7 @@ header nav ul a {
 }
 
 .c-footer {
-  background: #c94c26;
+  background: #bb3920;
   height: 2.25em;
   padding: 1vh clamp(1.5em, 5vw, 2em);
   text-align: center;
