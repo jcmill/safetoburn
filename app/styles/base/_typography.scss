@@ -23,7 +23,7 @@ h1 {
   margin-bottom: 0.25em;
 
   @include query($laptop) {
-    font-size: 4.5vw;
+    font-size: 6.5vw;
   }
 }
 

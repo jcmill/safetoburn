@@ -5,6 +5,7 @@ button {
 }
 
 .c-btn-outline {
+  background: none;
   border: 1px solid #bb3920;
   border-radius: 50vw;
   color: #272727;

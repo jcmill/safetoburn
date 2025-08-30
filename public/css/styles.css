@@ -44,11 +44,8 @@ input, button, textarea, select {
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    -webkit-animation-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
-    -webkit-transition-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -73,7 +70,7 @@ h1 {
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   h1 {
-    font-size: 6.5vw;
+    font-size: 4.5vw;
   }
 }
 
@@ -89,7 +86,7 @@ h3,
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   h3,
-  .c-accordion-label {
+.c-accordion-label {
     font-size: 1.5vw;
   }
 }
@@ -150,12 +147,10 @@ li {
 
 li a {
   color: #bb3920;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 li a:hover, li a:focus, li a:active {
   color: #16100b;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
@@ -187,23 +182,14 @@ button {
 .c-btn-outline:hover, .c-btn-outline:focus, .c-btn-outline:active {
   background: #bb3920;
   color: #f2ede9;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
 .c-btn-icon {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
   padding-right: 1em;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 .c-btn-icon img {
@@ -212,18 +198,15 @@ button {
   margin: 0.25em;
   padding: 0.5em;
   width: 2.5em;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 .c-btn-icon:hover img, .c-btn-icon:focus img, .c-btn-icon:active img {
   background: #f2ede9;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
 .c-graph-circle {
   stroke: #cc9c50;
-  -webkit-transition: stroke-dashoffset 1s ease-in-out;
   transition: stroke-dashoffset 1s ease-in-out;
 }
 
@@ -263,15 +246,6 @@ input[type=search] {
     width: 50%;
   }
 }
-input[type=search]::-webkit-input-placeholder {
-  font-family: "Schibsted Grotesk", sans-serif;
-}
-input[type=search]::-moz-placeholder {
-  font-family: "Schibsted Grotesk", sans-serif;
-}
-input[type=search]::-ms-input-placeholder {
-  font-family: "Schibsted Grotesk", sans-serif;
-}
 input[type=search]::placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
 }
@@ -289,39 +263,22 @@ input[type=search]::placeholder {
 }
 
 .c-location-search__container {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin: 0.5em 0 1em 0;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-location-search__container {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
     justify-content: start;
   }
 }
 
 header {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 9vh;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0 clamp(1.5em, 5vw, 2em);
 }
@@ -346,11 +303,7 @@ header img {
   }
 }
 header nav ul {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 1em;
   padding: 0;
@@ -367,48 +320,17 @@ header nav ul a {
   text-decoration: none;
 }
 
-.c-main {
-  background: url("../images/logo-shape-grain.png") no-repeat;
-  background-position: -100% 33%;
-  background-size: 150%;
-  height: 100%;
-  width: 100%;
-}
-@media screen and (min-width: 480px) and (orientation: landscape) {
-  .c-main {
-    background-position: 200% 0%;
-    background-size: 75%;
-  }
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-main {
-    background-position: right 0%;
-    background-size: 50%;
-  }
-}
-@media screen and (min-width: 1200px) and (orientation: landscape) {
-  .c-main {
-    background-position: right 0%;
-    background-size: 45%;
-  }
-}
-
 .c-hero {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: grid;
-  grid-template: 1fr 1fr/3fr 1fr;
+  grid-template: 1fr 1fr/2fr 1fr;
   min-height: 91vh;
   padding: 2vh clamp(1.5em, 5vw, 2em) 0;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
     flex-direction: row;
-    grid-template: 1fr 1fr/3fr 2fr;
+    grid-template: 1fr 1fr/2fr 3fr;
     padding: 0 clamp(1.5em, 7vw, 4em);
   }
 }
@@ -421,7 +343,7 @@ header nav ul a {
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero h2,
-  .c-hero h3 {
+.c-hero h3 {
     font-size: 1.3vw;
   }
 }
@@ -439,23 +361,13 @@ header nav ul a {
   }
 }
 .c-hero__btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
   gap: 1em;
   grid-column: 1;
   grid-row: 2;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
   place-self: end start;
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-hero__btns {
-    margin-bottom: 4em;
-  }
 }
 
 .c-about {
@@ -463,16 +375,9 @@ header nav ul a {
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-about {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
     min-height: 87vh;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     padding: 7vh 15vw;
   }
@@ -489,33 +394,17 @@ header nav ul a {
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-contact {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     min-height: 87vh;
     width: 100%;
   }
 }
 .c-contact form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   width: 50%;
 }
@@ -565,15 +454,8 @@ header nav ul a {
 }
 
 .c-accordion {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 5em;
   padding: 7vh 5vw;
@@ -599,7 +481,6 @@ header nav ul a {
   font-weight: 700;
   padding: 0.5em 1em;
   position: relative;
-  -webkit-transition: background-color 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out;
 }
 .c-accordion-label:hover {
@@ -614,7 +495,6 @@ header nav ul a {
   padding-top: 0.25em;
   position: absolute;
   text-align: center;
-  -webkit-transition: background-color 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out;
   width: 2em;
 }
@@ -631,7 +511,6 @@ header nav ul a {
   height: 100%;
   line-height: 2.25em;
   text-align: center;
-  -webkit-transition: background-color 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out;
   content: "-";
 }
@@ -643,7 +522,6 @@ header nav ul a {
 .c-accordion-text {
   opacity: 0;
   height: 0;
-  -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
   overflow: hidden;
 }
@@ -651,7 +529,6 @@ header nav ul a {
   opacity: 0;
   height: 0;
   margin-bottom: 0.5em;
-  -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
   overflow: hidden;
   padding: 0 1em 0 2em;
