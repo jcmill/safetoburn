@@ -52,8 +52,7 @@ h4 {
 }
 
 p,
-li,
-button {
+li {
   font-family: $font-family;
   line-height: 1.2;
   font-weight: 400;
@@ -72,6 +71,16 @@ p {
 a {
   color: $red;
   text-decoration: underline;
+}
+
+button {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: 700;
+
+  @include query($laptop) {
+    font-size: 1.2vw;
+  }
 }
 
 li {

@@ -1,6 +1,6 @@
 "use strict";
 // use my location
-const myLocationButton = document.querySelector(".js-my-location");
+const myLocationButton = document.querySelector(".js-btn-location");
 const form = document.querySelector("form");
 const input = document.querySelector(".js-location-search__input");
 const locationContainer = document.querySelector(".js-hero__details--response");

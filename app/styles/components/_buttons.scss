@@ -1,32 +1,45 @@
 @use "../base/colors" as *;
 
 button {
-  background: $red;
-  border: none;
-  color: $light;
   cursor: pointer;
-  min-height: 2em;
-  padding: 0.75em 1.25em;
+  padding: 0;
   text-wrap: nowrap;
+}
+
+.c-btn-outline {
+  border: 1px solid $red;
+  border-radius: 50vw;
+  color: $black;
 
   &:hover,
   &:focus,
   &:active {
-    background: $dark-red;
+    background: $red;
+    color: $light;
     transition: all 0.5s;
   }
 }
 
-.btn-icon {
-  padding: 0.75505em;
+.c-btn-icon {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding-right: 1em;
+  transition: all 0.5s;
 
   img {
     aspect-ratio: 1;
-    margin: 0;
-    width: 1.2em;
+    border-radius: 50vw;
+    margin: 0.25em;
+    padding: 0.5em;
+    width: 2.5em;
+    transition: all 0.5s;
   }
-}
 
-.c-btn-my-location {
-  margin-bottom: 0.75em;
+  &:hover img,
+  &:focus img,
+  &:active img {
+    background: $light;
+    transition: all 0.5s;
+  }
 }

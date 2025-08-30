@@ -50,8 +50,7 @@ h4 {
 }
 
 p,
-li,
-button {
+li {
   font-family: "Schibsted Grotesk", sans-serif;
   line-height: 1.2;
   font-weight: 400;
@@ -69,8 +68,19 @@ p {
 }
 
 a {
-  color: #c94c26;
+  color: #bb3920;
   text-decoration: underline;
+}
+
+button {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  button {
+    font-size: 1.2vw;
+  }
 }
 
 li {
@@ -84,11 +94,11 @@ li {
 }
 
 li a {
-  color: #c94c26;
+  color: #bb3920;
   transition: all 0.5s;
 }
 li a:hover, li a:focus, li a:active {
-  color: #b13813;
+  color: #16100b;
   transition: all 0.5s;
 }
 

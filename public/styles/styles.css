@@ -105,8 +105,7 @@ h4 {
 }
 
 p,
-li,
-button {
+li {
   font-family: "Schibsted Grotesk", sans-serif;
   line-height: 1.2;
   font-weight: 400;
@@ -126,6 +125,17 @@ p {
 a {
   color: #bb3920;
   text-decoration: underline;
+}
+
+button {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  button {
+    font-size: 1.2vw;
+  }
 }
 
 li {
@@ -163,31 +173,51 @@ label {
 }
 
 button {
-  background: #bb3920;
-  border: none;
-  color: #f2ede9;
   cursor: pointer;
-  min-height: 2em;
-  padding: 0.75em 1.25em;
+  padding: 0;
   text-wrap: nowrap;
 }
-button:hover, button:focus, button:active {
-  background: #16100b;
+
+.c-btn-outline {
+  border: 1px solid #bb3920;
+  border-radius: 50vw;
+  color: #272727;
+}
+.c-btn-outline:hover, .c-btn-outline:focus, .c-btn-outline:active {
+  background: #bb3920;
+  color: #f2ede9;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.btn-icon {
-  padding: 0.75505em;
+.c-btn-icon {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-right: 1em;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
-.btn-icon img {
+.c-btn-icon img {
   aspect-ratio: 1;
-  margin: 0;
-  width: 1.2em;
+  border-radius: 50vw;
+  margin: 0.25em;
+  padding: 0.5em;
+  width: 2.5em;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
-
-.c-btn-my-location {
-  margin-bottom: 0.75em;
+.c-btn-icon:hover img, .c-btn-icon:focus img, .c-btn-icon:active img {
+  background: #f2ede9;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .c-graph-circle {
@@ -388,133 +418,29 @@ header nav ul a {
 .c-hero__img img {
   width: 30vw;
 }
-.c-hero__content {
+.c-hero__wrapper {
   text-align: center;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-hero__content {
+  .c-hero__wrapper {
     text-align: left;
   }
 }
-.c-hero__content h2,
-.c-hero__content h3 {
+.c-hero__wrapper h2,
+.c-hero__wrapper h3 {
   font-size: clamp(0.85em, 3vw, 1.25em);
   line-height: 1.3;
   margin-bottom: 1em;
   text-wrap: pretty;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-hero__content h2,
-  .c-hero__content h3 {
+  .c-hero__wrapper h2,
+  .c-hero__wrapper h3 {
     font-size: 1.3vw;
   }
 }
-.c-hero__content h2 {
+.c-hero__wrapper h2 {
   margin-bottom: 0.5em;
-}
-.c-hero__details {
-  display: grid;
-  grid-template: 3fr 1fr 0.6fr 1fr 1fr/1fr 1fr;
-}
-.c-hero__details svg {
-  width: 40vw;
-}
-@media screen and (min-width: 480px) and (orientation: landscape) {
-  .c-hero__details svg {
-    width: 16vw;
-  }
-}
-.c-hero__details--graph, .c-hero__details--current-location {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.c-hero__details--graph {
-  border-bottom: 2px solid #b5b3b3;
-  grid-column: 1/span 2;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  text-align: center;
-}
-@media screen and (min-width: 480px) and (orientation: portrait) {
-  .c-hero__details svg {
-    width: 30vw;
-  }
-}
-.c-hero__details--windspeed-key, .c-hero__details--humidity-key {
-  border-bottom: 2px solid #b5b3b3;
-  display: grid;
-}
-.c-hero__details ul {
-  text-align: center;
-  padding-left: 0;
-  place-self: center;
-}
-.c-hero__details--location {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: grid;
-  grid-column: 1/span 2;
-  text-align: center;
-}
-.c-hero__details--response {
-  border: 2px solid #b5b3b3;
-  grid-column: 1/span 2;
-  height: 100%;
-  width: 100%;
-}
-.c-hero__details--alerts {
-  grid-column: 1/span 2;
-  text-align: center;
-  padding: 0.5em 0 0 0;
-}
-.c-hero .c-safe,
-.c-hero .c-warning,
-.c-hero .c-unsafe,
-.c-hero .c-check {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 100%;
-}
-.c-hero .c-check h3 {
-  text-align: center;
-}
-.c-hero .c-safe {
-  background: #cc9c50;
-  text-transform: uppercase;
-}
-.c-hero .c-warning {
-  background: #f87819;
-}
-.c-hero .c-warning h3 {
-  text-align: center;
-}
-.c-hero .c-unsafe {
-  background: #bb3920;
-}
-.c-hero .c-unsafe h3 {
-  color: #f2ede9;
-  text-align: center;
-}
-
-.c-who-is {
-  padding: 7vh 5vw 7vh;
-}
-.c-who-is h2,
-.c-who-is p {
-  text-align: center;
 }
 
 .c-about {
