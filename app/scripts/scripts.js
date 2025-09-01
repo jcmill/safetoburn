@@ -1,13 +1,15 @@
 "use strict";
 // use my location
-const myLocationButton = document.querySelector(".js-btn-location");
+const myLocationButton = document.querySelectorAll(".js-btn-location");
+const searchButton = document.querySelector(".js-btn-search");
 const form = document.querySelector("form");
 const input = document.querySelector(".js-location-search__input");
-const locationContainer = document.querySelector(".js-hero__details--response");
 const inputReset = document.querySelector(".js-input");
 const resetButton = document.querySelector(".js-reset");
 const dangerAlerts = [];
 const urlSearch = window.location.search;
+let locationLoadTime;
+let weatherLoadTime;
 
 function temporarilyThrottle(element, ms = 2000) {
   element.disabled = true;
@@ -23,6 +25,9 @@ function handleMyLocationClick() {
       const longitude = position.coords.longitude;
       getWeatherData(latitude, longitude);
       getFireAlerts(latitude, longitude);
+      locationLoadTime = Math.round(performance.now());
+      locationLoadTimeShort = Number(locationLoadTime.toString().slice(0, -1));
+      hideBlueIcons(locationLoadTimeShort);
     },
     (error) => {
       let message = "Unable to retrieve your location.";
@@ -44,12 +49,39 @@ function handleMyLocationClick() {
   );
 }
 
-if (myLocationButton) {
-  myLocationButton.addEventListener("click", function (e) {
+function hideBlueIcons(ms) {
+  const windspeedBlue = document.querySelector(
+    ".js-windspeed-graph-icon--blue"
+  );
+  const humidityBlue = document.querySelector(".js-humidity-graph-icon--blue");
+  setTimeout(() => {
+    windspeedBlue.classList.add("u-icon-hidden");
+    humidityBlue.classList.add("u-icon-hidden");
+  }, ms);
+}
+
+myLocationButton.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
     temporarilyThrottle(myLocationButton);
     handleMyLocationClick();
   });
+});
+
+function addFocusVisible(e) {
+  e.classList.add("focus-visible");
 }
+
+function removeFocusVisible(e) {
+  e.classList.remove("focus-visible");
+}
+
+input.addEventListener("blur", () => {
+  removeFocusVisible(input);
+});
+
+searchButton.addEventListener("click", function (e) {
+  addFocusVisible(input);
+});
 
 // handle general json
 async function getJSON(url) {
@@ -74,8 +106,6 @@ async function getWeather(latitude, longitude) {
 
   const hourlyUrl = pointData.properties.forecastHourly;
   const forecastData = await getJSON(hourlyUrl);
-  console.log(forecastData);
-  const date = new Date();
   const timeZone = county.properties.timeZone[0];
 
   const formatter = new Intl.DateTimeFormat("en", {
@@ -87,25 +117,27 @@ async function getWeather(latitude, longitude) {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true,
+    hour12: false,
   });
 
   const parts = formatter.formatToParts(new Date());
   let timeZoneOffset = parts
     .find((part) => part.type === "timeZoneName")
-    ?.value.slice(4);
+    .value.slice(4);
 
-  let dayValue = parts.find((part) => part.type === "day")?.value.toString();
+  let dayValue = parts.find((part) => part.type === "day").value.toString();
 
-  let monthValue = parts
-    .find((part) => part.type === "month")
-    ?.value.toString();
+  let monthValue = parts.find((part) => part.type === "month").value.toString();
 
-  let yearValue = parts.find((part) => part.type === "year")?.value.toString();
+  let yearValue = parts.find((part) => part.type === "year").value.toString();
 
-  let hourValue = parts.find((part) => part.type === "hour")?.value.toString();
+  let hourValue = parts.find((part) => part.type === "hour").value.toString();
 
   const periods = forecastData.properties.periods;
+  console.log(
+    `${yearValue}-${monthValue}-${dayValue}T${hourValue}:00:00-${timeZoneOffset}`,
+    periods
+  );
   const nextHourIndex = periods.findIndex((period) => {
     return period.startTime.startsWith(
       `${yearValue}-${monthValue}-${dayValue}T${hourValue}:00:00-${timeZoneOffset}`
@@ -181,6 +213,10 @@ async function getWeatherData(latitude, longitude) {
   const dangerAlerts = await getFireAlerts(latitude, longitude);
   readings(windspeed, humidity);
   safeToBurn(windspeed, humidity, dangerAlerts);
+
+  weatherLoadTime = Math.round(performance.now());
+  weatherLoadTimeShort = Number(weatherLoadTime.toString().slice(0, -1));
+  hideBlueIcons(weatherLoadTimeShort);
 }
 
 // functions for getting searched location
@@ -205,11 +241,6 @@ async function getLocation(postalCode, city = "Cupertino", state = "CA") {
   await getFireAlerts(lat, lon);
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   setTimeout(readings, 100);
-//   getLocation(null);
-// });
-
 // functions to handle displaying needed information in graphs
 const getOffset = (val = 0) => {
   const offset = 1100 - Math.round((860 / 100) * val);
@@ -218,33 +249,77 @@ const getOffset = (val = 0) => {
 };
 
 const readings = (windspeed = 0, humidity = 0) => {
+  handleWindspeedGraph(windspeed);
+  handleHumidityGraph(humidity);
+};
+
+function handleWindspeedGraph(reading) {
   const windspeedCircle = document.querySelector(".js-graph-circle--windspeed");
   const windspeedText = document.querySelector(".js-windspeed-text");
+  const windspeedGreen = document.querySelector(
+    ".js-windspeed-graph-icon--green"
+  );
+  const windspeedOrange = document.querySelector(
+    ".js-windspeed-graph-icon--orange"
+  );
+  const windspeedRed = document.querySelector(".js-windspeed-graph-icon--red");
+
+  const windspeedMax = 20;
+
+  const windspeedPercentage = Number((reading / windspeedMax) * 100);
+
+  windspeedCircle.style.strokeDashoffset = getOffset(windspeedPercentage);
+  windspeedText.textContent = `${Number(reading)} mph`;
+
+  if (windspeedPercentage <= 75 && windspeedPercentage > 0) {
+    windspeedCircle.style.stroke = "#cc9c50";
+    windspeedGreen.classList.remove("u-icon-hidden");
+    windspeedOrange.classList.add("u-icon-hidden");
+    windspeedRed.classList.add("u-icon-hidden");
+  } else if (windspeedPercentage > 76 && windspeedPercentage < 100) {
+    windspeedCircle.style.stroke = "#f87819";
+    windspeedGreen.classList.add("u-icon-hidden");
+    windspeedOrange.classList.remove("u-icon-hidden");
+    windspeedRed.classList.add("u-icon-hidden");
+  } else if (windspeedPercentage === 100) {
+    windspeedCircle.style.stroke = "#c94c26";
+    windspeedGreen.classList.add("u-icon-hidden");
+    windspeedOrange.classList.add("u-icon-hidden");
+    windspeedRed.classList.remove("u-icon-hidden");
+  }
+}
+
+function handleHumidityGraph(reading) {
+  const humidityGreen = document.querySelector(
+    ".js-humidity-graph-icon--green"
+  );
+  const humidityOrange = document.querySelector(
+    ".js-humidity-graph-icon--orange"
+  );
+  const humidityRed = document.querySelector(".js-humidity-graph-icon--red");
   const humidityCircle = document.querySelector(".js-graph-circle--humidity");
   const humidityText = document.querySelector(".js-humidity-text");
 
-  const windspeedMax = 15;
+  humidityCircle.style.strokeDashoffset = getOffset(reading);
+  humidityText.textContent = `${Number(reading)}%`;
 
-  const windspeedPercentage = Number((windspeed / windspeedMax) * 100);
-
-  windspeedCircle.style.strokeDashoffset = getOffset(windspeedPercentage);
-  windspeedText.textContent = `${Number(windspeed)} mph`;
-
-  humidityCircle.style.strokeDashoffset = getOffset(humidity);
-  humidityText.textContent = `${Number(humidity)}%`;
-
-  windspeedPercentage <= 80
-    ? (windspeedCircle.style.stroke = "#cc9c50")
-    : windspeedPercentage >= 100
-    ? (windspeedCircle.style.stroke = "#c94c26")
-    : (windspeedCircle.style.stroke = "#f87819");
-
-  humidity > 30
-    ? (humidityCircle.style.stroke = "#cc9c50")
-    : humidity <= 15
-    ? (humidityCircle.style.stroke = "#c94c26")
-    : (humidityCircle.style.stroke = "#f87819");
-};
+  if (reading >= 40) {
+    humidityCircle.style.stroke = "#cc9c50";
+    humidityGreen.classList.remove("u-icon-hidden");
+    humidityOrange.classList.add("u-icon-hidden");
+    humidityRed.classList.add("u-icon-hidden");
+  } else if (reading > 15 && reading < 40) {
+    humidityCircle.style.stroke = "#f87819";
+    humidityGreen.classList.add("u-icon-hidden");
+    humidityOrange.classList.remove("u-icon-hidden");
+    humidityRed.classList.add("u-icon-hidden");
+  } else if (reading <= 15) {
+    humidityCircle.style.stroke = "#c94c26";
+    humidityGreen.classList.add("u-icon-hidden");
+    humidityOrange.classList.add("u-icon-hidden");
+    humidityRed.classList.remove("u-icon-hidden");
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => setTimeout(readings, 100));
 
@@ -260,8 +335,9 @@ function updateContainer(selector, html) {
 const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
   const warningReasons = [];
   const unsafeReasons = [];
+  const safeResons = [];
 
-  if (windspeed > 15) {
+  if (windspeed > 20) {
     unsafeReasons.push(`<b>High wind</b> (${windspeed} mph)`);
   }
   if (humidity < 15) {
@@ -270,11 +346,17 @@ const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
   if (dangerAlerts.length > 0) {
     unsafeReasons.push(...dangerAlerts.map((alert) => `a ${alert}`));
   }
-  if (windspeed >= 11 && windspeed <= 15) {
+  if (windspeed > 15 && windspeed <= 20) {
     warningReasons.push(`<b>High wind</b> (${windspeed} mph)`);
   }
-  if (humidity >= 14 && humidity <= 30) {
+  if (humidity >= 14 && humidity < 30) {
     warningReasons.push(`<b>Low humidity</b> (${humidity}%)`);
+  }
+  if (windspeed <= 15) {
+    safeResons.push(`Windspeed`);
+  }
+  if (humidity > 30) {
+    safeResons.push(`Humidity`);
   }
 
   let warningResponse = warningReasons.join(" and ");
@@ -283,16 +365,30 @@ const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
   const htmlSafe = `
     <div class="c-safe">
       <h2>It's safe to burn!</h2>
+      <div>
+        <img src="../images/vectors/icon-check.svg" alt="check mark icon">
+        <p>${safeResons[0]}</p>
+        <img src="../images/vectors/icon-check.svg" alt="check mark icon">
+        <p>${safeResons[1]}</p>
+      </div>
     </div>
   `;
   const htmlUnsafeReason = `
     <div class="c-unsafe">
-      <h3>It's <b>unsafe</b> to burn because ${unsafeResponse}</h3>
+      <h2>It's <b>unsafe</b></h2> 
+      <div>
+        <img src="../images/vectors/icon-x.svg" alt="danger icon">
+        <p>${unsafeResponse}</p>
+      </div>
     </div>
   `;
   const htmlWarningReason = `
     <div class="c-warning">
-      <h3>Use <b>caution</b> when burning because of ${warningResponse}</h3>
+      <h2>Use <b>caution</b></h2>
+      <div> 
+        <img src="../images/vectors/icon-warning.svg" alt="warning icon">
+        <p>${warningResponse}</p>
+      </div>
     </div>
   `;
 
@@ -347,8 +443,8 @@ form.addEventListener("submit", async function (e) {
 
 function buildLocation(city, county, state) {
   updateContainer(
-    ".js-hero__details--location",
-    `<h4>In ${city}, ${county} county, ${state}</h4>`
+    ".js-app__location--details",
+    `<h3>In ${city}, ${county} county, ${state}</h3>`
   );
 }
 
@@ -356,10 +452,13 @@ function buildAlerts(alerts) {
   if (alerts.length >= 1) {
     updateContainer(
       ".js-hero__details--alerts",
-      `<p><b>Beware of alerts:</b> ${alerts.join(", ")}</p>`
+      `<h4>${alerts.join(", ")}</h4>`
     );
   } else {
-    updateContainer(".js-hero__details--alerts", "");
+    updateContainer(
+      ".js-hero__details--alerts",
+      "<h4>No alerts for this area</h4>"
+    );
   }
 }
 

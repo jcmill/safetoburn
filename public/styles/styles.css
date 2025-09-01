@@ -53,6 +53,15 @@ input, button, textarea, select {
     scroll-behavior: auto !important;
   }
 }
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-section-padding {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}
+
 h1,
 h2,
 h3,
@@ -78,25 +87,27 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.75em, 7vw, 2.5em);
+  font-size: clamp(1.75em, 7vw, 3.5em);
   font-weight: 900;
 }
 
 h3,
 .c-accordion-label {
+  color: #504e4e;
   font-size: 1.1em;
   font-weight: 400;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   h3,
   .c-accordion-label {
-    font-size: 1.5vw;
+    font-size: 2.5vw;
   }
 }
 
 h4 {
+  color: #504e4e;
   font-size: 1.25em;
-  font-weight: 700;
+  font-weight: 400;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   h4 {
@@ -112,6 +123,7 @@ li {
 }
 
 p {
+  color: #504e4e;
   font-size: clamp(1em, 3vw, 1.25em);
   line-height: 1.3;
   margin-bottom: 1em;
@@ -124,7 +136,7 @@ p {
 
 a {
   color: #bb3920;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 button {
@@ -173,6 +185,7 @@ label {
 }
 
 button {
+  border: none;
   cursor: pointer;
   padding: 0;
   text-wrap: nowrap;
@@ -202,7 +215,6 @@ button {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding-right: 1em;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -215,8 +227,29 @@ button {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.c-btn-icon img + span {
+  padding-right: 1em;
+}
 .c-btn-icon:hover img, .c-btn-icon:focus img, .c-btn-icon:active img {
   background: #f2ede9;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.c-btn-red {
+  background: #bb3920;
+  border-radius: 50vw;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.c-btn-red:hover, .c-btn-red:focus, .c-btn-red:active {
+  background: #16100b;
+  color: #f2ede9;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.c-btn-red:hover img, .c-btn-red:focus img, .c-btn-red:active img {
+  background: none;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -232,7 +265,7 @@ button {
 }
 
 .c-graph-icon {
-  width: 4em;
+  width: 12em;
 }
 
 .c-graph-text,
@@ -248,20 +281,16 @@ button {
   font: bold 2em "Schibsted Grotesk", sans-serif;
 }
 
+.u-icon-hidden {
+  display: none;
+}
+
 input[type=search] {
-  border: none;
-  min-height: 2em;
-  padding: 0.5505em 1.25em;
-}
-@media screen and (min-width: 480px) and (orientation: landscape) {
-  input[type=search] {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  input[type=search] {
-    width: 50%;
-  }
+  background: #f2ede9;
+  border: 1px solid #bb3920;
+  border-radius: 50vw;
+  border-top: 1px solid #bb3920;
+  padding: 0.5em 1em;
 }
 input[type=search]::-webkit-input-placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
@@ -274,6 +303,13 @@ input[type=search]::-ms-input-placeholder {
 }
 input[type=search]::placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+}
+
+.focus-visible {
+  outline: 2px solid #1e6ade;
+  outline-offset: 2px;
+  -webkit-transition-delay: 750ms;
+  transition-delay: 750ms;
 }
 
 .c-location-search__hidden {
@@ -289,9 +325,6 @@ input[type=search]::placeholder {
 }
 
 .c-location-search__container {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,17 +332,25 @@ input[type=search]::placeholder {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin: 0.5em 0 1em 0;
+  gap: 0.5em;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-location-search__container {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: start;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
+}
+
+.c-location-search__error {
+  position: absolute;
 }
 
 header {
@@ -368,21 +409,22 @@ header nav ul a {
 }
 
 .c-main {
-  background: url("../images/logo-shape-grain.png") no-repeat;
-  background-position: -100% 33%;
-  background-size: 150%;
+  background: url("../images/logo-shape-grain-mobile.png") no-repeat;
+  background-position: 160% 0%;
+  background-size: 70%;
   height: 100%;
   width: 100%;
 }
 @media screen and (min-width: 480px) and (orientation: landscape) {
   .c-main {
-    background-position: 200% 0%;
-    background-size: 75%;
+    background-position: 220% 0%;
+    background-size: 5%;
   }
 }
-@media screen and (min-width: 1025px) and (orientation: landscape) {
+@media screen and (min-width: 726px) and (orientation: landscape) {
   .c-main {
-    background-position: right 0%;
+    background: url("../images/logo-shape-grain.png") no-repeat;
+    background-position: 100% 0%;
     background-size: 50%;
   }
 }
@@ -393,6 +435,10 @@ header nav ul a {
   }
 }
 
+b {
+  color: #272727;
+}
+
 .c-hero {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -400,7 +446,7 @@ header nav ul a {
   display: grid;
   grid-template: 1fr 1fr/3fr 1fr;
   min-height: 91vh;
-  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+  padding: 0 clamp(1.5em, 5vw, 2em);
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero {
@@ -410,19 +456,6 @@ header nav ul a {
     flex-direction: row;
     grid-template: 1fr 1fr/3fr 2fr;
     padding: 0 clamp(1.5em, 7vw, 4em);
-  }
-}
-.c-hero h2,
-.c-hero h3 {
-  font-size: clamp(0.85em, 3vw, 1.25em);
-  line-height: 1.3;
-  margin-bottom: 1em;
-  text-wrap: pretty;
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-hero h2,
-  .c-hero h3 {
-    font-size: 1.3vw;
   }
 }
 .c-hero h2 {
@@ -442,20 +475,189 @@ header nav ul a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 1em;
   grid-column: 1;
   grid-row: 2;
   margin-bottom: 2em;
   place-self: end start;
 }
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-hero__btns {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero__btns {
     margin-bottom: 4em;
   }
+}
+
+.c-app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  min-height: 100vh;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+.c-app__location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  gap: 0.5em;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app__location {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 0;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+.c-app__location--search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+.c-app__alerts {
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+  margin: 0 0 2em 0;
+}
+.c-app__alerts h4,
+.c-app__alerts p {
+  margin: 0;
+}
+.c-app__graphs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1em;
+  margin: 0 0 2em 0;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graphs {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 4em;
+  }
+}
+.c-app__graph {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 33%;
+    flex: 1 0 33%;
+  }
+}
+.c-app__graph svg {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 25%;
+  flex: 1 0 25%;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph svg {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 45%;
+    flex: 1 0 45%;
+  }
+}
+.c-app__graph--content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 66%;
+  flex: 1 0 66%;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph--content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 55%;
+    flex: 1 0 55%;
+  }
+}
+.c-app__graph .c-graph {
+  width: 8em;
+}
+.c-app__details--response > div {
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2em;
+}
+.c-app__details--response > div > div {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+}
+.c-app__details--response > div > div p {
+  margin: 0;
+}
+.c-app__details--response > div > div img {
+  width: 1.5em;
+}
+.c-app .c-app__graph--air-quality {
+  -webkit-filter: grayscale(100);
+  filter: grayscale(100);
 }
 
 .c-about {
@@ -683,6 +885,10 @@ header nav ul a {
 }
 .c-accordion-sub-label:hover {
   background: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

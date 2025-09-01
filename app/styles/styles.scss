@@ -13,6 +13,10 @@
 @use "layouts/footer.scss" as *;
 @use "components/accordion.scss" as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: $light radial-gradient(100% 65% at 0% 0%, $light-2 33%, $light)
     no-repeat;

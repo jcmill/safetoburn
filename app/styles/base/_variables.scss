@@ -1,6 +1,16 @@
+@use "mixins" as *;
+
 $maxw: 1600px;
 
 $phone: 480px;
 $tablet: 726px;
 $laptop: 1025px;
 $desktop: 1200px;
+
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+
+  @include query($laptop) {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}

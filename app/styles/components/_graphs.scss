@@ -11,7 +11,7 @@
 }
 
 .c-graph-icon {
-  width: 4em;
+  width: 12em;
 }
 
 .c-graph-text,
@@ -25,4 +25,8 @@
 
 .c-graph-reading {
   font: bold 2em $font-family;
+}
+
+.u-icon-hidden {
+  display: none;
 }

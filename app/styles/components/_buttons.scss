@@ -1,6 +1,9 @@
 @use "../base/colors" as *;
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
 
 button {
+  border: none;
   cursor: pointer;
   padding: 0;
   text-wrap: nowrap;
@@ -25,7 +28,6 @@ button {
   align-items: center;
   display: flex;
   flex-direction: row;
-  padding-right: 1em;
   transition: all 0.5s;
 
   img {
@@ -37,10 +39,35 @@ button {
     transition: all 0.5s;
   }
 
+  img + span {
+    padding-right: 1em;
+  }
+
   &:hover img,
   &:focus img,
   &:active img {
     background: $light;
+    transition: all 0.5s;
+  }
+}
+
+.c-btn-red {
+  background: $red;
+  border-radius: 50vw;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: $dark-red;
+    color: $light;
+    transition: all 0.5s;
+  }
+
+  &:hover img,
+  &:focus img,
+  &:active img {
+    background: none;
     transition: all 0.5s;
   }
 }

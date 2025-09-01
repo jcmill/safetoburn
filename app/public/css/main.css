@@ -1,19 +1,29 @@
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-section-padding {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}
+
 .c-main {
-  background: url("../images/logo-shape-grain.png") no-repeat;
-  background-position: -100% 33%;
-  background-size: 150%;
+  background: url("../images/logo-shape-grain-mobile.png") no-repeat;
+  background-position: 160% 0%;
+  background-size: 70%;
   height: 100%;
   width: 100%;
 }
 @media screen and (min-width: 480px) and (orientation: landscape) {
   .c-main {
-    background-position: 200% 0%;
-    background-size: 75%;
+    background-position: 220% 0%;
+    background-size: 5%;
   }
 }
-@media screen and (min-width: 1025px) and (orientation: landscape) {
+@media screen and (min-width: 726px) and (orientation: landscape) {
   .c-main {
-    background-position: right 0%;
+    background: url("../images/logo-shape-grain.png") no-repeat;
+    background-position: 100% 0%;
     background-size: 50%;
   }
 }
@@ -24,31 +34,22 @@
   }
 }
 
+b {
+  color: #272727;
+}
+
 .c-hero {
   align-items: center;
   display: grid;
   grid-template: 1fr 1fr/3fr 1fr;
   min-height: 91vh;
-  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+  padding: 0 clamp(1.5em, 5vw, 2em);
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero {
     flex-direction: row;
     grid-template: 1fr 1fr/3fr 2fr;
     padding: 0 clamp(1.5em, 7vw, 4em);
-  }
-}
-.c-hero h2,
-.c-hero h3 {
-  font-size: clamp(0.85em, 3vw, 1.25em);
-  line-height: 1.3;
-  margin-bottom: 1em;
-  text-wrap: pretty;
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  .c-hero h2,
-.c-hero h3 {
-    font-size: 1.3vw;
   }
 }
 .c-hero h2 {
@@ -66,15 +67,120 @@
 }
 .c-hero__btns {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1em;
   grid-column: 1;
   grid-row: 2;
   margin-bottom: 2em;
   place-self: end start;
 }
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-hero__btns {
+    flex-direction: row;
+  }
+}
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero__btns {
     margin-bottom: 4em;
   }
+}
+
+.c-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: 100vh;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app {
+    justify-content: center;
+  }
+}
+.c-app__location {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5em;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app__location {
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+.c-app__location--search {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+.c-app__alerts {
+  align-items: baseline;
+  display: flex;
+  gap: 1em;
+  margin: 0 0 2em 0;
+}
+.c-app__alerts h4,
+.c-app__alerts p {
+  margin: 0;
+}
+.c-app__graphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 0 0 2em 0;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graphs {
+    flex-direction: row;
+    gap: 4em;
+  }
+}
+.c-app__graph {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph {
+    flex: 1 0 33%;
+  }
+}
+.c-app__graph svg {
+  flex: 1 0 25%;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph svg {
+    flex: 1 0 45%;
+  }
+}
+.c-app__graph--content {
+  flex: 1 0 66%;
+}
+@media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph--content {
+    flex: 1 0 55%;
+  }
+}
+.c-app__graph .c-graph {
+  width: 8em;
+}
+.c-app__details--response > div {
+  align-items: baseline;
+  display: flex;
+  gap: 2em;
+}
+.c-app__details--response > div > div {
+  align-items: center;
+  display: flex;
+  gap: 0.5em;
+}
+.c-app__details--response > div > div p {
+  margin: 0;
+}
+.c-app__details--response > div > div img {
+  width: 1.5em;
+}
+.c-app .c-app__graph--air-quality {
+  filter: grayscale(100);
 }

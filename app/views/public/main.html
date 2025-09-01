@@ -1,13 +1,81 @@
 
 <section class="c-main">
-  <div class="c-hero"> 
+  <div class="c-hero u-section-padding"> 
     <div class="c-hero__content">
       <h1>Is It Safe to Burn Today?</h1>
       <p>A fire safety conditions app meant to track windspeed, humidity, and burn bans at your location.</p>
     </div>
-    <div class="c-hero__btns">
-      <button class="c-btn-icon c-btn-outline c-btn-location js-btn-location"><img src="images/vectors/icon-location-red.svg" alt=""/>Location</button>
-      <button class="c-btn-icon c-btn-outline c-btn-search js-btn-search"><img src="images/vectors/icon-search-red.svg" alt=""/>Search</button>
+    <div class="c-hero__btns"><a href="#app">
+        <button class="c-btn-icon c-btn-outline c-btn-location js-btn-location"><img src="images/vectors/icon-location-red.svg" alt=""/><span>Location</span></button></a><a href="#app">
+        <button class="c-btn-icon c-btn-outline c-btn-search js-btn-search" href="#c-location-search"><img src="images/vectors/icon-search-red.svg" alt=""/><span>Search</span></button></a></div>
+  </div>
+  <div class="c-app u-section-padding" id="app">
+    <h2>Location</h2>
+    <div class="c-app__location">
+      <h3 class="c-app__location--details js-app__location--details">Search for a location</h3>
+      <div class="c-app__location--search">
+        <form class="c-location-search" id="c-location-search" novalidate="novalidate" role="search">
+          <label class="c-location-search__label u-small c-location-search__hidden" id="location__label" for="location-input">Search fire safety by city, state, or ZIP code</label>
+          <p class="u-small c-location-search__hint c-location-search__hidden" id="location-hint">Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")</p>
+          <div class="c-location-search__container">
+            <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labelledby="location-label" placeholder="City, State or ZIP code"/>
+            <button class="c-btn-icon c-btn-red c-btn-search js-input" type="submit" form="c-location-search"><img src="images/vectors/icon-search-lit.svg" alt="magnifying glass to indicate searching"/></button>
+          </div>
+          <p class="c-location-search__error c-location-search__hidden js-location-search__error u-small" id="location__error" aria-live="polite"></p>
+        </form>
+        <button class="c-btn-icon c-btn-red c-btn-icon-location js-btn-location"><img src="images/vectors/icon-location-lit.svg" alt="magnifying glass to indicate searching"/></button>
+      </div>
+    </div>
+    <div class="c-app__alerts">
+      <h4> <b>Alerts:</b></h4>
+      <p class="c-app__alerts--details js-app__alerts--details">No alerts</p>
+    </div>
+    <div class="c-app__graphs">
+      <div class="c-app__graph c-app__graph--windspeed">
+        <svg class="c-graph" viewBox="0 0 400 400">
+          <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(45 200 200)"></circle>
+          <circle class="c-graph-circle js-graph-circle--windspeed" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(45 200 200)"></circle>
+          <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-windspeed.svg" text-anchor="middle" x="26%" y="26%"></image>
+        </svg>
+        <div class="c-app__graph--content"> 
+          <h4>Windspeed</h4>
+          <h3> <b class="js-windspeed-text">0 mph</b></h3>
+          <p class="u-small">
+            Prescribed Burns 5 to 15 mph  
+            General Burns up to 20 mph
+          </p>
+        </div>
+      </div>
+      <div class="c-app__graph c-app__graph--humidity">
+        <svg class="c-graph" viewBox="0 0 400 400">
+          <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(45 200 200)"></circle>
+          <circle class="c-graph-circle js-graph-circle--humidity" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(45 200 200)"></circle>
+          <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-humidity.svg" text-anchor="middle" x="26%" y="26%"></image>
+        </svg>
+        <div class="c-app__graph--content"> 
+          <h4>Humidity</h4>
+          <h3><b class="js-humidity-text">0%</b></h3>
+          <p class="u-small">
+            Danger < 30% 
+            Safe Above 40%
+          </p>
+        </div>
+      </div>
+      <div class="c-app__graph c-app__graph--air-quality">
+        <svg class="c-graph" viewBox="0 0 400 400">
+          <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(45 200 200)"></circle>
+          <circle class="c-graph-circle js-graph-circle--air-quality" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(45 200 200)"></circle>
+          <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality.svg" text-anchor="middle" x="26%" y="26%"></image>
+        </svg>
+        <div class="c-app__graph--content"> 
+          <h4>Air Quality</h4>
+          <h3> <b>0</b></h3>
+          <p class="u-small">Coming soon</p>
+        </div>
+      </div>
+    </div>
+    <div class="c-app__details--response js-hero__details--response"> 
+      <h2>Results:</h2>
     </div>
   </div>
 </section>

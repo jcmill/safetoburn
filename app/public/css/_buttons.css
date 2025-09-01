@@ -1,4 +1,14 @@
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-section-padding {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}
+
 button {
+  border: none;
   cursor: pointer;
   padding: 0;
   text-wrap: nowrap;
@@ -20,7 +30,6 @@ button {
   align-items: center;
   display: flex;
   flex-direction: row;
-  padding-right: 1em;
   transition: all 0.5s;
 }
 .c-btn-icon img {
@@ -31,7 +40,25 @@ button {
   width: 2.5em;
   transition: all 0.5s;
 }
+.c-btn-icon img + span {
+  padding-right: 1em;
+}
 .c-btn-icon:hover img, .c-btn-icon:focus img, .c-btn-icon:active img {
   background: #f2ede9;
+  transition: all 0.5s;
+}
+
+.c-btn-red {
+  background: #bb3920;
+  border-radius: 50vw;
+  transition: all 0.5s;
+}
+.c-btn-red:hover, .c-btn-red:focus, .c-btn-red:active {
+  background: #16100b;
+  color: #f2ede9;
+  transition: all 0.5s;
+}
+.c-btn-red:hover img, .c-btn-red:focus img, .c-btn-red:active img {
+  background: none;
   transition: all 0.5s;
 }

@@ -1,0 +1,35 @@
+- radius = 175;
+- padding = 25;
+- stroke = 25;
+- size = (radius + padding) * 2;
+- diameter = Math.round(Math.PI * radius * 2);
+
+svg.c-graph(viewBox='0 0 ' + size + ' ' + size)
+  circle.c-graph-empty(
+    cx=radius + padding,
+    cy=radius + padding,
+    fill="none",
+    r=radius,
+    stroke-dasharray=870,
+    stroke-dashoffset=10,
+    stroke-width=stroke,
+    transform='rotate(45 ' + (radius + padding) + ' ' + (radius + padding) + ')'
+  )
+  circle.c-graph-circle.js-graph-circle--air-quality(
+    cx=radius + padding,
+    cy=radius + padding,
+    fill="none",
+    r=radius,
+    stroke-dasharray=diameter,
+    stroke-width=stroke,
+    stroke-dashoffset=diameter,
+    transform='rotate(45 ' + (radius + padding) + ' ' + (radius + padding) + ')'
+  )
+  image.c-graph-icon(
+    dominant-baseline="middle",
+    dy="0.3em",
+    href="images/vectors/icon-graph-air-quality.svg",
+    text-anchor="middle",
+    x="26%",
+    y="26%"
+  )

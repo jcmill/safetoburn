@@ -1,12 +1,54 @@
 section.c-main
-  .c-hero 
+  .c-hero.u-section-padding 
     .c-hero__content
       h1 Is It Safe to Burn Today?
       p A fire safety conditions app meant to track windspeed, humidity, and burn bans at your location.
     .c-hero__btns
-      button.c-btn-icon.c-btn-outline.c-btn-location.js-btn-location
-        img(src="images/vectors/icon-location-red.svg", alt="")
-        | Location
-      button.c-btn-icon.c-btn-outline.c-btn-search.js-btn-search
-        img(src="images/vectors/icon-search-red.svg", alt="")
-        | Search
+      a(href="#app")
+        button.c-btn-icon.c-btn-outline.c-btn-location.js-btn-location
+          img(src="images/vectors/icon-location-red.svg", alt="")
+          span Location
+      a(href="#app")
+        button.c-btn-icon.c-btn-outline.c-btn-search.js-btn-search(href="#c-location-search")
+          img(src="images/vectors/icon-search-red.svg", alt="")
+          span Search
+  #app.c-app.u-section-padding
+    h2 Location
+    .c-app__location
+      h3.c-app__location--details.js-app__location--details Search for a location
+      .c-app__location--search
+        include ../components/form-search
+        button.c-btn-icon.c-btn-red.c-btn-icon-location.js-btn-location
+          img(src="images/vectors/icon-location-lit.svg", alt="magnifying glass to indicate searching")
+    .c-app__alerts
+      h4 
+        b Alerts:
+      p.c-app__alerts--details.js-app__alerts--details No alerts
+    .c-app__graphs
+      .c-app__graph.c-app__graph--windspeed
+        include ../components/graph-windspeed-alt
+        .c-app__graph--content 
+          h4 Windspeed
+          h3 
+            b.js-windspeed-text 0 mph
+          p.u-small Prescribed Burns 5 to 15 mph 
+            | 
+            | General Burns up to 20 mph
+      .c-app__graph.c-app__graph--humidity
+        include ../components/graph-humidity-alt
+        .c-app__graph--content 
+          h4 Humidity
+          h3
+            b.js-humidity-text 0%
+          p.u-small Danger < 30%
+            | 
+            | Safe Above 40%
+      .c-app__graph.c-app__graph--air-quality
+        include ../components/graph-air-quality-alt
+        .c-app__graph--content 
+          h4 Air Quality
+          h3 
+            b 0
+          p.u-small Coming soon
+    .c-app__details--response.js-hero__details--response 
+      h2 Results:
