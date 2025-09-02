@@ -89,7 +89,7 @@
   <h2>What is the Safe to Burn app?</h2>
   <p>Safe to Burn is meant to help homeowners, farmers, and land managers quickly check if weather and environmental conditions are safe for burning brush or debris. By combining local weather data, wind speeds, humidity levels, and official fire alerts, we provide a simple, reliable tool for making responsible burning decisions. Enter your city, state, or ZIP code to see real-time wind speed, humidity, and active burn bans in your area.</p>
 </section>
-<section class="c-accordion">
+<section class="c-accordion" id="faq">
   <h2>FAQ</h2>
   <div class="c-accordion__container">
     <input class="c-accordion-input" id="c-accordion-q1" name="c-accordion-q1" type="checkbox"/>
@@ -127,8 +127,8 @@
     </article>
   </div>
 </section>
-<section class="c-logo-divider u-section-padding"> <img src="../images/logos/safe-to-burn-fire-safety-logo-mark.svg" alt="Safe to Burn logo mark"/></section>
-<section class="c-about"> 
+<section class="c-logo-divider u-section-padding"> <img src="images/logos/safe-to-burn-fire-safety-logo-mark.svg" alt="Safe to Burn logo mark"/></section>
+<section class="c-about" id="about">
   <h2>About Safe To Burn </h2>
   <p>Safe to Burn was started because one fall, the city I lived in decided to remove their curbside leaf collection. With a single yard waste can and nearly a half acre of leaves to manage, I had to confirm that burning was allowed in my county and research which weather conditions were safe. I realized there should be an easier way to find all this information. That’s why I built Safe to Burn. This is version one of the site, and I plan to add features like real-time air quality data (AQI) and a county-by-county guide to acceptable burn materials.</p>
   <h3> <b>Your Responsibility</b></h3>
@@ -143,6 +143,27 @@
   <h3> <b>Who Built This</b></h3>
   <p>This site was created by <a href="https://jakemillerdev.com/">Jake Miller</a>, a developer who enjoys building tools that make simple and information accessible. It’s designed for anyone who needs a quick, trustworthy way to check weather for suitable burn conditions while you’re clearing brush, burning a pile of leaves, or just curious about local fire safety.</p>
 </section>
-<footer class="c-footer">
-  <p class="u-small">© 2025 <a href="https://jakemillerdev.com/">Jake Miller</a>. All rights reserved.</p>
+<section class="c-ad"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4174186681788042" data-ad-slot="6015996357"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</section>
+<footer class="c-form-footer" id="contact">
+  <div class="c-form-footer__contact">
+    <h2>Contact Us </h2>
+    <p>Feel free to contact us with any questions, suggestions or issues.</p>
+    <form id="form" method="POST">
+      <input type="hidden" name="access_key" value="c092c90c-6f21-415e-8383-8757c6da4e28"/>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" required="required" aria-required="true"/>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required="required" aria-required="true"/>
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" required="required" aria-required="true"></textarea>
+      <input class="hidden" type="checkbox" name="botcheck" style="display: none;"/>
+      <button class="c-btn-light" type="submit">Submit Form</button>
+      <div id="result" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+  <div class="c-form-footer__disclaimer">
+    <p class="u-small">© 2025 <a href="https://jakemillerdev.com/">Jake Miller</a>. All rights reserved. <a href="privacy-policy.html">Privacy Policy</a></p>
+  </div>
 </footer>

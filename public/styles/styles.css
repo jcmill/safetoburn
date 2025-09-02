@@ -890,12 +890,7 @@ b {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    padding: 0 15vw 7vh 15vw;
-  }
-}
-@media screen and (min-width: 726px) and (orientation: portrait) {
-  .c-about {
-    padding: 0 15vw 7vh 15vw;
+    padding: 0 15vw;
   }
 }
 .c-about ul {

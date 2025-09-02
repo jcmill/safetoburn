@@ -9,20 +9,12 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- About Page -->
-  <url>
-    <loc>https://safetoburn.com/about.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Contact Page -->
   <url>
-    <loc>https://safetoburn.com/contact.html</loc>
+    <loc>https://safetoburn.com/privacy-policy.html</loc>
     <lastmod>2025-08-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
