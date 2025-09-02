@@ -444,7 +444,7 @@ form.addEventListener("submit", async function (e) {
 function buildLocation(city, county, state) {
   updateContainer(
     ".js-app__location--details",
-    `<h3>In ${city}, ${county} county, ${state}</h3>`
+    `In ${city}, ${county} county, ${state}`
   );
 }
 

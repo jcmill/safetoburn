@@ -507,9 +507,9 @@ b {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   min-height: 100vh;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
@@ -543,6 +543,10 @@ b {
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
+}
+.c-app__location--details {
+  font-size: clamp(1.75em, 5vw, 3em);
+  min-height: 3.25em;
 }
 .c-app__location--search {
   display: -webkit-box;
@@ -628,6 +632,9 @@ b {
     flex: 1 0 55%;
   }
 }
+.c-app__graph--content h3 {
+  font-size: clamp(1.75em, 7vw, 3.5em);
+}
 .c-app__graph .c-graph {
   width: 8em;
 }
@@ -638,7 +645,19 @@ b {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 2em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app__details--response > div {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 2em;
+  }
 }
 .c-app__details--response > div > div {
   -webkit-box-align: center;

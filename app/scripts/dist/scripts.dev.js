@@ -599,7 +599,7 @@ form.addEventListener("submit", function _callee2(e) {
 });
 
 function buildLocation(city, county, state) {
-  updateContainer(".js-app__location--details", "<h3>In ".concat(city, ", ").concat(county, " county, ").concat(state, "</h3>"));
+  updateContainer(".js-app__location--details", "In ".concat(city, ", ").concat(county, " county, ").concat(state));
 }
 
 function buildAlerts(alerts) {

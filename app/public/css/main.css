@@ -88,7 +88,7 @@ b {
 .c-app {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   min-height: 100vh;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
@@ -108,6 +108,10 @@ b {
     gap: 0;
     justify-content: space-between;
   }
+}
+.c-app__location--details {
+  font-size: clamp(1.75em, 5vw, 3em);
+  min-height: 3.25em;
 }
 .c-app__location--search {
   display: flex;
@@ -162,13 +166,22 @@ b {
     flex: 1 0 55%;
   }
 }
+.c-app__graph--content h3 {
+  font-size: clamp(1.75em, 7vw, 3.5em);
+}
 .c-app__graph .c-graph {
   width: 8em;
 }
 .c-app__details--response > div {
   align-items: baseline;
   display: flex;
-  gap: 2em;
+  flex-direction: column;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-app__details--response > div {
+    flex-direction: row;
+    gap: 2em;
+  }
 }
 .c-app__details--response > div > div {
   align-items: center;
