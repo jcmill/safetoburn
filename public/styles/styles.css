@@ -285,24 +285,38 @@ button {
   display: none;
 }
 
+form {
+  width: 33vw;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  form {
+    width: 25vw;
+  }
+}
+
 input[type=search] {
   background: #f2ede9;
   border: 1px solid #bb3920;
   border-radius: 50vw;
   border-top: 1px solid #bb3920;
   padding: 0.5em 1em;
+  width: 100%;
 }
 input[type=search]::-webkit-input-placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+  font-size: clamp(1em, 3vw, 1.25em);
 }
 input[type=search]::-moz-placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+  font-size: clamp(1em, 3vw, 1.25em);
 }
 input[type=search]::-ms-input-placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+  font-size: clamp(1em, 3vw, 1.25em);
 }
 input[type=search]::placeholder {
   font-family: "Schibsted Grotesk", sans-serif;
+  font-size: clamp(1em, 3vw, 1.25em);
 }
 
 .focus-visible {

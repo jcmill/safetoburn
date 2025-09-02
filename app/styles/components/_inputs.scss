@@ -3,15 +3,25 @@
 @use "../base/typography" as *;
 @use "../base/mixins" as *;
 
+form {
+  width: 33vw;
+
+  @include query($tablet) {
+    width: 25vw;
+  }
+}
+
 input[type="search"] {
   background: $light;
   border: 1px solid $red;
   border-radius: 50vw;
   border-top: 1px solid $red;
   padding: 0.5em 1em;
+  width: 100%;
 
   &::placeholder {
     font-family: $font-family;
+    font-size: clamp(1em, 3vw, 1.25em);
   }
 }
 
