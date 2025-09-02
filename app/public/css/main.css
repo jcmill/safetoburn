@@ -27,10 +27,23 @@
     background-size: 50%;
   }
 }
-@media screen and (min-width: 1200px) and (orientation: landscape) {
+@media screen and (min-width: 726px) and (orientation: portrait) {
+  .c-main {
+    background: url("../images/logo-shape-grain-mobile.png") no-repeat;
+    background-position: 100% 0%;
+    background-size: 45%;
+  }
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-main {
     background-position: right 0%;
     background-size: 45%;
+  }
+}
+@media screen and (min-width: 1200px) and (orientation: landscape) {
+  .c-main {
+    background-position: right 0%;
+    background-size: 42%;
   }
 }
 
@@ -103,9 +116,8 @@ b {
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-app__location {
-    align-items: center;
+    align-items: start;
     flex-direction: row;
-    gap: 0;
     justify-content: space-between;
   }
 }
@@ -140,6 +152,14 @@ b {
     gap: 4em;
   }
 }
+@media screen and (min-width: 726px) and (orientation: portrait) {
+  .c-app__graphs {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
 .c-app__graph {
   align-items: center;
   display: flex;
@@ -150,6 +170,11 @@ b {
     flex: 1 0 33%;
   }
 }
+@media screen and (min-width: 726px) and (orientation: portrait) {
+  .c-app__graph {
+    flex: 0 1 45%;
+  }
+}
 .c-app__graph svg {
   flex: 1 0 25%;
 }
@@ -158,10 +183,20 @@ b {
     flex: 1 0 45%;
   }
 }
+@media screen and (min-width: 726px) and (orientation: portrait) {
+  .c-app__graph svg {
+    flex: 1 0 45%;
+  }
+}
 .c-app__graph--content {
   flex: 1 0 66%;
 }
 @media screen and (min-width: 480px) and (orientation: landscape) {
+  .c-app__graph--content {
+    flex: 1 0 55%;
+  }
+}
+@media screen and (min-width: 726px) and (orientation: portrait) {
   .c-app__graph--content {
     flex: 1 0 55%;
   }
@@ -195,5 +230,5 @@ b {
   width: 1.5em;
 }
 .c-app .c-app__graph--air-quality {
-  filter: grayscale(100);
+  filter: grayscale(100) opacity(0.5);
 }

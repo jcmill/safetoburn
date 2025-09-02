@@ -20,9 +20,20 @@
     background-size: 50%;
   }
 
-  @include query($desktop) {
+  @include query($tablet, portrait) {
+    background: url("../images/logo-shape-grain-mobile.png") no-repeat;
+    background-position: 100% 0%;
+    background-size: 45%;
+  }
+
+  @include query($laptop) {
     background-position: right 0%;
     background-size: 45%;
+  }
+
+  @include query($desktop) {
+    background-position: right 0%;
+    background-size: 42%;
   }
 }
 
@@ -92,9 +103,8 @@ b {
     gap: 0.5em;
 
     @include query($tablet) {
-      align-items: center;
+      align-items: start;
       flex-direction: row;
-      gap: 0;
       justify-content: space-between;
     }
 
@@ -132,6 +142,13 @@ b {
       flex-direction: row;
       gap: 4em;
     }
+
+    @include query($tablet, portrait) {
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 
   &__graph {
@@ -143,10 +160,18 @@ b {
       flex: 1 0 33%;
     }
 
+    @include query($tablet, portrait) {
+      flex: 0 1 45%;
+    }
+
     svg {
       flex: 1 0 25%;
 
       @include query($phone) {
+        flex: 1 0 45%;
+      }
+
+      @include query($tablet, portrait) {
         flex: 1 0 45%;
       }
     }
@@ -155,6 +180,10 @@ b {
       flex: 1 0 66%;
 
       @include query($phone) {
+        flex: 1 0 55%;
+      }
+
+      @include query($tablet, portrait) {
         flex: 1 0 55%;
       }
 
@@ -194,6 +223,6 @@ b {
   }
 
   .c-app__graph--air-quality {
-    filter: grayscale(100);
+    filter: grayscale(100) opacity(0.5);
   }
 }

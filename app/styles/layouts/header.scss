@@ -20,6 +20,11 @@ header {
     max-width: 225px;
     width: 150px;
 
+    @include query($tablet, portrait) {
+      max-width: 300px;
+      width: 30vw;
+    }
+
     @include query($laptop) {
       max-width: 250px;
       width: 230px;
@@ -29,8 +34,12 @@ header {
   nav ul {
     align-items: center;
     display: flex;
-    gap: 1em; // clamp(16px, 2vw, 2em)
+    gap: 1em;
     padding: 0;
+
+    @include query($tablet, portrait) {
+      gap: 2em;
+    }
 
     @include query($laptop) {
       gap: clamp(16px, 14vw, 4em);
