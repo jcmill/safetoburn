@@ -114,10 +114,10 @@
               <div class="c-location-search__container">
                 <input class="c-location-search__input js-location-search__input" id="location-input" type="search" name="location-input" inputmode="search" autocomplete="address-level2 postal-code" aria-describedby="location-hint location__error" aria-labelledby="location-label" placeholder="City, State or ZIP code">
                 <button class="c-btn-icon c-btn-red c-btn-search js-input" type="submit" form="c-location-search"><img src="images/vectors/icon-search-lit.svg" alt="magnifying glass to indicate searching"></button>
+                <button class="c-btn-icon c-btn-red c-btn-icon-location js-btn-location" type="button"><img src="images/vectors/icon-location-lit.svg" alt="magnifying glass to indicate searching"></button>
               </div>
-              <p class="c-location-search__error c-location-search__hidden js-location-search__error u-small" id="location__error" aria-live="polite"></p>
+              <p class="c-location-search__error c-location-search__hidden js-location-search__error u-small" aria-live="polite" id="location__error"></p>
             </form>
-            <button class="c-btn-icon c-btn-red c-btn-icon-location js-btn-location"><img src="images/vectors/icon-location-lit.svg" alt="magnifying glass to indicate searching"></button>
           </div>
         </div>
         <div class="c-app__alerts">
@@ -179,6 +179,123 @@
         </div>
       </div>
     </section>
+    <section class="c-what"> 
+      <h2>What is the Safe to Burn app?</h2>
+      <p>Safe to Burn is meant to help homeowners, farmers, and land managers quickly check if weather and environmental conditions are safe for burning brush or debris. By combining local weather data, wind speeds, humidity levels, and official fire alerts, we provide a simple, reliable tool for making responsible burning decisions. Enter your city, state, or ZIP code to see real-time wind speed, humidity, and active burn bans in your area.</p>
+    </section>
+    <section class="c-accordion">
+      <h2>FAQ</h2>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q1" name="c-accordion-q1" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q1">How does this website determine if it’s safe to burn?</label>
+        <article class="c-accordion-text">
+          <p>We combine data from weather services and local fire alerts to evaluate wind speed, humidity, and burn bans in your area.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q2" name="c-accordion-q2" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q2">How often is the burn safety information updated?</label>
+        <article class="c-accordion-text">
+          <p>Our data refreshes automatically every hour (or more frequently during severe weather) to provide as close to real-time conditions as possible.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q3" name="c-accordion-q3" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q3">Does this site cover burn bans issued by my local authorities?</label>
+        <article class="c-accordion-text">
+          <p>Yes. Whenever available, we pull official burn ban notices from county or state agencies and display them alongside weather conditions.</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q4" name="c-accordion-q4" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q4">What weather conditions make burning unsafe?</label>
+        <article class="c-accordion-text">
+          <p>High winds, low humidity, and poor air quality increase fire risk and health hazards. We flag any of these conditions and alerts as “unsafe to burn.”</p>
+        </article>
+      </div>
+      <div class="c-accordion__container">
+        <input class="c-accordion-input" id="c-accordion-q5" name="c-accordion-q5" type="checkbox">
+        <label class="c-accordion-label" for="c-accordion-q5">Can I rely solely on this website to decide whether to burn?</label>
+        <article class="c-accordion-text">
+          <p>We recommend using our site as a guide, but you should also check local regulations and advisories, since burn rules can vary by county or municipality.</p>
+        </article>
+      </div>
+    </section>
+    <section class="c-logo-divider u-section-padding"> <img src="../images/logos/safe-to-burn-fire-safety-logo-mark.svg" alt="Safe to Burn logo mark"></section>
+    <section class="c-about"> 
+      <h2>About Safe To Burn </h2>
+      <p>Safe to Burn was started because one fall, the city I lived in decided to remove their curbside leaf collection. With a single yard waste can and nearly a half acre of leaves to manage, I had to confirm that burning was allowed in my county and research which weather conditions were safe. I realized there should be an easier way to find all this information. That’s why I built Safe to Burn. This is version one of the site, and I plan to add features like real-time air quality data (AQI) and a county-by-county guide to acceptable burn materials.</p>
+      <h3> <b>Your Responsibility</b></h3>
+      <p>While this site helps you understand current conditions, you are still responsible for burning safely and legally. That means:</p>
+      <ul> 
+        <li><b>Check for permits or burn bans.</b> Local rules vary by county and state. Always confirm what’s required where you live.</li>
+        <li><b>Never leave a fire unattended.</b> Even safe conditions can change quickly.</li>
+        <li><b>Keep safety equipment nearby.</b> Have water, a hose, or an extinguisher ready.</li>
+        <li><b>Be mindful of neighbors and air quality.</b> Smoke travels farther than you think.</li>
+      </ul>
+      <p>This site is a <b>guide, not a guarantee</b>. Use it to inform your decision, but always follow local laws and common-sense fire safety practices.</p>
+      <h3> <b>Who Built This</b></h3>
+      <p>This site was created by <a href="https://jakemillerdev.com/">Jake Miller</a>, a developer who enjoys building tools that make simple and information accessible. It’s designed for anyone who needs a quick, trustworthy way to check weather for suitable burn conditions while you’re clearing brush, burning a pile of leaves, or just curious about local fire safety.</p>
+    </section>
+    <footer class="c-form-footer">
+      <div class="c-form-footer__contact">
+        <h2>Contact Us </h2>
+        <p>Feel free to contact us with any questions, suggestions or issues.</p>
+        <form id="form" method="POST">
+          <input type="hidden" name="access_key" value="c092c90c-6f21-415e-8383-8757c6da4e28">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" required aria-required="true">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required aria-required="true">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" required aria-required="true"></textarea>
+          <input class="hidden" type="checkbox" name="botcheck" style="display: none;">
+          <button class="c-btn-light" type="submit">Submit Form</button>
+          <div id="result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="c-form-footer__disclaimer">
+        <p class="u-small">© 2025 <a href="https://jakemillerdev.com/">Jake Miller</a>. All rights reserved. <a href="https://jakemillerdev.com/">Privacy Policy</a></p>
+      </div>
+    </footer>
   </body>
   <script src="scripts/scripts.js"></script>
+  <script>
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+    form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.innerHTML = "Please wait..."
+    fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
+    body: json
+    })
+    .then(async (response) => {
+    let json = await response.json();
+    if (response.status == 200) {
+    result.innerHTML = "Form submitted successfully";
+    } else {
+    console.log(response);
+    result.innerHTML = json.message;
+    }
+    })
+    .catch(error => {
+    console.log(error);
+    result.innerHTML = "Something went wrong!";
+    })
+    .then(function() {
+    form.reset();
+    setTimeout(() => {
+    result.style.display = "none";
+    }, 3000);
+    });
+    });
+  </script>
 </html>

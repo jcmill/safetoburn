@@ -34,6 +34,8 @@ h1 {
 h2 {
   font-size: clamp(1.75em, 7vw, 3.5em);
   font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
 h3,
@@ -132,9 +134,5 @@ label {
 }
 
 .u-small {
-  font-size: 0.75em;
-
-  @include query($laptop) {
-    font-size: 1em;
-  }
+  font-size: 1em;
 }

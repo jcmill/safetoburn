@@ -9,7 +9,11 @@
     flex-direction: column;
     min-height: 87vh;
     justify-content: center;
-    padding: 7vh 15vw;
+    padding: 0 15vw 7vh 15vw;
+  }
+
+  @include query($tablet, portrait) {
+    padding: 0 15vw 7vh 15vw;
   }
 
   ul {

@@ -1,0 +1,26 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.c-logo-divider {
+  display: flex;
+  justify-content: center;
+  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+
+  img {
+    width: 15vw;
+  }
+
+  @include query($tablet) {
+    padding: 10vh 15vw;
+
+    img {
+      width: 5vw;
+    }
+  }
+
+  @include query($tablet, portrait) {
+    img {
+      width: 10vw;
+    }
+  }
+}

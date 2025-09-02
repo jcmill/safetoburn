@@ -1,0 +1,20 @@
+footer#contact.c-form-footer
+  .c-form-footer__contact
+    h2 Contact Us 
+    p Feel free to contact us with any questions, suggestions or issues.
+    form#form(method='POST')
+      input(type='hidden', name='access_key', value='c092c90c-6f21-415e-8383-8757c6da4e28')
+      label(for='name') Name
+      input#name(type='text', name='name', required, aria-required='true')
+      label(for='email') Email
+      input#email(type='email', name='email', required, aria-required='true')
+      label(for='message') Your Message
+      textarea#message(name='message', required, aria-required='true')
+      input.hidden(type='checkbox', name='botcheck', style='display: none;')
+      button(type='submit').c-btn-light Submit Form
+      #result(role='status' aria-live='polite')
+  .c-form-footer__disclaimer
+    p.u-small © 2025 
+      a(href="https://jakemillerdev.com/") Jake Miller
+      | . All rights reserved. 
+      a(href="privacy-policy.html") Privacy Policy

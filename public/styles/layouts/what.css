@@ -1,0 +1,22 @@
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-section-padding {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}
+
+.c-what {
+  background: url("../images/bg-grain.png") no-repeat;
+  background-attachment: fixed;
+  background-size: fill;
+  -webkit-clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
+  clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
+  padding: 25vh clamp(1.5em, 5vw, 2em);
+}
+.c-what h2,
+.c-what p {
+  text-align: center;
+  color: #f2ede9;
+}

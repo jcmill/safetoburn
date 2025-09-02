@@ -4,13 +4,16 @@
 @use "components/buttons.scss" as *;
 @use "components/graphs.scss" as *;
 @use "components/inputs.scss" as *;
+@use "components/logo-divider.scss" as *;
 @use "layouts/header.scss" as *;
 @use "layouts/main.scss" as *;
+@use "layouts/what.scss" as *;
 @use "layouts/about.scss" as *;
 @use "layouts/contact.scss" as *;
 @use "layouts/ad.scss" as *;
 @use "layouts/divider.scss" as *;
-@use "layouts/footer.scss" as *;
+@use "layouts/form-footer.scss" as *;
+@use "layouts/privacy.scss" as *;
 @use "components/accordion.scss" as *;
 
 html {
@@ -18,9 +21,10 @@ html {
 }
 
 body {
-  background: $light radial-gradient(100% 65% at 0% 0%, $light-2 33%, $light)
-    no-repeat;
+  background: $light
+    radial-gradient(100% 65% at 0% 0%, $light-darker 33%, $light) no-repeat;
   background-size: contain;
+  margin: 0;
   overflow-x: clip;
 }
 

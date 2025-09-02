@@ -1,0 +1,87 @@
+doctype html
+html(lang="en-US")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://images.marketamerica.com/cdn/interactive-bootstrap-template/css/3.0/interactive-bootstrap.css?=v3")
+    link(rel="stylesheet", href="styles/styles.css")
+    link(rel="shortcut icon" type="image/png" href="images/logos/safe-to-burn-fire-safety-favicon.png")
+    title Contact Safe to Burn
+  body
+    include blocks/privacy-header
+    section.c-privacy.u-section-padding
+      h2 Privacy Policy for SafeToBurn.com
+      p Effective Date: September 1 2025
+      p SafeToBurn.com respects your privacy. This Privacy Policy explains what information we do and do not collect, how we use information, and how Google AdSense (if enabled) may interact with your browser.
+      h4 
+        b Information We Do Not Collect
+        ul
+          li We do not collect, store, or sell any personal information about visitors.
+          li We do not require you to create an account, sign in, or provide personal details to use our site.
+      h4 
+        b Information You Provide Voluntarily
+        ul
+          li If you use our contact form, any information you submit (such as your name, email address, or message) is used solely to respond to your inquiry.
+          li This information is not stored for marketing purposes, shared with third parties, or used for any other reason.
+      h4 
+        b Use of Cookies and Google AdSense
+        ul
+          li SafeToBurn.com itself does not use cookies or tracking scripts.
+          li If Google AdSense ads are displayed on this site, Google may use cookies to serve ads based on your interests or previous visits to other websites.
+          li You can learn more about how Google uses data here: 
+            a(href="https://policies.google.com/technologies/ads") https://policies.google.com/technologies/ads
+          li You can opt out of personalized advertising at: 
+            a(href="https://www.google.com/settings/ads/") https://www.google.com/settings/ads/
+      h4 
+        b Third-Party Data Sharing
+        ul
+          li We do not sell, rent, or share any personal data with third parties.
+          li Any data collected by Google AdSense is managed according to Google’s own Privacy Policy and not by SafeToBurn.com.
+      h4 
+        b Purpose of the Site
+        ul
+          li SafeToBurn.com provides real-time fire safety conditions — including windspeed, humidity, and burn-ban alerts — so visitors can make informed decisions about outdoor burning.
+          li This service is purely informational and does not require any personal information to function.
+      h4 
+        b Contact
+        ul
+          li If you have any questions about this Privacy Policy, you can reach us via the contact form at the bottom of this site.
+    include layouts/form-footer
+  script.
+      const form = document.getElementById('form');
+      const result = document.getElementById('result');
+      form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      result.innerHTML = "Please wait..."
+      fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: json
+      })
+      .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+      result.innerHTML = "Form submitted successfully";
+      } else {
+      console.log(response);
+      result.innerHTML = json.message;
+      }
+      })
+      .catch(error => {
+      console.log(error);
+      result.innerHTML = "Something went wrong!";
+      })
+      .then(function() {
+      form.reset();
+      setTimeout(() => {
+      result.style.display = "none";
+      }, 3000);
+      });
+      });

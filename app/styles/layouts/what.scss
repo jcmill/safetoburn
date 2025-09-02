@@ -1,0 +1,17 @@
+@use "../base/colors" as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.c-what {
+  background: url("../images/bg-grain.png") no-repeat;
+  background-attachment: fixed;
+  background-size: fill;
+  clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
+  padding: 25vh clamp(1.5em, 5vw, 2em);
+
+  h2,
+  p {
+    text-align: center;
+    color: $light;
+  }
+}

@@ -1,0 +1,66 @@
+@use "../base/colors" as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.c-form-footer {
+  background: url("../images/bg-grain.png") no-repeat;
+  background-attachment: fixed;
+  background-size: fill;
+  clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 66% 100%, 0% 100%);
+  padding: 15vh clamp(1.5em, 5vw, 2em) 1em;
+
+  @include query($tablet) {
+    padding: 10vh 15vw 1em;
+  }
+
+  @include query($tablet, portrait) {
+    padding: 10vh 15vw 7vh 15vw;
+  }
+
+  @include query($laptop) {
+    padding: 15vh 15vw 1em;
+  }
+
+  h2,
+  p,
+  label,
+  a {
+    color: $light;
+  }
+
+  a {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  &__contact {
+    @include query($tablet) {
+      padding: 0 15vw;
+    }
+
+    h2,
+    p {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      input {
+        margin-bottom: 1em;
+      }
+
+      button {
+        margin-top: 1em;
+      }
+    }
+  }
+
+  &__disclaimer {
+    margin-top: 5vw;
+    text-align: center;
+  }
+}

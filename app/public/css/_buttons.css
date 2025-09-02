@@ -62,3 +62,19 @@ button {
   background: none;
   transition: all 0.5s;
 }
+
+.c-btn-light {
+  background: #f2ede9;
+  border-radius: 50vw;
+  padding: 0.5em 0;
+  transition: all 0.5s;
+}
+.c-btn-light:hover, .c-btn-light:focus, .c-btn-light:active {
+  background: #dacbbf;
+  color: #272727;
+  transition: all 0.5s;
+}
+.c-btn-light:hover img, .c-btn-light:focus img, .c-btn-light:active img {
+  background: none;
+  transition: all 0.5s;
+}

@@ -1,3 +1,12 @@
+.u-section-padding {
+  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
+}
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .u-section-padding {
+    padding: 0 clamp(1.5em, 7vw, 4em);
+  }
+}
+
 .c-about {
   padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
 }
@@ -7,7 +16,12 @@
     flex-direction: column;
     min-height: 87vh;
     justify-content: center;
-    padding: 7vh 15vw;
+    padding: 0 15vw 7vh 15vw;
+  }
+}
+@media screen and (min-width: 726px) and (orientation: portrait) {
+  .c-about {
+    padding: 0 15vw 7vh 15vw;
   }
 }
 .c-about ul {

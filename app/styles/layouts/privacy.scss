@@ -1,0 +1,15 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.c-privacy {
+  margin: 5em 0;
+
+  h4 {
+    margin-bottom: 1em;
+  }
+
+  li {
+    list-style-type: disc;
+    margin-bottom: 0.5em;
+  }
+}
