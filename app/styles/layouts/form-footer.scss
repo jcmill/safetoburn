@@ -1,4 +1,5 @@
 @use "../base/colors" as *;
+@use "../base/typography" as *;
 @use "../base/variables" as *;
 @use "../base/mixins" as *;
 
@@ -64,4 +65,12 @@
     margin-top: 5vw;
     text-align: center;
   }
+}
+
+#form {
+  font-family: $font-family;
+}
+
+#result {
+  color: $light;
 }

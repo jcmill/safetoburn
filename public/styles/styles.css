@@ -1037,6 +1037,14 @@ b {
   text-align: center;
 }
 
+#form {
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+
+#result {
+  color: #f2ede9;
+}
+
 .c-privacy {
   margin: 5em 0;
 }
