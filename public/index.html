@@ -108,7 +108,7 @@
         <div class="c-app__location">
           <h3 class="c-app__location--details js-app__location--details">Search for a location</h3>
           <div class="c-app__location--search">
-            <form class="c-location-search" id="c-location-search" novalidate role="search">
+            <form class="c-location-search js-location-search" id="c-location-search" novalidate role="search">
               <label class="c-location-search__label u-small c-location-search__hidden" id="location__label" for="location-input">Search fire safety by city, state, or ZIP code</label>
               <p class="u-small c-location-search__hint c-location-search__hidden" id="location-hint">Enter a city name (e.g., "Boston") or ZIP code (e.g., "02108")</p>
               <div class="c-location-search__container">
@@ -264,11 +264,11 @@
   </body>
   <script src="scripts/scripts.js"></script>
   <script>
-    const form = document.getElementById('form');
+    const contactForm = document.getElementById('form');
     const result = document.getElementById('result');
-    form.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const formData = new FormData(form);
+    const formData = new FormData(contactForm);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
     result.innerHTML = "Please wait..."
@@ -294,7 +294,7 @@
     result.innerHTML = "Something went wrong!";
     })
     .then(function() {
-    form.reset();
+    contactForm.reset();
     setTimeout(() => {
     result.style.display = "none";
     }, 3000);

@@ -2,7 +2,7 @@
 // use my location
 const myLocationButton = document.querySelectorAll(".js-btn-location");
 const searchButton = document.querySelector(".js-btn-search");
-const form = document.querySelector("form");
+const searchForm = document.querySelector(".js-location-search");
 const input = document.querySelector(".js-location-search__input");
 const inputReset = document.querySelector(".js-input");
 const resetButton = document.querySelector(".js-reset");
@@ -402,7 +402,7 @@ const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
 };
 
 // form validations
-form.addEventListener("submit", async function (e) {
+searchForm.addEventListener("submit", async function (e) {
   const errorEl = document.querySelector(".js-location-search__error");
 
   temporarilyThrottle(input);

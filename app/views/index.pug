@@ -86,11 +86,11 @@ html(lang="en-US")
     include layouts/main
   script(src="scripts/scripts.js")
   script.
-      const form = document.getElementById('form');
+      const contactForm = document.getElementById('form');
       const result = document.getElementById('result');
-      form.addEventListener('submit', function(e) {
+      contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      const formData = new FormData(form);
+      const formData = new FormData(contactForm);
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
       result.innerHTML = "Please wait..."
@@ -116,7 +116,7 @@ html(lang="en-US")
       result.innerHTML = "Something went wrong!";
       })
       .then(function() {
-      form.reset();
+      contactForm.reset();
       setTimeout(() => {
       result.style.display = "none";
       }, 3000);

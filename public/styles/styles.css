@@ -861,12 +861,17 @@ b {
 }
 
 .c-what {
-  background: url("../images/bg-grain.jpg") no-repeat;
+  background: url("../images/bg-grain-mobile.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
   -webkit-clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
   clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
   padding: 25vh clamp(1.5em, 5vw, 2em);
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-what {
+    background: url("../images/bg-grain.jpg") no-repeat;
+  }
 }
 .c-what h2,
 .c-what p {
@@ -966,7 +971,7 @@ b {
 }
 
 .c-form-footer {
-  background: url("../images/bg-grain.jpg") no-repeat;
+  background: url("../images/bg-grain-mobile.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
   -webkit-clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 66% 100%, 0% 100%);
@@ -975,6 +980,7 @@ b {
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-form-footer {
+    background: url("../images/bg-grain.jpg") no-repeat;
     padding: 10vh 15vw 1em;
   }
 }

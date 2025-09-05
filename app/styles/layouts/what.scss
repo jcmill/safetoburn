@@ -3,11 +3,15 @@
 @use "../base/mixins" as *;
 
 .c-what {
-  background: url("../images/bg-grain.jpg") no-repeat;
+  background: url("../images/bg-grain-mobile.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
   clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
   padding: 25vh clamp(1.5em, 5vw, 2em);
+
+  @include query($tablet) {
+    background: url("../images/bg-grain.jpg") no-repeat;
+  }
 
   h2,
   p {

@@ -10,7 +10,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var myLocationButton = document.querySelectorAll(".js-btn-location");
 var searchButton = document.querySelector(".js-btn-search");
-var form = document.querySelector("form");
+var searchForm = document.querySelector(".js-location-search");
 var input = document.querySelector(".js-location-search__input");
 var inputReset = document.querySelector(".js-input");
 var resetButton = document.querySelector(".js-reset");
@@ -513,7 +513,7 @@ var safeToBurn = function safeToBurn() {
 }; // form validations
 
 
-form.addEventListener("submit", function _callee2(e) {
+searchForm.addEventListener("submit", function _callee2(e) {
   var errorEl, value, match, city, state;
   return regeneratorRuntime.async(function _callee2$(_context7) {
     while (1) {
