@@ -17,6 +17,8 @@
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-what {
     background: url("../images/bg-grain.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
   }
 }
 .c-what h2,

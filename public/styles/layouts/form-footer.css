@@ -162,6 +162,8 @@ label {
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-form-footer {
     background: url("../images/bg-grain.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     padding: 10vh 15vw 1em;
   }
 }

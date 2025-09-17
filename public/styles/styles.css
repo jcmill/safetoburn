@@ -592,6 +592,8 @@ b {
   grid-template: 1fr 1fr/3fr 1fr;
   min-height: 91vh;
   padding: 0 clamp(1.5em, 5vw, 2em);
+  position: relative;
+  z-index: 2;
 }
 @media screen and (min-width: 1025px) and (orientation: landscape) {
   .c-hero {
@@ -871,6 +873,8 @@ b {
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-what {
     background: url("../images/bg-grain.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
   }
 }
 .c-what h2,
@@ -981,6 +985,8 @@ b {
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-form-footer {
     background: url("../images/bg-grain.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     padding: 10vh 15vw 1em;
   }
 }

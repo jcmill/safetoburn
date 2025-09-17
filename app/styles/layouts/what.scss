@@ -11,6 +11,8 @@
 
   @include query($tablet) {
     background: url("../images/bg-grain.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
   }
 
   h2,
