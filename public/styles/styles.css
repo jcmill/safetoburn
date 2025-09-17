@@ -863,7 +863,8 @@ b {
 }
 
 .c-what {
-  background: url("../images/bg-grain-mobile.jpg") no-repeat;
+  background: -webkit-gradient(linear, left top, left bottom, from(#bb3920), to(#16100b));
+  background: linear-gradient(to bottom, #bb3920, #16100b);
   background-attachment: fixed;
   background-size: cover;
   -webkit-clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
@@ -975,7 +976,8 @@ b {
 }
 
 .c-form-footer {
-  background: url("../images/bg-grain-mobile.jpg") no-repeat;
+  background: -webkit-gradient(linear, left top, left bottom, from(#bb3920), to(#16100b));
+  background: linear-gradient(to bottom, #bb3920, #16100b);
   background-attachment: fixed;
   background-size: cover;
   -webkit-clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 66% 100%, 0% 100%);

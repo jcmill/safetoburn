@@ -8,7 +8,7 @@
 }
 
 .c-what {
-  background: url("../images/bg-grain-mobile.jpg") no-repeat;
+  background: linear-gradient(to bottom, #bb3920, #16100b);
   background-attachment: fixed;
   background-size: cover;
   clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
