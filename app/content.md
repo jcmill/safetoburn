@@ -1,52 +1,90 @@
 # Is It Safe to Burn Today?
 
-A fire safety conditions app meant to track wind speed, humidity, and burn bans at your location.
+A fire-safety conditions tool that helps you understand whether the weather and local regulations make it safe to burn brush, yard waste, or vegetation where you live.
 
-## What is the Safe to Burn app?
+Checking before you burn reduces wildfire risk, protects air quality, and helps keep your community safe.
 
-Safe to Burn is meant to help homeowners, farmers, and land managers quickly check if weather and environmental conditions are safe for burning brush or debris. By combining local weather data, wind speeds, humidity levels, and official fire alerts, we provide a simple, reliable tool for making responsible burning decisions. Enter your city, state, or ZIP code to see real-time wind speed, humidity, and active burn bans in your area.
+## What is the _Safe to Burn_ app?
+
+Safe to Burn is designed for homeowners, farmers, land owners, and land managers who need a quick and reliable way to check whether outdoor burning is safe and permitted.
+
+Instead of searching multiple websites for weather forecasts, burn bans, and alerts, this app brings together:
+
+- Wind speed and direction
+- Humidity levels
+- Fire danger ratings
+- Local burn bans and restrictions
+- Seasonal or temporary safety advisories
+
+Enter your city, ZIP code, or other location to see real-time burn conditions.
+
+**If conditions are unsafe — we’ll tell you. If burning is restricted — we’ll tell you.**
+
+Burning responsibly protects your property, your neighbors, and the environment.
+
+## How We Determine Burn Safety Conditions
+
+Outdoor burning is most affected by three key weather and environmental factors:
+
+| Factor          | Why It Matters                                                       |
+| --------------- | -------------------------------------------------------------------- |
+| Wind Speed      | Wind spreads embers, flame, and smoke. High wind = high fire risk.   |
+| Humidity        | Low humidity dries out vegetation, making it extremely flammable.    |
+| Local Burn Bans | Issued by counties to prevent wildfires during dangerous conditions. |
+
+We collect data from **National Weather Service, local fire agencies,** and **environmental authorities** to provide simple guidance:
+
+- Safe to Burn
+- Use Caution
+- Not Safe to Burn
+- Burning Prohibited Due to Local Ban
+
+This information updates automatically throughout the day.
+
+### When _Not_ to Burn
+
+Outdoor burning should be avoided when:
+
+- Winds are above 10–15 mph
+- Humidity is below 25–35%
+- Your county has issued a burn ban
+- Air quality is unhealthy
+- Conditions are extremely dry or your area is under drought alerts
+
+A small, controlled burn can turn dangerous faster than most people realize.
 
 ## FAQ
 
-### How does this website determine if it’s safe to burn?
+### Can I use this website as my only source for burn decisions?
 
-We combine data from weather services and local fire alerts to evaluate wind speed, humidity, and burn bans in your area.
+Use this site as a guide, but always follow your local laws and safety requirements
 
-### How often is the burn safety information updated?
+### How often are fire conditions updated?
 
-Our data refreshes automatically every hour (or more frequently during severe weather) to provide as close to real-time conditions as possible.
+Data refreshes automatically throughout the day, especially during wildfire-risk periods.
 
-### Does this site cover burn bans issued by my local authorities?
+### Does this include seasonal burn restrictions?
 
-Yes. Whenever available, we pull official burn ban notices from county or state agencies and display them alongside weather conditions.
+Yes. When available, we display active county, state, or federal burn restrictions.
 
-### What weather conditions make burning unsafe?
+### What about air quality?
 
-High winds, low humidity, and poor air quality increase fire risk and health hazards. We flag any of these conditions and alerts as “unsafe to burn.”
-
-### Can I rely solely on this website to decide whether to burn?
-
-We recommend using our site as a guide, but you should also check local regulations and advisories, since burn rules can vary by county or municipality.
+Future versions of the site will include real-time AQI and smoke advisories.
 
 ## About Safe To Burn
 
-Safe to Burn was started because one fall, the city I lived in decided to remove their curbside leaf collection. With a single yard waste can and nearly a half acre of leaves to manage, I had to confirm that burning was allowed in my county and research which weather conditions were safe. I realized there should be an easier way to find all this information. That’s why I built Safe to Burn. This is version one of the site, and I plan to add features like real-time air quality data (AQI) and a county-by-county guide to acceptable burn materials.
+This project began when I needed to clear a large amount of leaf and brush waste, and realized how difficult it was to find reliable information about whether burning was both legal and safe. I wanted a tool that was simple, accurate, and easy to understand — and I figured others probably needed the same thing.
 
 ### Your Responsibility
 
-While this site helps you understand current conditions, you are still responsible for burning safely and legally. That means:
+This site is a resource — but you are responsible for safe and legal burning.
 
-- Check for permits or burn bans. Local rules vary by county and state. Always confirm what’s required where you live.
-- Never leave a fire unattended. Even safe conditions can change quickly.
-- Keep safety equipment nearby. Have water, a hose, or an extinguisher ready.
-- Be mindful of neighbors and air quality. Smoke travels farther than you think.
+- Know your local laws and permit rules.
+- Never leave a fire unattended.
+- Protect your neighbors, land, and environment.
 
-This site is a guide, not a guarantee. Use it to inform your decision, but always follow local laws and common-sense fire safety practices.
-
-## Who Built This
-
-This site was created by Jake Miller, a developer who enjoys building tools that make simple and information accessible. It’s designed for anyone who needs a quick, trustworthy way to check weather for suitable burn conditions while you’re clearing brush, burning a pile of leaves, or just curious about local fire safety.
+Burn smart. Burn safe.
 
 ## Contact Us
 
-Feel free to contact us with any questions, suggestions or issues.
+Questions, corrections, feature requests, or agency partnerships are welcome.
