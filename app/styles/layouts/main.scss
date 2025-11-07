@@ -67,6 +67,7 @@ b {
     @include query($laptop) {
       grid-row: 1 / span 2;
       place-self: center;
+      padding: 0 10vw 0 0;
     }
   }
 

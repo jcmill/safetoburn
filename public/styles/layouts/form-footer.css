@@ -16,7 +16,7 @@ label,
 input {
   color: #272727;
   font-family: "Schibsted Grotesk", sans-serif;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 h1 {

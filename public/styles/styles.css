@@ -71,7 +71,7 @@ label,
 input {
   color: #272727;
   font-family: "Schibsted Grotesk", sans-serif;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 h1 {
@@ -616,6 +616,7 @@ b {
   .c-hero__content {
     grid-row: 1/span 2;
     place-self: center;
+    padding: 0 10vw 0 0;
   }
 }
 .c-hero__btns {
