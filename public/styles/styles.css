@@ -869,18 +869,20 @@ b {
   background-size: cover;
   -webkit-clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
   clip-path: polygon(0% 0%, 33% 10%, 100% 0%, 100% 100%, 66% 90%, 0% 100%);
-  padding: 25vh clamp(1.5em, 5vw, 2em);
+  padding: 25vh clamp(1.5em, 10vw, 5em);
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-what {
     background: url("../images/bg-grain.jpg") no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding: 25vh clamp(1.5em, 10vw, 10em);
   }
 }
 .c-what h2,
 .c-what p {
   text-align: center;
+  text-wrap: pretty;
   color: #f2ede9;
 }
 

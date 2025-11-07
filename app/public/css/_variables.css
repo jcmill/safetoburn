@@ -1,8 +1,0 @@
-.u-section-padding {
-  padding: 2vh clamp(1.5em, 5vw, 2em) 0;
-}
-@media screen and (min-width: 1025px) and (orientation: landscape) {
-  .u-section-padding {
-    padding: 0 clamp(1.5em, 7vw, 4em);
-  }
-}
