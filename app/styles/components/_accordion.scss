@@ -2,39 +2,33 @@
 @use "../base/variables" as *;
 @use "../base/mixins" as *;
 
-$background-color_1: whiteSmoke;
-$background-color_2: #999;
-$background-color_3: #e5e5e5;
-$background-color_4: #b5b5b5;
-
 .c-accordion {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2vh clamp(1.5em, 5vw, 2em) 7vh;
+  padding: 25vh clamp(1.5em, 10vw, 5em);
 
   @include query($tablet) {
-    padding: 7vh 15vw 0;
-  }
-
-  @include query($tablet, portrait) {
-    padding: 0 15vw 7vh 15vw;
-  }
-
-  &__container {
-    border-top: 1px solid $grey;
-  }
-
-  &__container:last-of-type {
-    border-bottom: 1px solid $grey;
+    padding: 25vh clamp(1.5em, 10vw, 10em);
   }
 
   h2 {
+    flex: 0 0 40%;
     margin-bottom: 1em;
-    text-align: center;
+  }
+
+  &__wrapper {
+    flex: 0 0 60%;
+  }
+
+  &__container {
+    border-top: 1px solid $dark-grey;
+  }
+
+  &__container:last-of-type {
+    border-bottom: 1px solid $dark-grey;
   }
 
   &-label {
+    color: $black;
     cursor: pointer;
     display: block;
     font-size: clamp(1.25em, 3vw, 1.5em);
@@ -141,7 +135,7 @@ $background-color_4: #b5b5b5;
       margin-bottom: 0;
       &:checked {
         background: none;
-        border-bottom: 1px solid whitesmoke;
+        border-bottom: 1px solid white;
       }
       &:after {
         left: 0;
