@@ -89,20 +89,20 @@
     }
 
     &::before {
-      clip-path: polygon(0 -50%, 45% 50%, 0 150%);
+      clip-path: polygon(0 -50%, 45% 35%, 0 150%);
       translate: -50% 0;
 
       @include query($tablet) {
-        clip-path: polygon(0 -50%, 60% 50%, 0 150%);
+        clip-path: polygon(0 -50%, 60% 35%, 0 150%);
       }
     }
 
     &::after {
-      clip-path: polygon(100% -50%, 55% 50%, 100% 150%);
+      clip-path: polygon(100% -50%, 55% 35%, 100% 150%);
       translate: 50% 0;
 
       @include query($tablet) {
-        clip-path: polygon(100% -50%, 40% 50%, 100% 150%);
+        clip-path: polygon(100% -50%, 40% 35%, 100% 150%);
       }
     }
 
@@ -117,6 +117,12 @@
 
     &--phrase {
       margin: 2em 0;
+    }
+
+    .o-group__btns {
+      align-items: center;
+      margin-top: 2em;
+      place-self: center;
     }
   }
 }

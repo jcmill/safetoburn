@@ -123,25 +123,25 @@
   width: 100%;
 }
 .c-searching__results::before {
-  -webkit-clip-path: polygon(0 -50%, 45% 50%, 0 150%);
-  clip-path: polygon(0 -50%, 45% 50%, 0 150%);
+  -webkit-clip-path: polygon(0 -50%, 45% 35%, 0 150%);
+  clip-path: polygon(0 -50%, 45% 35%, 0 150%);
   translate: -50% 0;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-searching__results::before {
-    -webkit-clip-path: polygon(0 -50%, 60% 50%, 0 150%);
-    clip-path: polygon(0 -50%, 60% 50%, 0 150%);
+    -webkit-clip-path: polygon(0 -50%, 60% 35%, 0 150%);
+    clip-path: polygon(0 -50%, 60% 35%, 0 150%);
   }
 }
 .c-searching__results::after {
-  -webkit-clip-path: polygon(100% -50%, 55% 50%, 100% 150%);
-  clip-path: polygon(100% -50%, 55% 50%, 100% 150%);
+  -webkit-clip-path: polygon(100% -50%, 55% 35%, 100% 150%);
+  clip-path: polygon(100% -50%, 55% 35%, 100% 150%);
   translate: 50% 0;
 }
 @media screen and (min-width: 726px) and (orientation: landscape) {
   .c-searching__results::after {
-    -webkit-clip-path: polygon(100% -50%, 40% 50%, 100% 150%);
-    clip-path: polygon(100% -50%, 40% 50%, 100% 150%);
+    -webkit-clip-path: polygon(100% -50%, 40% 35%, 100% 150%);
+    clip-path: polygon(100% -50%, 40% 35%, 100% 150%);
   }
 }
 .c-searching__results h4 {
@@ -153,4 +153,11 @@
 }
 .c-searching__results--phrase {
   margin: 2em 0;
+}
+.c-searching__results .o-group__btns {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 2em;
+  place-self: center;
 }

@@ -70,24 +70,6 @@ b {
       padding: 0 10vw 0 0;
     }
   }
-
-  &__btns {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    grid-column: 1;
-    grid-row: 2;
-    margin-bottom: 2em;
-    place-self: end start;
-
-    @include query($phone) {
-      flex-direction: row;
-    }
-
-    @include query($laptop) {
-      margin-bottom: 4em;
-    }
-  }
 }
 
 .c-app {
