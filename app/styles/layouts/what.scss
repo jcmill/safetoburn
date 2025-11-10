@@ -33,39 +33,4 @@
     padding: 0 10vw;
     text-wrap: balance;
   }
-
-  &__reasons {
-    margin: 10em 0 0 0;
-
-    ul {
-      align-items: start;
-      display: flex;
-      flex-wrap: wrap;
-      row-gap: 3em;
-      justify-content: center;
-      margin-top: 4em;
-
-      li {
-        align-items: center;
-        display: flex;
-        flex: 0 1 50%;
-        flex-direction: column;
-        font-weight: bold;
-        font-size: 1.25em;
-
-        @include query($tablet) {
-          flex: 0 1 33%;
-        }
-
-        @include query($desktop) {
-          flex: 0 1 20%;
-        }
-
-        img {
-          margin-bottom: 1em;
-          width: 80px;
-        }
-      }
-    }
-  }
 }

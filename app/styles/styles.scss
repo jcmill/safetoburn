@@ -8,6 +8,7 @@
 @use "layouts/header.scss" as *;
 @use "layouts/main.scss" as *;
 @use "layouts/what.scss" as *;
+@use "layouts/searching.scss" as *;
 @use "layouts/about.scss" as *;
 @use "layouts/contact.scss" as *;
 @use "layouts/ad.scss" as *;
@@ -28,6 +29,6 @@ body {
   overflow-x: clip;
 }
 
-.test {
-  height: 100vh;
+section {
+  overflow-x: clip;
 }

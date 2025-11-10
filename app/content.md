@@ -12,13 +12,13 @@ Instead of searching multiple websites for weather forecasts, burn bans, and ale
 
 - Wind speed and direction
 - Humidity levels
-- Fire danger ratings
+- Fire danger alerts
 - Local burn bans and restrictions
 - Seasonal or temporary safety advisories
 
 Enter your city, ZIP code, or other location to see real-time burn conditions.
 
-**If conditions are unsafe — we’ll tell you. If burning is restricted — we’ll tell you.**
+**If conditions are unsafe, we’ll tell you. If burning is restricted, we’ll tell you.**
 
 Burning responsibly protects your property, your neighbors, and the environment.
 
@@ -73,11 +73,11 @@ Future versions of the site will include real-time AQI and smoke advisories.
 
 ## About Safe To Burn
 
-This project began when I needed to clear a large amount of leaf and brush waste, and realized how difficult it was to find reliable information about whether burning was both legal and safe. I wanted a tool that was simple, accurate, and easy to understand — and I figured others probably needed the same thing.
+This project began when I needed to clear a large amount of leaf and brush waste, and realized how difficult it was to find reliable information about whether burning was both legal and safe. I wanted a tool that was simple, accurate, and easy to understand.
 
 ### Your Responsibility
 
-This site is a resource — but you are responsible for safe and legal burning.
+This site is a resource, but you are responsible for safe and legal burning.
 
 - Know your local laws and permit rules.
 - Never leave a fire unattended.
