@@ -73,7 +73,9 @@ h4 {
 }
 
 p,
-li {
+li,
+th,
+td {
   font-family: "Schibsted Grotesk", sans-serif;
   line-height: 1.2;
   font-weight: 400;
@@ -94,6 +96,11 @@ p {
   p {
     font-size: 1.4vw;
   }
+}
+
+th {
+  font-weight: 900;
+  text-align: left;
 }
 
 a {

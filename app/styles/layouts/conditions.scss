@@ -1,0 +1,80 @@
+@use "../base/colors" as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.c-conditions {
+  background: $lighter-grey;
+  clip-path: polygon(0% 10%, 50% 0%, 100% 10%, 100% 90%, 50% 100%, 0% 90%);
+  display: flex;
+  flex-direction: column;
+  padding: 10vh clamp(1.5em, 10vw, 5em);
+
+  @include query($tablet) {
+    padding: 15vh clamp(1.5em, 10vw, 10em);
+  }
+
+  &__determine {
+    align-self: end;
+    isolation: isolate;
+    margin-bottom: 4em;
+    position: relative;
+
+    @include query($tablet) {
+      width: 50vw;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      @include query($tablet) {
+        aspect-ratio: 3/2;
+        background: url("/images/vectors/icon-check-lit.svg") no-repeat;
+        background-size: contain;
+        height: 100%;
+        inset: auto auto auto -50%;
+      }
+    }
+
+    h2 {
+      text-wrap: balance;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+
+      tr {
+        border-bottom: 1px solid $grey;
+
+        th,
+        td {
+          padding: 0.5em;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+  &__data {
+    h4 {
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    ul {
+      display: flex;
+      gap: 4vw;
+      justify-content: center;
+      margin: 3em 0;
+      padding: 0;
+    }
+
+    p,
+    li {
+      text-align: center;
+      text-wrap: balance;
+    }
+  }
+}

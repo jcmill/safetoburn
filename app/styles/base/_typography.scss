@@ -64,7 +64,9 @@ h4 {
 }
 
 p,
-li {
+li,
+th,
+td {
   font-family: $font-family;
   line-height: 1.2;
   font-weight: 400;
@@ -83,6 +85,11 @@ p {
   @include query($laptop) {
     font-size: 1.4vw;
   }
+}
+
+th {
+  font-weight: 900;
+  text-align: left;
 }
 
 a {
