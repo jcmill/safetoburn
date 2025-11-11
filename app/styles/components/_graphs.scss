@@ -1,6 +1,9 @@
 @use "../base/colors" as *;
 @use "../base/typography" as *;
 
+$arrow-size: 1em;
+$arrow-spacing: 1.25em;
+
 .c-graph-circle {
   stroke: $green;
   transition: stroke-dashoffset 1s ease-in-out;
@@ -29,4 +32,109 @@
 
 .u-icon-hidden {
   display: none;
+}
+
+.c-bar-graph {
+  width: 100%;
+  &__axis {
+    // display: flex;
+    // justify-content: space-between;
+    // padding-right: 4em;
+    position: relative;
+
+    p {
+      margin-bottom: 0.25em;
+    }
+  }
+
+  &__graph {
+    border-right: 1px solid $grey;
+    border-top: 1px solid $grey;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    padding: 0.5em 0.5em 0 0;
+
+    p {
+      color: $black;
+      font-size: 1.2em;
+      line-height: 1.75;
+    }
+
+    p:first-of-type {
+      padding: 0 0 0 1%;
+      text-align: left;
+    }
+
+    p:last-of-type {
+      padding: 0 1% 0 0;
+      text-align: right;
+    }
+
+    .o-bar,
+    p {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .o-bar--grey {
+      background: $light-grey;
+      height: 2em;
+    }
+
+    .o-bar--red {
+      background: $red;
+      height: 2em;
+    }
+
+    .o-bar--green {
+      background: $green;
+      height: 2em;
+    }
+  }
+
+  &-windspeed {
+    .o-bar--grey {
+      width: 100%;
+    }
+    .o-bar--red {
+      width: 100%;
+    }
+    .o-bar--green {
+      width: 85%;
+    }
+    p:first-of-type {
+      padding: 0 0 0 1%;
+    }
+
+    p:last-of-type {
+      padding: 0 16% 0 0;
+    }
+  }
+
+  &-humidity {
+    p:first-of-type {
+      color: $light;
+    }
+
+    p:nth-of-type(2) {
+      color: $light;
+      padding: 0 76% 0 0;
+      text-align: right;
+    }
+
+    p:nth-of-type(3) {
+      padding: 0 0 0 36%;
+      text-align: left;
+    }
+
+    .o-bar--grey {
+      width: 100%;
+    }
+    .o-bar--red {
+      width: 25%;
+    }
+    .o-bar--green {
+      width: 35%;
+    }
+  }
 }

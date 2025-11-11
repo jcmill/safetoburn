@@ -361,6 +361,89 @@ button {
   display: none;
 }
 
+.c-bar-graph {
+  width: 100%;
+}
+.c-bar-graph__axis {
+  position: relative;
+}
+.c-bar-graph__axis p {
+  margin-bottom: 0.25em;
+}
+.c-bar-graph__graph {
+  border-right: 1px solid #b5b3b3;
+  border-top: 1px solid #b5b3b3;
+  display: grid;
+  grid-template: 1fr/1fr;
+  padding: 0.5em 0.5em 0 0;
+}
+.c-bar-graph__graph p {
+  color: #272727;
+  font-size: 1.2em;
+  line-height: 1.75;
+}
+.c-bar-graph__graph p:first-of-type {
+  padding: 0 0 0 1%;
+  text-align: left;
+}
+.c-bar-graph__graph p:last-of-type {
+  padding: 0 1% 0 0;
+  text-align: right;
+}
+.c-bar-graph__graph .o-bar,
+.c-bar-graph__graph p {
+  grid-column: 1;
+  grid-row: 1;
+}
+.c-bar-graph__graph .o-bar--grey {
+  background: #a9a9a9;
+  height: 2em;
+}
+.c-bar-graph__graph .o-bar--red {
+  background: #bb3920;
+  height: 2em;
+}
+.c-bar-graph__graph .o-bar--green {
+  background: #cc9c50;
+  height: 2em;
+}
+.c-bar-graph-windspeed .o-bar--grey {
+  width: 100%;
+}
+.c-bar-graph-windspeed .o-bar--red {
+  width: 100%;
+}
+.c-bar-graph-windspeed .o-bar--green {
+  width: 85%;
+}
+.c-bar-graph-windspeed p:first-of-type {
+  padding: 0 0 0 1%;
+}
+.c-bar-graph-windspeed p:last-of-type {
+  padding: 0 16% 0 0;
+}
+.c-bar-graph-humidity p:first-of-type {
+  color: #f2ede9;
+}
+.c-bar-graph-humidity p:nth-of-type(2) {
+  color: #f2ede9;
+  padding: 0 76% 0 0;
+  text-align: right;
+}
+.c-bar-graph-humidity p:nth-of-type(3) {
+  padding: 0 0 0 36%;
+  text-align: left;
+}
+.c-bar-graph-humidity .o-bar--grey {
+  width: 100%;
+}
+.c-bar-graph-humidity .o-bar--red {
+  width: 25%;
+}
+.c-bar-graph-humidity .o-bar--green {
+  width: 35%;
+}
+
 form {
   width: 100%;
 }
@@ -1138,6 +1221,58 @@ b {
 .c-conditions__data li {
   text-align: center;
   text-wrap: balance;
+}
+
+.c-danger {
+  padding: 10vh clamp(1.5em, 10vw, 5em) 0;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-danger {
+    padding: 15vh clamp(1.5em, 10vw, 10em) 0;
+  }
+}
+.c-danger h2,
+.c-danger p {
+  text-align: center;
+}
+.c-danger__content {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-danger__content {
+    gap: 20vw;
+  }
+}
+.c-danger__content--avoid p {
+  color: #272727;
+  margin: 0;
+}
+.c-danger__content--avoid ul {
+  margin: 2em 0;
+}
+.c-danger__content--avoid ul li {
+  list-style: disc;
+}
+.c-danger__content--avoid, .c-danger__content--graphs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 100vw;
+  flex: 0 1 100vw;
+  margin-bottom: 5em;
+}
+@media screen and (min-width: 726px) and (orientation: landscape) {
+  .c-danger__content--avoid, .c-danger__content--graphs {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 30vw;
+    flex: 0 1 30vw;
+  }
 }
 
 .c-about {

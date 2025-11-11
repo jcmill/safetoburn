@@ -1,0 +1,51 @@
+@use "../base/colors" as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.c-danger {
+  padding: 10vh clamp(1.5em, 10vw, 5em) 0;
+
+  @include query($tablet) {
+    padding: 15vh clamp(1.5em, 10vw, 10em) 0;
+  }
+
+  h2,
+  p {
+    text-align: center;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+
+    @include query($tablet) {
+      gap: 20vw;
+    }
+
+    &--avoid {
+      p {
+        color: $black;
+        margin: 0;
+      }
+
+      ul {
+        margin: 2em 0;
+
+        li {
+          list-style: disc;
+        }
+      }
+    }
+    &--avoid,
+    &--graphs {
+      flex: 0 1 100vw;
+      margin-bottom: 5em;
+
+      @include query($tablet) {
+        flex: 0 1 30vw;
+      }
+    }
+  }
+}
