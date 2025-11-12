@@ -25,6 +25,7 @@ function handleMyLocationClick() {
       const longitude = position.coords.longitude;
       getWeatherData(latitude, longitude);
       getFireAlerts(latitude, longitude);
+      getAqi(latitude, longitude);
       locationLoadTime = Math.round(performance.now());
       locationLoadTimeShort = Number(locationLoadTime.toString().slice(0, -1));
       hideBlueIcons(locationLoadTimeShort);
@@ -134,10 +135,6 @@ async function getWeather(latitude, longitude) {
   let hourValue = parts.find((part) => part.type === "hour").value.toString();
 
   const periods = forecastData.properties.periods;
-  console.log(
-    `${yearValue}-${monthValue}-${dayValue}T${hourValue}:00:00-${timeZoneOffset}`,
-    periods
-  );
   const nextHourIndex = periods.findIndex((period) => {
     return period.startTime.startsWith(
       `${yearValue}-${monthValue}-${dayValue}T${hourValue}:00:00-${timeZoneOffset}`
@@ -191,6 +188,14 @@ async function getFireAlerts(latitude, longitude) {
   );
   buildAlerts(allAlerts);
   return dangerAlerts;
+}
+
+async function getAqi(latitude, longitude) {
+  const API_KEY = "6F917D1F-9A17-4091-B834-7BF2A1EABBC0";
+  const alertData = await getJSON(
+    `https://www.airnowapi.org/aq/forecast/latLong/?format=application/json&latitude=${latitude}&longitude=${longitude}&distance=25&api_key=${API_KEY}`
+  );
+  console.log(alertData[0]);
 }
 
 const weatherCache = {};
