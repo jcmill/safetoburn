@@ -18,11 +18,8 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     gap: 2vw;
-
-    @include query($tablet) {
-      gap: 20vw;
-    }
 
     &--avoid {
       p {
@@ -40,11 +37,18 @@
     }
     &--avoid,
     &--graphs {
-      flex: 0 1 100vw;
+      flex: 0 1 100%;
       margin-bottom: 5em;
-
+    }
+    &--avoid {
       @include query($tablet) {
-        flex: 0 1 30vw;
+        flex: 0 1 40%;
+      }
+    }
+
+    &--graphs {
+      @include query($tablet) {
+        flex: 0 1 50%;
       }
     }
   }
