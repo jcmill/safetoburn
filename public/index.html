@@ -121,10 +121,7 @@
             <div class="c-app__graph--content"> 
               <h4>Wind speed</h4>
               <h3> <b class="js-windspeed-text">0 mph</b></h3>
-              <p class="u-small">
-                Prescribed Burns 5 to 15 mph  
-                General Burns up to 20 mph
-              </p>
+              <p class="u-small">Prescribed 5 to 15 mph <br>General up to 20 mph</p>
             </div>
           </div>
           <div class="c-app__graph c-app__graph--humidity">
@@ -139,22 +136,22 @@
             <div class="c-app__graph--content"> 
               <h4>Humidity</h4>
               <h3><b class="js-humidity-text">0%</b></h3>
-              <p class="u-small">
-                Danger < 30% 
-                Safe Above 40%
-              </p>
+              <p class="u-small">Danger < 30%<br>Safe Above 40%</p>
             </div>
           </div>
           <div class="c-app__graph c-app__graph--air-quality">
             <svg class="c-graph" viewBox="0 0 400 400">
               <circle class="c-graph-empty" cx="200" cy="200" fill="none" r="175" stroke-dasharray="870" stroke-dashoffset="10" stroke-width="25" transform="rotate(45 200 200)"></circle>
               <circle class="c-graph-circle js-graph-circle--air-quality" cx="200" cy="200" fill="none" r="175" stroke-dasharray="1100" stroke-width="25" stroke-dashoffset="1100" transform="rotate(45 200 200)"></circle>
-              <image class="c-graph-icon" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality.svg" text-anchor="middle" x="26%" y="26%"></image>
+              <image class="c-graph-icon js-aqi-graph-icon--green u-icon-hidden" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality-green.svg" text-anchor="middle" x="26%" y="26%"></image>
+              <image class="c-graph-icon js-aqi-graph-icon--orange u-icon-hidden" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality-orange.svg" text-anchor="middle" x="26%" y="26%"></image>
+              <image class="c-graph-icon js-aqi-graph-icon--red u-icon-hidden" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality-red.svg" text-anchor="middle" x="26%" y="26%"></image>
+              <image class="c-graph-icon js-aqi-graph-icon--blue" dominant-baseline="middle" dy="0.3em" href="images/vectors/icon-graph-air-quality.svg" text-anchor="middle" x="26%" y="26%"></image>
             </svg>
             <div class="c-app__graph--content"> 
               <h4>Air Quality</h4>
-              <h3> <b>0</b></h3>
-              <p class="u-small">Coming soon</p>
+              <h3> <b class="js-aqi-text">0</b></h3>
+              <p class="u-small">Safe < 50<br>Moderate = 51-100</p>
             </div>
           </div>
         </div>

@@ -30,9 +30,9 @@ section.c-main
           h4 Wind speed
           h3 
             b.js-windspeed-text 0 mph
-          p.u-small Prescribed Burns 5 to 15 mph 
-            | 
-            | General Burns up to 20 mph
+          p.u-small Prescribed 5 to 15 mph 
+            br 
+            | General up to 20 mph
       .c-app__graph.c-app__graph--humidity
         include ../components/graph-humidity-alt
         .c-app__graph--content 
@@ -40,15 +40,17 @@ section.c-main
           h3
             b.js-humidity-text 0%
           p.u-small Danger < 30%
-            | 
+            br 
             | Safe Above 40%
       .c-app__graph.c-app__graph--air-quality
         include ../components/graph-air-quality-alt
         .c-app__graph--content 
           h4 Air Quality
           h3 
-            b 0
-          p.u-small Coming soon
+            b.js-aqi-text 0
+          p.u-small Safe < 50
+            br
+            | Moderate = 51-100
     .c-app__details--response.js-hero__details--response 
       h2 Results:
 include what

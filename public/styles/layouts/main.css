@@ -298,7 +298,3 @@ b {
 .c-app__details--response > div > div img {
   width: 1.5em;
 }
-.c-app .c-app__graph--air-quality {
-  -webkit-filter: grayscale(100) opacity(0.5);
-  filter: grayscale(100) opacity(0.5);
-}
