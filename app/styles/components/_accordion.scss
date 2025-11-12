@@ -4,10 +4,10 @@
 
 .c-accordion {
   display: flex;
-  padding: 25vh clamp(1.5em, 10vw, 5em);
+  padding: 10vh clamp(1.5em, 10vw, 5em);
 
   @include query($tablet) {
-    padding: 25vh clamp(1.5em, 10vw, 10em);
+    padding: 5vh clamp(1.5em, 10vw, 10em);
   }
 
   h2 {
