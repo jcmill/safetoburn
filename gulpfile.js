@@ -9,6 +9,8 @@ const autoprefixer = require("gulp-autoprefixer");
 const cache = require("gulp-cache");
 const del = require("del");
 const plumber = require("gulp-plumber");
+const replace = require("gulp-replace");
+const dotenv = require("dotenv").config().parsed || {};
 
 /* Options
  * ------ */
@@ -98,6 +100,7 @@ function scripts() {
         presets: ["@babel/preset-env"],
       })
     )
+    .pipe(replace(/{{AQI_API_KEY}}/g, dotenv.AQI_API_KEY || ""))
     .pipe(uglify())
     .pipe(gulp.dest(options.scripts.dest))
     .pipe(

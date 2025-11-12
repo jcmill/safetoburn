@@ -1,5 +1,6 @@
 "use strict";
-// use my location
+// const dotenv = require("dotenv");
+// dotenv.config();
 const myLocationButton = document.querySelectorAll(".js-btn-location");
 const searchButton = document.querySelector(".js-btn-search");
 const searchForm = document.querySelector(".js-location-search");
@@ -191,7 +192,7 @@ async function getFireAlerts(latitude, longitude) {
 }
 
 async function getAqi(latitude, longitude) {
-  const API_KEY = "6F917D1F-9A17-4091-B834-7BF2A1EABBC0";
+  const API_KEY = "{{AQI_API_KEY}}";
   const alertData = await getJSON(
     `https://www.airnowapi.org/aq/forecast/latLong/?format=application/json&latitude=${latitude}&longitude=${longitude}&distance=25&api_key=${API_KEY}`
   );
