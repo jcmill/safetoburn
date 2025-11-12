@@ -11,6 +11,7 @@ const dangerAlerts = [];
 const urlSearch = window.location.search;
 let locationLoadTime;
 let weatherLoadTime;
+let aqi;
 
 function temporarilyThrottle(element, ms = 2000) {
   element.disabled = true;
@@ -56,9 +57,11 @@ function hideBlueIcons(ms) {
     ".js-windspeed-graph-icon--blue"
   );
   const humidityBlue = document.querySelector(".js-humidity-graph-icon--blue");
+  const aqiBlue = document.querySelector(".js-aqi-graph-icon--blue");
   setTimeout(() => {
     windspeedBlue.classList.add("u-icon-hidden");
     humidityBlue.classList.add("u-icon-hidden");
+    aqiBlue.classList.add("u-icon-hidden");
   }, ms);
 }
 
@@ -196,7 +199,9 @@ async function getAqi(latitude, longitude) {
   const alertData = await getJSON(
     `https://www.airnowapi.org/aq/forecast/latLong/?format=application/json&latitude=${latitude}&longitude=${longitude}&distance=25&api_key=${API_KEY}`
   );
-  console.log(alertData[0]);
+  const aqiValue = alertData[0].AQI;
+  handleAQIGraph(aqiValue);
+  return aqiValue;
 }
 
 const weatherCache = {};
@@ -207,8 +212,9 @@ async function getWeatherData(latitude, longitude) {
     const weatherInfo = weatherCache[key];
     windspeed = parseFloat(weatherInfo.windSpeed.replace("mph", "").trim());
     humidity = weatherInfo.relativeHumidity;
-    readings(windspeed, humidity);
-    safeToBurn(windspeed, humidity, dangerAlerts);
+    aqi = weatherInfo.aqi;
+    readings(windspeed, humidity, aqi);
+    safeToBurn(windspeed, humidity, dangerAlerts, aqi);
     return;
   }
   const weatherInfo = await getWeather(latitude, longitude);
@@ -217,8 +223,12 @@ async function getWeatherData(latitude, longitude) {
   humidity = weatherInfo.relativeHumidity;
 
   const dangerAlerts = await getFireAlerts(latitude, longitude);
-  readings(windspeed, humidity);
-  safeToBurn(windspeed, humidity, dangerAlerts);
+  aqi = await getAqi(latitude, longitude);
+
+  weatherCache[key].aqi = aqi;
+
+  readings(windspeed, humidity, aqi);
+  safeToBurn(windspeed, humidity, dangerAlerts, aqi);
 
   weatherLoadTime = Math.round(performance.now());
   weatherLoadTimeShort = Number(weatherLoadTime.toString().slice(0, -1));
@@ -245,6 +255,7 @@ async function getLocation(postalCode, city = "Cupertino", state = "CA") {
   }
   await getWeatherData(lat, lon);
   await getFireAlerts(lat, lon);
+  aqi = await getAqi(lat, lon);
 }
 
 // functions to handle displaying needed information in graphs
@@ -254,9 +265,10 @@ const getOffset = (val = 0) => {
   return cleanOffset;
 };
 
-const readings = (windspeed = 0, humidity = 0) => {
+const readings = (windspeed = 0, humidity = 0, aqi = 0) => {
   handleWindspeedGraph(windspeed);
   handleHumidityGraph(humidity);
+  handleAQIGraph(aqi);
 };
 
 function handleWindspeedGraph(reading) {
@@ -327,7 +339,37 @@ function handleHumidityGraph(reading) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => setTimeout(readings, 100));
+function handleAQIGraph(reading) {
+  const aqiGreen = document.querySelector(".js-aqi-graph-icon--green");
+  const aqiOrange = document.querySelector(".js-aqi-graph-icon--orange");
+  const aqiRed = document.querySelector(".js-aqi-graph-icon--red");
+  const aqiCircle = document.querySelector(".js-graph-circle--aqi");
+  const aqiText = document.querySelector(".js-aqi-text");
+
+  aqiCircle.style.strokeDashoffset = getOffset(reading);
+  aqiText.textContent = `${Number(reading)}`;
+
+  if (reading <= 50) {
+    aqiCircle.style.stroke = "#cc9c50";
+    aqiGreen.classList.remove("u-icon-hidden");
+    aqiOrange.classList.add("u-icon-hidden");
+    aqiRed.classList.add("u-icon-hidden");
+  } else if (reading >= 51 && reading <= 100) {
+    aqiCircle.style.stroke = "#f87819";
+    aqiGreen.classList.add("u-icon-hidden");
+    aqiOrange.classList.remove("u-icon-hidden");
+    aqiRed.classList.add("u-icon-hidden");
+  } else if (reading <= 101) {
+    aqiCircle.style.stroke = "#c94c26";
+    aqiGreen.classList.add("u-icon-hidden");
+    aqiOrange.classList.add("u-icon-hidden");
+    aqiRed.classList.remove("u-icon-hidden");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () =>
+  setTimeout(() => readings(0, 0, 0), 100)
+);
 
 function updateContainer(selector, html) {
   const container = document.querySelector(selector);
@@ -338,7 +380,12 @@ function updateContainer(selector, html) {
 }
 
 // function to handle saftey messages
-const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
+const safeToBurn = (
+  windspeed = 0,
+  humidity = 0,
+  dangerAlerts = [],
+  aqi = 0
+) => {
   const warningReasons = [];
   const unsafeReasons = [];
   const safeResons = [];
@@ -352,17 +399,26 @@ const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
   if (dangerAlerts.length > 0) {
     unsafeReasons.push(...dangerAlerts.map((alert) => `a ${alert}`));
   }
+  if (aqi > 100) {
+    unsafeReasons.push(`<b>Low Air Quality</b> (${aqi})`);
+  }
   if (windspeed > 15 && windspeed <= 20) {
     warningReasons.push(`<b>High wind</b> (${windspeed} mph)`);
   }
-  if (humidity >= 14 && humidity < 30) {
+  if (humidity >= 14 && humidity < 40) {
     warningReasons.push(`<b>Low humidity</b> (${humidity}%)`);
+  }
+  if (aqi <= 100 && aqi >= 51) {
+    warningReasons.push(`<b>Air Quality</b> (${aqi})`);
   }
   if (windspeed <= 15) {
     safeResons.push(`Windspeed`);
   }
   if (humidity > 30) {
     safeResons.push(`Humidity`);
+  }
+  if (aqi <= 50) {
+    safeResons.push(`Air Quality`);
   }
 
   let warningResponse = warningReasons.join(" and ");
@@ -376,6 +432,8 @@ const safeToBurn = (windspeed = 0, humidity = 0, dangerAlerts = []) => {
         <p>${safeResons[0]}</p>
         <img src="../images/vectors/icon-check.svg" alt="check mark icon">
         <p>${safeResons[1]}</p>
+        <img src="../images/vectors/icon-check.svg" alt="check mark icon">
+        <p>${safeResons[2]}</p>
       </div>
     </div>
   `;
